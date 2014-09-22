@@ -8,7 +8,7 @@ package Modelo;
 
 /**
  *
- * @author Oscar
+ * @author Abner Colli
  */
 public class Administrador extends Usuario {
 
