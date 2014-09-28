@@ -17,7 +17,7 @@ public class TesPC {
      */
     public static void main(String[] args) {
        Thread compu1 = new Computadora("1.-","01:00:000");
-       Thread xbox1 = new Computadora("2.-","00:30:000");
+       Thread xbox1 = new Xbox("2.-","00:30:000",2);
        Thread compu2 = new Computadora("3.-","00:15:000");
        
        
