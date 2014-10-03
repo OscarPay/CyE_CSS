@@ -27,6 +27,7 @@ public class Servidor {
             server = new ServerSocket(HOST);
         }catch(IOException e){
             System.out.println("ERROR al crear Server");
+            
         }
         
         //Se crear una puerta de entrada cliente y se acepta la conexion
