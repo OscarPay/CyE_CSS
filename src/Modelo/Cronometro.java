@@ -20,11 +20,13 @@ public final class Cronometro extends Thread{
     String tiempoSalida = "";
     boolean activo = true; 
     public ArrayList observadores;
+    int NumComputadora = 0;
     
 
-    public Cronometro(String tiempoSalida) {
+    public Cronometro(String tiempoSalida, int NumComputadora) {
         this.tiempoSalida = tiempoSalida;
         observadores = new ArrayList();
+        this.NumComputadora = NumComputadora;
     }
     
     public void run(){
@@ -91,15 +93,13 @@ public final class Cronometro extends Thread{
     }
 
     private void cambioTiempo(String hora, String min, String seg) {
-         System.out.println(hora + ":" + min + ":" + seg);
+         //System.out.println(hora + ":" + min + ":" + seg);
          this.tiempo = hora + ":" + min + ":" + seg;
          notificarObservadores();
     }
     
-     public void agregar(Observador obs) {
-        System.out.println(obs.toString());
-        observadores.add(obs);
-        
+     public void agregar(Observador obs) {        
+        observadores.add(obs);        
     }
 
     
@@ -113,7 +113,7 @@ public final class Cronometro extends Thread{
     public void notificarObservadores(){
         for (int i = 0; i < observadores.size(); i++) {
             Observador observer = (Observador) observadores.get(i);
-            observer.Actualizar(this.tiempo);
+            observer.Actualizar(this.tiempo,this.NumComputadora);
         }
     }
 

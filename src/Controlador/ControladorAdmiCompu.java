@@ -23,8 +23,8 @@ public class ControladorAdmiCompu {
         administradorComputadoras = AdministradorComputadoras.getInstance();
     }
     
-    public void iniciarComputadora(String nombreEquipo, String tiempoSalida) {
-        administradorComputadoras.iniciarComputadora(nombreEquipo, tiempoSalida);
+    public void iniciarComputadora(String nombreEquipo, String tiempoSalida, int NumComputadora) {
+        administradorComputadoras.iniciarComputadora(nombreEquipo, tiempoSalida, NumComputadora);
     }
 
     public AdministradorComputadoras getAdministradorComputadoras() {

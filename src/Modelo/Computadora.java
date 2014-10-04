@@ -24,16 +24,18 @@ public class Computadora{
     public Cronometro cronometro = null;
     boolean encendida = false;
     
-    public Computadora(String nombre, String tiempoSalida){        
+    
+    public Computadora(String nombre, String tiempoSalida,int NumComputadora){        
         this.nombre = nombre;
-        this.tiempoSalida = tiempoSalida;
-        this.cronometro = new Cronometro(tiempoSalida);         
+        this.tiempoSalida = tiempoSalida;        
+        this.cronometro = new Cronometro(tiempoSalida, NumComputadora);         
     }
     
     public void activarComputadora(){
         this.cronometro.start();        
     }
-    
-      
-   
+
+    public Cronometro getCronometro() {
+        return cronometro;
+    }      
 }

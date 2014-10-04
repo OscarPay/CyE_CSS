@@ -60,6 +60,10 @@ public class MenuPrincipal extends javax.swing.JFrame implements Observador {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         lblTiempo1 = new javax.swing.JLabel();
+        lblTiempo2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        lblTiempo3 = new javax.swing.JLabel();
+        lblTiempo4 = new javax.swing.JLabel();
 
         jLabel5.setText("jLabel5");
 
@@ -134,6 +138,14 @@ public class MenuPrincipal extends javax.swing.JFrame implements Observador {
 
         lblTiempo1.setText("00:00:00");
 
+        lblTiempo2.setText("00:00:00");
+
+        jLabel3.setText("jLabel3");
+
+        lblTiempo3.setText("00:00:00");
+
+        lblTiempo4.setText("00:00:00");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -142,14 +154,11 @@ public class MenuPrincipal extends javax.swing.JFrame implements Observador {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
                         .addComponent(jLabel8)
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel9)
-                        .addGap(69, 69, 69)
-                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblTiempo3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel11)
+                        .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel12)
                         .addGap(26, 26, 26)
@@ -160,34 +169,48 @@ public class MenuPrincipal extends javax.swing.JFrame implements Observador {
                             .addComponent(btnComputadora1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnComputadora3, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(btnComputadora4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnXbox2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(btnComputadora2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnComputadora2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(Hora)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblTiempo2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel4)
+                                        .addGap(46, 46, 46)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(btnXbox1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel6)
-                                        .addGap(32, 32, 32)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel3)
+                                        .addGap(18, 18, 18)
                                         .addComponent(jLabel7)
-                                        .addGap(30, 30, 30))))))
+                                        .addGap(30, 30, 30))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel10)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblTiempo4)
+                                        .addGap(13, 13, 13)
+                                        .addComponent(jLabel11))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnComputadora4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnXbox2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblTiempo1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
-                        .addGap(66, 66, 66)
-                        .addComponent(Hora)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel4)
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(0, 10, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,7 +229,9 @@ public class MenuPrincipal extends javax.swing.JFrame implements Observador {
                     .addComponent(jLabel4)
                     .addComponent(jLabel6)
                     .addComponent(jLabel7)
-                    .addComponent(lblTiempo1))
+                    .addComponent(lblTiempo1)
+                    .addComponent(lblTiempo2)
+                    .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnComputadora3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -219,7 +244,9 @@ public class MenuPrincipal extends javax.swing.JFrame implements Observador {
                     .addComponent(jLabel10)
                     .addComponent(jLabel11)
                     .addComponent(jLabel12)
-                    .addComponent(jLabel13))
+                    .addComponent(jLabel13)
+                    .addComponent(lblTiempo3)
+                    .addComponent(lblTiempo4))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -229,38 +256,41 @@ public class MenuPrincipal extends javax.swing.JFrame implements Observador {
     private void btnComputadora1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComputadora1ActionPerformed
         String Nombrepc = btnComputadora1.getText();           
         String tiempoSalida = JOptionPane.showInputDialog("Ingrese el tiempo");
-        controladorAdmiCompu.iniciarComputadora(Nombrepc, tiempoSalida);
-        controladorAdmiCompu.getAdministradorComputadoras().compu.cronometro.agregar(this);
+        controladorAdmiCompu.iniciarComputadora(Nombrepc, tiempoSalida,0);
+        controladorAdmiCompu.getAdministradorComputadoras().getCompu(0).getCronometro().agregar(this);
     }//GEN-LAST:event_btnComputadora1ActionPerformed
 
     private void btnComputadora2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComputadora2ActionPerformed
         String Nombrepc = btnComputadora2.getText();
         String tiempoSalida = JOptionPane.showInputDialog("Ingrese el tiempo");
-        controladorAdmiCompu.iniciarComputadora(Nombrepc, tiempoSalida);
+        controladorAdmiCompu.iniciarComputadora(Nombrepc, tiempoSalida,1);
+        controladorAdmiCompu.getAdministradorComputadoras().getCompu(1).getCronometro().agregar(this);
     }//GEN-LAST:event_btnComputadora2ActionPerformed
 
     private void btnComputadora3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComputadora3ActionPerformed
         String Nombrepc = btnComputadora3.getText();
         String tiempoSalida = JOptionPane.showInputDialog("Ingrese el tiempo");
-        controladorAdmiCompu.iniciarComputadora(Nombrepc, tiempoSalida);
+        controladorAdmiCompu.iniciarComputadora(Nombrepc, tiempoSalida,2);
+        controladorAdmiCompu.getAdministradorComputadoras().getCompu(2).getCronometro().agregar(this);
     }//GEN-LAST:event_btnComputadora3ActionPerformed
 
     private void btnComputadora4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComputadora4ActionPerformed
         String Nombrepc = btnComputadora4.getText();
         String tiempoSalida = JOptionPane.showInputDialog("Ingrese el tiempo");
-        controladorAdmiCompu.iniciarComputadora(Nombrepc, tiempoSalida);
+        controladorAdmiCompu.iniciarComputadora(Nombrepc, tiempoSalida,3);
+        controladorAdmiCompu.getAdministradorComputadoras().getCompu(3).getCronometro().agregar(this);
     }//GEN-LAST:event_btnComputadora4ActionPerformed
 
     private void btnXbox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXbox1ActionPerformed
         String Nombrexbox = btnXbox1.getText();
         String tiempoSalida = JOptionPane.showInputDialog("Ingrese el tiempo");
-        controladorAdmiCompu.iniciarComputadora(Nombrexbox, tiempoSalida);
+        controladorAdmiCompu.iniciarComputadora(Nombrexbox, tiempoSalida,1);
     }//GEN-LAST:event_btnXbox1ActionPerformed
 
     private void btnXbox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXbox2ActionPerformed
         String Nombrexbox = btnXbox2.getText();
         String tiempoSalida = JOptionPane.showInputDialog("Ingrese el tiempo");
-        controladorAdmiCompu.iniciarComputadora(Nombrexbox, tiempoSalida);
+        controladorAdmiCompu.iniciarComputadora(Nombrexbox, tiempoSalida,2);
     }//GEN-LAST:event_btnXbox2ActionPerformed
 
     /**
@@ -312,6 +342,7 @@ public class MenuPrincipal extends javax.swing.JFrame implements Observador {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -319,10 +350,30 @@ public class MenuPrincipal extends javax.swing.JFrame implements Observador {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel lblTiempo1;
+    private javax.swing.JLabel lblTiempo2;
+    private javax.swing.JLabel lblTiempo3;
+    private javax.swing.JLabel lblTiempo4;
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void Actualizar(String tiempo) {
-        lblTiempo1.setText(tiempo);
+    public void Actualizar(String tiempo, int NumComputadora) {
+      
+        switch(NumComputadora) {
+            case 0:
+                lblTiempo1.setText(tiempo);
+                break;
+            case 1:
+                lblTiempo2.setText(tiempo);
+                break;
+            case 2:
+                lblTiempo3.setText(tiempo);
+                break;
+            case 3:
+                lblTiempo4.setText(tiempo);
+                break;
+            default:
+                JOptionPane.showMessageDialog(this, "Error en el Actualizar de MenuPrincipal");
+        }
+        
     }
 }

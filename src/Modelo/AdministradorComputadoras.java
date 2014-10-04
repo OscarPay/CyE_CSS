@@ -16,23 +16,22 @@ import javax.swing.JOptionPane;
  */
 public class AdministradorComputadoras {
     
-    public static final AdministradorComputadoras INSTANCE= new AdministradorComputadoras();
-    public Computadora compu = null;
+    public static final AdministradorComputadoras INSTANCE= new AdministradorComputadoras();   
+    public ArrayList computadoras = new ArrayList();  
     
-    
-    
-    public void iniciarComputadora(String nombreEquipo, String tiempoSalida) {
-        this.compu = new Computadora(nombreEquipo, tiempoSalida);
-        this.compu.activarComputadora();
-        
+    public void iniciarComputadora(String nombreEquipo, String tiempoSalida, int NumComputadora) {
+        Computadora computadora = new Computadora(nombreEquipo, tiempoSalida, NumComputadora);
+        this.computadoras.add(computadora);
+        computadora = (Computadora) computadoras.get(NumComputadora);
+        computadora.activarComputadora();
     }   
     
     public static AdministradorComputadoras getInstance(){
         return INSTANCE;
     }
 
-    public Computadora getCompu() {
-        return compu;
+    public Computadora getCompu(int NumComputadora){
+        return (Computadora) computadoras.get(NumComputadora);
     }     
     
    
