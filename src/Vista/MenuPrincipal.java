@@ -6,19 +6,31 @@
 
 package Vista;
 
+import Controlador.ControladorAdmiCompu;
+import Controlador.Observador;
+import Modelo.Cronometro;
+import javax.swing.JOptionPane;
+
+
+
 /**
  *
  * @author Oscar
  */
-public class MenuPrincipal extends javax.swing.JFrame {
+public class MenuPrincipal extends javax.swing.JFrame implements Observador {
 
+   
+    ControladorAdmiCompu controladorAdmiCompu;
+    
+    
     /**
      * Creates new form MenuPrincipal
      */
     public MenuPrincipal() {
-        initComponents();
-    }
-
+        initComponents();   
+        controladorAdmiCompu = new ControladorAdmiCompu();
+    }    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,12 +41,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel5 = new javax.swing.JLabel();
-        Computadora1 = new javax.swing.JButton();
-        Xbox1 = new javax.swing.JButton();
-        Computadora2 = new javax.swing.JButton();
-        Computadora3 = new javax.swing.JButton();
-        Xbox2 = new javax.swing.JButton();
-        Computadora5 = new javax.swing.JButton();
+        btnComputadora1 = new javax.swing.JButton();
+        btnXbox1 = new javax.swing.JButton();
+        btnComputadora2 = new javax.swing.JButton();
+        btnComputadora3 = new javax.swing.JButton();
+        btnXbox2 = new javax.swing.JButton();
+        btnComputadora4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         Hora = new javax.swing.JLabel();
@@ -47,30 +59,56 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        lblTiempo1 = new javax.swing.JLabel();
 
         jLabel5.setText("jLabel5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Computadora1.setText("PC 1");
-        Computadora1.setAutoscrolls(true);
-        Computadora1.addActionListener(new java.awt.event.ActionListener() {
+        btnComputadora1.setText("PC 1");
+        btnComputadora1.setAutoscrolls(true);
+        btnComputadora1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Computadora1ActionPerformed(evt);
+                btnComputadora1ActionPerformed(evt);
             }
         });
 
-        Xbox1.setText("Xbox1");
+        btnXbox1.setText("Xbox1");
+        btnXbox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXbox1ActionPerformed(evt);
+            }
+        });
 
-        Computadora2.setText("PC 2");
+        btnComputadora2.setText("PC 2");
+        btnComputadora2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComputadora2ActionPerformed(evt);
+            }
+        });
 
-        Computadora3.setText("PC 3");
+        btnComputadora3.setText("PC 3");
+        btnComputadora3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComputadora3ActionPerformed(evt);
+            }
+        });
 
-        Xbox2.setText("Xbox2");
+        btnXbox2.setText("Xbox2");
+        btnXbox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXbox2ActionPerformed(evt);
+            }
+        });
 
-        Computadora5.setText("PC 4");
+        btnComputadora4.setText("PC 4");
+        btnComputadora4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComputadora4ActionPerformed(evt);
+            }
+        });
 
-        jLabel1.setText("Hora");
+        jLabel1.setText("Hora:");
 
         jLabel2.setText("Precio");
 
@@ -94,6 +132,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jLabel13.setText("Precio");
 
+        lblTiempo1.setText("00:00:00");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -103,52 +143,50 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(32, 32, 32)
-                                .addComponent(jLabel2)
-                                .addGap(70, 70, 70)
-                                .addComponent(Hora)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel4)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(32, 32, 32)
-                                .addComponent(jLabel9)
-                                .addGap(69, 69, 69)
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel12)
-                                .addGap(26, 26, 26)
-                                .addComponent(jLabel13)
-                                .addGap(39, 39, 39))))
+                        .addComponent(jLabel8)
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel9)
+                        .addGap(69, 69, 69)
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel12)
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel13)
+                        .addGap(39, 39, 39))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(Computadora1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Computadora3, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                            .addComponent(btnComputadora1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnComputadora3, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(Computadora5, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnComputadora4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Xbox2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnXbox2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(Computadora2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnComputadora2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(Xbox1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                    .addComponent(btnXbox1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(jLabel6)
                                         .addGap(32, 32, 32)
                                         .addComponent(jLabel7)
-                                        .addGap(30, 30, 30)))))))
+                                        .addGap(30, 30, 30))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblTiempo1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)
+                        .addGap(66, 66, 66)
+                        .addComponent(Hora)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(0, 10, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -157,9 +195,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(Xbox1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Computadora2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Computadora1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnXbox1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnComputadora2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnComputadora1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -167,12 +205,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(Hora)
                     .addComponent(jLabel4)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel7))
+                    .addComponent(jLabel7)
+                    .addComponent(lblTiempo1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Computadora3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Computadora5, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Xbox2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnComputadora3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnComputadora4, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnXbox2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -187,9 +226,42 @@ public class MenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Computadora1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Computadora1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Computadora1ActionPerformed
+    private void btnComputadora1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComputadora1ActionPerformed
+        String Nombrepc = btnComputadora1.getText();           
+        String tiempoSalida = JOptionPane.showInputDialog("Ingrese el tiempo");
+        controladorAdmiCompu.iniciarComputadora(Nombrepc, tiempoSalida);
+        controladorAdmiCompu.getAdministradorComputadoras().compu.cronometro.agregar(this);
+    }//GEN-LAST:event_btnComputadora1ActionPerformed
+
+    private void btnComputadora2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComputadora2ActionPerformed
+        String Nombrepc = btnComputadora2.getText();
+        String tiempoSalida = JOptionPane.showInputDialog("Ingrese el tiempo");
+        controladorAdmiCompu.iniciarComputadora(Nombrepc, tiempoSalida);
+    }//GEN-LAST:event_btnComputadora2ActionPerformed
+
+    private void btnComputadora3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComputadora3ActionPerformed
+        String Nombrepc = btnComputadora3.getText();
+        String tiempoSalida = JOptionPane.showInputDialog("Ingrese el tiempo");
+        controladorAdmiCompu.iniciarComputadora(Nombrepc, tiempoSalida);
+    }//GEN-LAST:event_btnComputadora3ActionPerformed
+
+    private void btnComputadora4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComputadora4ActionPerformed
+        String Nombrepc = btnComputadora4.getText();
+        String tiempoSalida = JOptionPane.showInputDialog("Ingrese el tiempo");
+        controladorAdmiCompu.iniciarComputadora(Nombrepc, tiempoSalida);
+    }//GEN-LAST:event_btnComputadora4ActionPerformed
+
+    private void btnXbox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXbox1ActionPerformed
+        String Nombrexbox = btnXbox1.getText();
+        String tiempoSalida = JOptionPane.showInputDialog("Ingrese el tiempo");
+        controladorAdmiCompu.iniciarComputadora(Nombrexbox, tiempoSalida);
+    }//GEN-LAST:event_btnXbox1ActionPerformed
+
+    private void btnXbox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXbox2ActionPerformed
+        String Nombrexbox = btnXbox2.getText();
+        String tiempoSalida = JOptionPane.showInputDialog("Ingrese el tiempo");
+        controladorAdmiCompu.iniciarComputadora(Nombrexbox, tiempoSalida);
+    }//GEN-LAST:event_btnXbox2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,13 +299,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Computadora1;
-    private javax.swing.JButton Computadora2;
-    private javax.swing.JButton Computadora3;
-    private javax.swing.JButton Computadora5;
     private javax.swing.JLabel Hora;
-    private javax.swing.JButton Xbox1;
-    private javax.swing.JButton Xbox2;
+    private javax.swing.JButton btnComputadora1;
+    private javax.swing.JButton btnComputadora2;
+    private javax.swing.JButton btnComputadora3;
+    private javax.swing.JButton btnComputadora4;
+    private javax.swing.JButton btnXbox1;
+    private javax.swing.JButton btnXbox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -246,5 +318,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel lblTiempo1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void Actualizar(String tiempo) {
+        lblTiempo1.setText(tiempo);
+    }
 }

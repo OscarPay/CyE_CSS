@@ -1,0 +1,3 @@
+El archivo bitacora se encontrara en la ruta
+c:/prueba/bitacora.txt
+Tavez sea necesario crear una carpeta en c llamada pruebas
