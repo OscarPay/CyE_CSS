@@ -15,21 +15,7 @@ import java.util.Observer;
  * Controlador que maneja a los Administradores de Computadoras y Xboxs
  * @author Oscar
  */
-public class ControladorAdministradores {    
-    
-    AdministradorComputadoras administradorComputadoras;
-    AdministradorXboxs administradorXboxs;
-    
-    /**
-     * Constructor de ControladorAdministrador 
-     * Aqui se inicializan los atributos
-     */
-    public ControladorAdministradores() {
-        
-        administradorComputadoras = AdministradorComputadoras.getInstance();
-        administradorXboxs = AdministradorXboxs.getInstance();
-        
-    }
+public class ControladorAdministradores {  
     
     /**
      * LLama a la funcion iniciarComputadora() de administradorComputadoras
@@ -38,6 +24,8 @@ public class ControladorAdministradores {
      * @return La posicion de la computadora dentro del ArrayList de administradorComputadoras
      */
     public int iniciarComputadora(String tiempoSalida, int numComputadora) {
+        
+        AdministradorComputadoras administradorComputadoras = AdministradorComputadoras.getInstance();
         
         int posicion = administradorComputadoras.
                        iniciarComputadora(tiempoSalida, numComputadora);
@@ -54,6 +42,8 @@ public class ControladorAdministradores {
      */
     public int iniciarXbox(String tiempoSalida, int numXbox) {
         
+        AdministradorXboxs administradorXboxs = AdministradorXboxs.getInstance();
+        
         int posicion = administradorXboxs.iniciarXbox(tiempoSalida, numXbox);
         
         return posicion;
@@ -66,6 +56,7 @@ public class ControladorAdministradores {
      */
     public AdministradorComputadoras getAdministradorComputadoras() {
         
+        AdministradorComputadoras administradorComputadoras = AdministradorComputadoras.getInstance();
         return administradorComputadoras;
         
     }
@@ -76,6 +67,7 @@ public class ControladorAdministradores {
      */
     public AdministradorXboxs getAdministradorXboxs() {
         
+        AdministradorXboxs administradorXboxs = AdministradorXboxs.getInstance();
         return administradorXboxs;
         
     }  
