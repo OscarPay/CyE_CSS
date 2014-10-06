@@ -22,8 +22,10 @@ public class MenuPrincipal extends javax.swing.JFrame implements Observador {
      * Creates new form MenuPrincipal
      */
     public MenuPrincipal() {
+
         initComponents();
         controladorAdministradores = new ControladorAdministradores();
+
     }
 
     /**
@@ -261,42 +263,78 @@ public class MenuPrincipal extends javax.swing.JFrame implements Observador {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+        
     private void btnComputadora1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComputadora1ActionPerformed
-        String tiempoSalida = JOptionPane.showInputDialog("Ingrese el tiempo");    
+
+        String tiempoSalida = JOptionPane.showInputDialog("Ingrese el tiempo");
         //El numero 0 me indica el label a actualizar
         int posicion = controladorAdministradores.iniciarComputadora(tiempoSalida, 0);
-        controladorAdministradores.getAdministradorComputadoras().getCompu(posicion).getCronometro().agregar(this);
+        controladorAdministradores.
+                getAdministradorComputadoras().
+                getCompu(posicion).
+                getCronometro().
+                agregar(this);
+        
     }//GEN-LAST:event_btnComputadora1ActionPerformed
 
     private void btnComputadora2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComputadora2ActionPerformed
+       
         String tiempoSalida = JOptionPane.showInputDialog("Ingrese el tiempo");
-        int posicion = controladorAdministradores.iniciarComputadora(tiempoSalida, 1);
-        controladorAdministradores.getAdministradorComputadoras().getCompu(posicion).getCronometro().agregar(this);
+        int posicion = controladorAdministradores.iniciarComputadora(tiempoSalida, 1);        
+        controladorAdministradores.
+                getAdministradorComputadoras().
+                getCompu(posicion).
+                getCronometro().
+                agregar(this);
+        
     }//GEN-LAST:event_btnComputadora2ActionPerformed
 
     private void btnComputadora3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComputadora3ActionPerformed
+        
         String tiempoSalida = JOptionPane.showInputDialog("Ingrese el tiempo");
         int posicion = controladorAdministradores.iniciarComputadora(tiempoSalida, 2);
-        controladorAdministradores.getAdministradorComputadoras().getCompu(posicion).getCronometro().agregar(this);
+        controladorAdministradores.
+                getAdministradorComputadoras().
+                getCompu(posicion).
+                getCronometro().
+                agregar(this);
+        
     }//GEN-LAST:event_btnComputadora3ActionPerformed
 
     private void btnComputadora4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComputadora4ActionPerformed
-        String tiempoSalida = JOptionPane.showInputDialog("Ingrese el tiempo");        
+        
+        String tiempoSalida = JOptionPane.showInputDialog("Ingrese el tiempo");
         int posicion = controladorAdministradores.iniciarComputadora(tiempoSalida, 3);
-        controladorAdministradores.getAdministradorComputadoras().getCompu(posicion).getCronometro().agregar(this);
+        controladorAdministradores.
+                getAdministradorComputadoras().
+                getCompu(posicion).
+                getCronometro().
+                agregar(this);
+        
     }//GEN-LAST:event_btnComputadora4ActionPerformed
 
     private void btnXbox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXbox1ActionPerformed
+        
         String tiempoSalida = JOptionPane.showInputDialog("Ingrese el tiempo");
         int posicion = controladorAdministradores.iniciarXbox(tiempoSalida, 0);
-        controladorAdministradores.getAdministradorXboxs().getXbox(posicion).getCronometro().agregar(this);
+        controladorAdministradores.
+                getAdministradorXboxs().
+                getXbox(posicion).
+                getCronometro().
+                agregar(this);
+        
     }//GEN-LAST:event_btnXbox1ActionPerformed
 
     private void btnXbox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXbox2ActionPerformed
+        
         String tiempoSalida = JOptionPane.showInputDialog("Ingrese el tiempo");
         int posicion = controladorAdministradores.iniciarXbox(tiempoSalida, 1);
-        controladorAdministradores.getAdministradorXboxs().getXbox(posicion).getCronometro().agregar(this);
+        controladorAdministradores.
+                getAdministradorXboxs().
+                getXbox(posicion).
+                getCronometro().
+                agregar(this);
+        
     }//GEN-LAST:event_btnXbox2ActionPerformed
 
     /**
@@ -376,11 +414,12 @@ public class MenuPrincipal extends javax.swing.JFrame implements Observador {
             default:
                 JOptionPane.showMessageDialog(this, "Error, Xbox");
         }
+        
     }
 
     private void actualizarLabelComputadora(int numComputadora, String tiempo) {
         int numero = numComputadora;
-        
+
         switch (numero) {
             case 0:
                 lblTiempoCompu1.setText(tiempo);
@@ -397,11 +436,12 @@ public class MenuPrincipal extends javax.swing.JFrame implements Observador {
             default:
                 JOptionPane.showMessageDialog(this, "Error, Computadora");
         }
+        
     }
 
     private void actualizarLabelXbox(int numXbox, String tiempo) {
         int numero = numXbox;
-        
+
         switch (numero) {
             case 0:
                 lblTiempoXbox1.setText(tiempo);
@@ -412,5 +452,7 @@ public class MenuPrincipal extends javax.swing.JFrame implements Observador {
             default:
                 JOptionPane.showMessageDialog(this, "Error, Xbox");
         }
+        
     }
+    
 }

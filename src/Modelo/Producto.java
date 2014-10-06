@@ -13,16 +13,19 @@ public class Producto {
 
     int id;
     String nombreProduc;
-    Double precioCompra;
-    Double precioVenta;
     String tipoProducto;
+    Double precioCompra;
+    Double precioVenta;    
 
-    public Producto(int id, String nombreProduc, Double precioCompra, Double precioVenta, String tipoProducto) {
+    public Producto(int id, String nombreProduc, String tipoProducto, 
+                     Double precioCompra, Double precioVenta) {
+        
         this.id = id;
         this.nombreProduc = nombreProduc;
-        this.precioCompra = precioCompra;
-        this.precioVenta = precioVenta;
         this.tipoProducto = tipoProducto;
+        this.precioCompra = precioCompra;
+        this.precioVenta = precioVenta;       
+        
     }   
 
 }

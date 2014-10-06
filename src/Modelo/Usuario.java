@@ -11,16 +11,22 @@ package Modelo;
  * @author Oscar
  */
 public abstract class Usuario {
+    
     String nombreUsuario;
     String telefono;
     String correo;
     String clave;
+    String tipo;
 
-    public Usuario(String nombreUsuario, String telefono, String correo, String clave) {
+    public Usuario(String nombreUsuario, String telefono, 
+                    String correo, String clave, String tipo) {
+        
         this.nombreUsuario = nombreUsuario;
         this.telefono = telefono;
         this.correo = correo;
         this.clave = clave;
+        this.tipo = tipo;
+        
     }    
     
 }

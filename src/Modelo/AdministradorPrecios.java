@@ -20,28 +20,34 @@ public class AdministradorPrecios extends Thread {
     Cronometro cronometro = null;
     
     public AdministradorPrecios(Cronometro cronometro){
+        
         this.cronometro = cronometro;
+    
     }
     
     public void run(){
+        
         calcularPrecio();
+        
     }
     
     private void calcularPrecio() {
+        
         try {
             
             while(cronometro.isActivo()){
                 Thread.sleep(1000);
                 this.precio += .28;
-                System.out.println(this.precio);  
+                System.out.println(this.precio);
+                
             }
             
             
         } catch (InterruptedException ex) {
+            
             JOptionPane.showMessageDialog(null,"Error, en calcula precios");
+            
         }
     }
-    
-    
     
 }

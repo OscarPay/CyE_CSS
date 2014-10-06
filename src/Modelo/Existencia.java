@@ -11,13 +11,17 @@ package Modelo;
  * @author Oscar
  */
 public class Existencia {
+    
     String tipoAlmacenamiento;
     Producto producto;
     int cantidad;
 
     public Existencia(String tipoAlmacenamiento, Producto producto, int cantidad) {
+        
         this.tipoAlmacenamiento = tipoAlmacenamiento;
         this.producto = producto;
         this.cantidad = cantidad;
-    }    
+        
+    } 
+    
 }

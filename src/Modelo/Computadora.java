@@ -22,24 +22,32 @@ public class Computadora{
     String tiempoEntrada = "";
     String tiempoSalida = "";
     Double precio = 0.0;
+    
     public Cronometro cronometro = null;
     boolean encendida = false;
     AdministradorPrecios administradorPrecios = null;
     
     
-    public Computadora(String tiempoSalida, int numComputadora){        
+    public Computadora(String tiempoSalida, int numComputadora){ 
+        
         this.numero = numComputadora;
         this.tiempoSalida = tiempoSalida;        
         this.cronometro = new Cronometro(tiempoSalida, numComputadora,"Computadora");
         this.administradorPrecios = new AdministradorPrecios(cronometro);
+        
     }
     
     public void activarComputadora(){
+        
         this.cronometro.start(); 
         this.administradorPrecios.start();
+        
     }
 
     public Cronometro getCronometro() {
+        
         return cronometro;
-    }      
+        
+    }
+    
 }

@@ -16,24 +16,32 @@ import javax.swing.JOptionPane;
 public class Xbox{
 
     int numero = 0;
-    String tiempoEntrada = "";
-    String tiempoSalida = "";
     int numControles = 0;
+    String tiempoEntrada = "";
+    String tiempoSalida = "";    
     Double precio = 0.0;    
+    
     Cronometro cronometro = null;
     boolean encendida = false;
 
     public Xbox(String tiempoSalida, int numControles, int numXbox) {
+        
         this.numero = numXbox;     
         this.numControles = numControles;
-        this.cronometro = new Cronometro(tiempoSalida, numXbox, "Xbox");        
+        this.cronometro = new Cronometro(tiempoSalida, numXbox, "Xbox"); 
+        
     }
     
     public void activarXbox(){
+        
         cronometro.start();
+        
     } 
 
     public Cronometro getCronometro() {
+        
         return cronometro;
-    }   
+        
+    }  
+    
 }
