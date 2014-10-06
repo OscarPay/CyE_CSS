@@ -16,17 +16,19 @@ import javax.swing.JOptionPane;
  */
 public final class Cronometro extends Thread{
 
-    String tiempo = "";
+    String tiempoTranscurrido = "";
     String tiempoSalida = "";
     boolean activo = true; 
     public ArrayList observadores;
-    int NumComputadora = 0;
+    int numero = 0;
+    String maquina = "";
     
 
-    public Cronometro(String tiempoSalida, int NumComputadora) {
+    public Cronometro(String tiempoSalida, int numMaquina, String maquina) {
         this.tiempoSalida = tiempoSalida;
-        observadores = new ArrayList();
-        this.NumComputadora = NumComputadora;
+        this.observadores = new ArrayList();
+        this.numero = numMaquina;
+        this.maquina = maquina;
     }
     
     public void run(){
@@ -38,8 +40,8 @@ public final class Cronometro extends Thread{
         String hora = "", min = "", seg = "";
 
         try {
-            while (activo) {
-                Thread.sleep(1000);
+            while (isActivo()) {
+                Thread.sleep(1000); //Pase un segundo
                 
                 segundos = aumentarSegundos(segundos);               
 
@@ -73,9 +75,9 @@ public final class Cronometro extends Thread{
                     seg = segundos.toString();
                 }
                
-                cambioTiempo(hora, min, seg);
+                this.cambioTiempo(hora, min, seg); //Indica al observador que se modifico el tiempo
 
-                if (this.tiempo.equals(this.tiempoSalida)) {
+                if (this.tiempoTranscurrido.equals(this.tiempoSalida)) {
                     pararTiempo();
                     JOptionPane.showMessageDialog(null, "Se termino el tiempo");
                 }
@@ -91,10 +93,14 @@ public final class Cronometro extends Thread{
     private void pararTiempo() {
         this.activo = false;
     }
+    
+    public boolean isActivo(){
+        return this.activo;
+    }
 
     private void cambioTiempo(String hora, String min, String seg) {
          //System.out.println(hora + ":" + min + ":" + seg);
-         this.tiempo = hora + ":" + min + ":" + seg;
+         this.tiempoTranscurrido = hora + ":" + min + ":" + seg;
          notificarObservadores();
     }
     
@@ -113,7 +119,7 @@ public final class Cronometro extends Thread{
     public void notificarObservadores(){
         for (int i = 0; i < observadores.size(); i++) {
             Observador observer = (Observador) observadores.get(i);
-            observer.Actualizar(this.tiempo,this.NumComputadora);
+            observer.Actualizar(this.tiempoTranscurrido, this.numero, this.maquina);
         }
     }
 

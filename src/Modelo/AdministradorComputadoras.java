@@ -19,19 +19,20 @@ public class AdministradorComputadoras {
     public static final AdministradorComputadoras INSTANCE= new AdministradorComputadoras();   
     public ArrayList computadoras = new ArrayList();  
     
-    public void iniciarComputadora(String nombreEquipo, String tiempoSalida, int NumComputadora) {
-        Computadora computadora = new Computadora(nombreEquipo, tiempoSalida, NumComputadora);
-        this.computadoras.add(computadora);
-        computadora = (Computadora) computadoras.get(NumComputadora);
+    public int iniciarComputadora(String tiempoSalida, int numComputadora) {
+        Computadora computadora = new Computadora(tiempoSalida, numComputadora); 
+        this.computadoras.add(computadora); //Agrega un objeto computadora
+        int numero = computadoras.indexOf(computadora); //Obtiene la pocision de la computadora dentro del ArrayList        
         computadora.activarComputadora();
+        return numero;
     }   
     
     public static AdministradorComputadoras getInstance(){
         return INSTANCE;
     }
 
-    public Computadora getCompu(int NumComputadora){
-        return (Computadora) computadoras.get(NumComputadora);
+    public Computadora getCompu(int numero){
+        return (Computadora) computadoras.get(numero);
     }     
     
    

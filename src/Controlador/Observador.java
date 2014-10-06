@@ -11,5 +11,5 @@ package Controlador;
  * @author Oscar
  */
 public interface Observador {
-    public abstract void Actualizar(String tiempo, int NumLabel);
+    public abstract void Actualizar(String tiempo, int numLabel, String equipo);
 }

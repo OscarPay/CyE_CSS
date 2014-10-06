@@ -15,18 +15,25 @@ import javax.swing.JOptionPane;
  */
 public class Xbox{
 
-    String nombre;
-    boolean Encendida;
-    int Numcontroles;
-    Cronometro cronometro;
+    int numero = 0;
+    String tiempoEntrada = "";
+    String tiempoSalida = "";
+    int numControles = 0;
+    Double precio = 0.0;    
+    Cronometro cronometro = null;
+    boolean encendida = false;
 
-    public Xbox(String nombre, String tiempodeparo, int Numcontroles, int NumXbox) {
-        this.nombre = nombre;
-        this.nombre = nombre;
-        this.Numcontroles = Numcontroles;
-        this.cronometro = new Cronometro(tiempodeparo, NumXbox);
-        this.cronometro.start();
+    public Xbox(String tiempoSalida, int numControles, int numXbox) {
+        this.numero = numXbox;     
+        this.numControles = numControles;
+        this.cronometro = new Cronometro(tiempoSalida, numXbox, "Xbox");        
     }
-
     
+    public void activarXbox(){
+        cronometro.start();
+    } 
+
+    public Cronometro getCronometro() {
+        return cronometro;
+    }   
 }

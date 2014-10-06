@@ -18,21 +18,25 @@ import javax.swing.JOptionPane;
  */
 public class Computadora{    
     
-    String nombre = "";
-    String tiempo = "";
+    int numero = 0;
+    String tiempoEntrada = "";
     String tiempoSalida = "";
+    Double precio = 0.0;
     public Cronometro cronometro = null;
     boolean encendida = false;
+    AdministradorPrecios administradorPrecios = null;
     
     
-    public Computadora(String nombre, String tiempoSalida,int NumComputadora){        
-        this.nombre = nombre;
+    public Computadora(String tiempoSalida, int numComputadora){        
+        this.numero = numComputadora;
         this.tiempoSalida = tiempoSalida;        
-        this.cronometro = new Cronometro(tiempoSalida, NumComputadora);         
+        this.cronometro = new Cronometro(tiempoSalida, numComputadora,"Computadora");
+        this.administradorPrecios = new AdministradorPrecios(cronometro);
     }
     
     public void activarComputadora(){
-        this.cronometro.start();        
+        this.cronometro.start(); 
+        this.administradorPrecios.start();
     }
 
     public Cronometro getCronometro() {
