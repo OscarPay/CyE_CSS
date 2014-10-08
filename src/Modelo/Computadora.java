@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Modelo;
 
 import Controlador.Observador;
@@ -13,41 +12,46 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Oscar
- * Cambiar de nombre a la clase
+ * @author Oscar Cambiar de nombre a la clase
  */
-public class Computadora{    
-    
-    int numero = 0;
+public class Computadora {
+
     String tiempoEntrada = "";
     String tiempoSalida = "";
+    int numComputadora = 0;    
     Double precio = 0.0;
-    
-    public Cronometro cronometro = null;
-    boolean encendida = false;
-    AdministradorPrecios administradorPrecios = null;
-    
-    
-    public Computadora(String tiempoSalida, int numComputadora){ 
+
+    private Cronometro cronometro = null;
+    private boolean encendida = false;
+    private AdministradorPreciosMaquina adminPrecios = null;
+
+    public Computadora(String tiempoSalida, int numComputadora) {
         
-        this.numero = numComputadora;
-        this.tiempoSalida = tiempoSalida;        
-        this.cronometro = new Cronometro(tiempoSalida, numComputadora,"Computadora");
-        this.administradorPrecios = new AdministradorPrecios(cronometro);
+        this.tiempoSalida = tiempoSalida;
+        this.numComputadora = numComputadora;
         
+        
+        this.cronometro = new Cronometro(tiempoSalida,
+                                        numComputadora,
+                                        "Computadora");
+        
+        this.adminPrecios = new AdministradorPreciosMaquina(cronometro, 
+                                                            numComputadora,     
+                                                            "Computadora");
+
     }
-    
-    public void activarComputadora(){
-        
-        this.cronometro.start(); 
-        this.administradorPrecios.start();
-        
+
+    public void activarComputadora() {
+
+        this.cronometro.comenzarTiepo();
+        this.adminPrecios.calcularPrecio();
+
     }
 
     public Cronometro getCronometro() {
-        
+
         return cronometro;
-        
+
     }
-    
+
 }

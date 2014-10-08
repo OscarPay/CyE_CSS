@@ -23,14 +23,13 @@ public class ControladorAdministradores {
      * @param numComputadora El numero de la computadora
      * @return La posicion de la computadora dentro del ArrayList de administradorComputadoras
      */
-    public int iniciarComputadora(String tiempoSalida, int numComputadora) {
+    public void iniciarComputadora(String tiempoSalida, int numComputadora) {
         
         AdministradorComputadoras administradorComputadoras = AdministradorComputadoras.getInstance();
         
-        int posicion = administradorComputadoras.
-                       iniciarComputadora(tiempoSalida, numComputadora);
+        administradorComputadoras.iniciarComputadora(tiempoSalida, numComputadora);
         
-        return posicion;
+        
         
     }
     
@@ -40,13 +39,11 @@ public class ControladorAdministradores {
      * @param numXbox El numero del Xbox
      * @return La posicion del xbox dentro del ArrayList de administradorXbox
      */
-    public int iniciarXbox(String tiempoSalida, int numXbox) {
+    public void iniciarXbox(String tiempoSalida, int numXbox) {
         
         AdministradorXboxs administradorXboxs = AdministradorXboxs.getInstance();
         
-        int posicion = administradorXboxs.iniciarXbox(tiempoSalida, numXbox);
-        
-        return posicion;
+        administradorXboxs.iniciarXbox(tiempoSalida, numXbox);      
         
     }
 

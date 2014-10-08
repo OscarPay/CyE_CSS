@@ -16,17 +16,21 @@ import javax.swing.JOptionPane;
  */
 public class AdministradorComputadoras {
     
-    public static final AdministradorComputadoras INSTANCE = 
-                        new AdministradorComputadoras();   
-    public ArrayList computadoras = new ArrayList();  
+    private static final AdministradorComputadoras INSTANCE = 
+                                                new AdministradorComputadoras();
     
-    public int iniciarComputadora(String tiempoSalida, int numComputadora) {
+    private ArrayList<Computadora> computadoras = new ArrayList<Computadora>(); 
+    
+    private int posicionCompuActual = 0;
+    
+    
+    public void iniciarComputadora(String tiempoSalida, int numComputadora) {
         
         Computadora computadora = new Computadora(tiempoSalida, numComputadora); 
         this.computadoras.add(computadora); //Agrega un objeto computadora
-        int numero = computadoras.indexOf(computadora); //Obtiene la pocision de la computadora dentro del ArrayList        
-        computadora.activarComputadora();
-        return numero;
+        //Obtiene la pocision de la computadora dentro del ArrayList
+        this.posicionCompuActual = computadoras.indexOf(computadora);         
+        computadora.activarComputadora();        
         
     }   
     
@@ -36,12 +40,16 @@ public class AdministradorComputadoras {
         
     }
 
-    public Computadora getCompu(int numero){
+    public int getPosicionCompuActual() {
         
-        return (Computadora) computadoras.get(numero);
+        return posicionCompuActual;
         
-    }     
-    
-   
+    }   
+
+    public Computadora getCompu(int posicion){
+        
+        return (Computadora) computadoras.get(posicion);
+        
+    }
     
 }

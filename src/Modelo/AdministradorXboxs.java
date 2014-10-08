@@ -14,17 +14,17 @@ import java.util.ArrayList;
  */
 public class AdministradorXboxs {
    
-   public static final AdministradorXboxs INSTANCE = new AdministradorXboxs();   
-    public ArrayList xboxs = new ArrayList();  
+    public static final AdministradorXboxs INSTANCE = new AdministradorXboxs();   
+    public ArrayList<Xbox> xboxs = new ArrayList<Xbox>();  
+    private int posicionActual = 0;
     
-    public int iniciarXbox(String tiempoSalida, int numXbox) {
+    public void iniciarXbox(String tiempoSalida, int numXbox) {
         
         //El numero 1 es el numero de controles
         Xbox xbox = new Xbox(tiempoSalida, 1 , numXbox);       
         this.xboxs.add(xbox); //Agrega un xbox
-        int posicion = xboxs.indexOf(xbox); //Obtiene la pocision del xbox dentro del ArrayList        
-        xbox.activarXbox();
-        return posicion;
+        this.posicionActual = xboxs.indexOf(xbox); //Obtiene la pocision del xbox dentro del ArrayList        
+        xbox.activarXbox();        
         
     }   
     
@@ -34,9 +34,13 @@ public class AdministradorXboxs {
         
     }
 
+    public int getPosicionActual() {
+        return posicionActual;
+    }    
+
     public Xbox getXbox(int NumXbox){
         
-        return (Xbox) xboxs.get(NumXbox);
+        return xboxs.get(NumXbox);
         
     }   
     

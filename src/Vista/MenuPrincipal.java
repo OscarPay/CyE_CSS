@@ -62,7 +62,12 @@ public class MenuPrincipal extends javax.swing.JFrame implements Observador {
         lblTiempoCompu3 = new javax.swing.JLabel();
         lblTiempoCompu4 = new javax.swing.JLabel();
         lblTiempoXbox2 = new javax.swing.JLabel();
-        lblPrecio1 = new javax.swing.JLabel();
+        lblPrecioCompu1 = new javax.swing.JLabel();
+        lblPrecioCompu2 = new javax.swing.JLabel();
+        lblPrecioXbox1 = new javax.swing.JLabel();
+        lblPrecioCompu3 = new javax.swing.JLabel();
+        lblPrecioCompu4 = new javax.swing.JLabel();
+        lblPrecioXbox2 = new javax.swing.JLabel();
 
         jLabel5.setText("jLabel5");
 
@@ -115,25 +120,25 @@ public class MenuPrincipal extends javax.swing.JFrame implements Observador {
 
         jLabel2.setText("Precio: ");
 
-        Hora.setText("Hora");
+        Hora.setText("Hora: ");
 
-        jLabel4.setText("Precio");
+        jLabel4.setText("Precio: ");
 
-        jLabel6.setText("Hora");
+        jLabel6.setText("Hora: ");
 
-        jLabel7.setText("Precio");
+        jLabel7.setText("Precio: ");
 
-        jLabel8.setText("Hora");
+        jLabel8.setText("Hora: ");
 
-        jLabel9.setText("Precio");
+        jLabel9.setText("Precio: ");
 
-        jLabel10.setText("Hora");
+        jLabel10.setText("Hora: ");
 
-        jLabel11.setText("Precio");
+        jLabel11.setText("Precio: ");
 
-        jLabel12.setText("Hora");
+        jLabel12.setText("Hora: ");
 
-        jLabel13.setText("Precio");
+        jLabel13.setText("Precio: ");
 
         lblTiempoCompu1.setText("00:00:00");
 
@@ -147,7 +152,17 @@ public class MenuPrincipal extends javax.swing.JFrame implements Observador {
 
         lblTiempoXbox2.setText("00:00:00");
 
-        lblPrecio1.setText("0.00");
+        lblPrecioCompu1.setText("0.00");
+
+        lblPrecioCompu2.setText("0.00");
+
+        lblPrecioXbox1.setText("0.00");
+
+        lblPrecioCompu3.setText("0.00");
+
+        lblPrecioCompu4.setText("0.00");
+
+        lblPrecioXbox2.setText("0.00");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -156,68 +171,81 @@ public class MenuPrincipal extends javax.swing.JFrame implements Observador {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel8)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(lblTiempoCompu3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jLabel9)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel13)
-                            .addGap(39, 39, 39))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(btnComputadora1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnComputadora3, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addGap(18, 18, 18)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(btnComputadora2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(Hora)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(lblTiempoCompu2)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(jLabel4)
-                                            .addGap(46, 46, 46)))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(btnXbox1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel6)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(lblTiempoXbox1)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jLabel7)
-                                            .addGap(30, 30, 30))))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(18, 18, 18)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(btnComputadora4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel10)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(lblTiempoCompu4)
-                                            .addGap(13, 13, 13)
-                                            .addComponent(jLabel11)))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel12)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(lblTiempoXbox2))
-                                        .addComponent(btnXbox2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(lblTiempoCompu1)
-                            .addGap(0, 0, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblPrecio1)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(lblTiempoCompu3)
+                        .addGap(39, 400, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(btnComputadora1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnComputadora3, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(btnComputadora4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel10)
+                                                    .addComponent(jLabel11))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(lblPrecioCompu4)
+                                                    .addComponent(lblTiempoCompu4))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(btnXbox2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel12)
+                                                    .addComponent(jLabel13))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(lblPrecioXbox2)
+                                                    .addComponent(lblTiempoXbox2)))))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(btnComputadora2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(Hora)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(lblTiempoCompu2)
+                                                    .addGap(85, 85, 85)))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel4)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(lblPrecioCompu2)
+                                                .addGap(90, 90, 90)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel7)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(lblPrecioXbox1))
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(btnXbox1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(jLabel6)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(lblTiempoXbox1)
+                                                    .addGap(77, 77, 77)))))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblTiempoCompu1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblPrecioCompu1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblPrecioCompu3)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,16 +260,18 @@ public class MenuPrincipal extends javax.swing.JFrame implements Observador {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(Hora)
-                    .addComponent(jLabel4)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel7)
                     .addComponent(lblTiempoCompu1)
                     .addComponent(lblTiempoCompu2)
                     .addComponent(lblTiempoXbox1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(lblPrecio1))
+                    .addComponent(lblPrecioCompu1)
+                    .addComponent(lblPrecioCompu2)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel7)
+                    .addComponent(lblPrecioXbox1))
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnComputadora3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -250,14 +280,19 @@ public class MenuPrincipal extends javax.swing.JFrame implements Observador {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jLabel9)
                     .addComponent(jLabel10)
-                    .addComponent(jLabel11)
                     .addComponent(jLabel12)
-                    .addComponent(jLabel13)
                     .addComponent(lblTiempoCompu3)
                     .addComponent(lblTiempoCompu4)
                     .addComponent(lblTiempoXbox2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel13)
+                    .addComponent(lblPrecioCompu3)
+                    .addComponent(lblPrecioCompu4)
+                    .addComponent(lblPrecioXbox2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -266,74 +301,43 @@ public class MenuPrincipal extends javax.swing.JFrame implements Observador {
         
     private void btnComputadora1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComputadora1ActionPerformed
 
-        String tiempoSalida = JOptionPane.showInputDialog("Ingrese el tiempo");
-        //El numero 0 me indica el label a actualizar
-        int posicion = controladorAdministradores.iniciarComputadora(tiempoSalida, 0);
-        controladorAdministradores.
-                getAdministradorComputadoras().
-                getCompu(posicion).
-                getCronometro().
-                agregar(this);
+        String tiempoSalida = JOptionPane.showInputDialog("Ingrese el tiempo");        
+        this.iniciarUsoCompu(tiempoSalida, 0);
         
     }//GEN-LAST:event_btnComputadora1ActionPerformed
 
     private void btnComputadora2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComputadora2ActionPerformed
        
         String tiempoSalida = JOptionPane.showInputDialog("Ingrese el tiempo");
-        int posicion = controladorAdministradores.iniciarComputadora(tiempoSalida, 1);        
-        controladorAdministradores.
-                getAdministradorComputadoras().
-                getCompu(posicion).
-                getCronometro().
-                agregar(this);
+        this.iniciarUsoCompu(tiempoSalida, 1);
         
     }//GEN-LAST:event_btnComputadora2ActionPerformed
 
     private void btnComputadora3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComputadora3ActionPerformed
         
         String tiempoSalida = JOptionPane.showInputDialog("Ingrese el tiempo");
-        int posicion = controladorAdministradores.iniciarComputadora(tiempoSalida, 2);
-        controladorAdministradores.
-                getAdministradorComputadoras().
-                getCompu(posicion).
-                getCronometro().
-                agregar(this);
+        this.iniciarUsoCompu(tiempoSalida, 2);
         
     }//GEN-LAST:event_btnComputadora3ActionPerformed
 
     private void btnComputadora4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComputadora4ActionPerformed
         
         String tiempoSalida = JOptionPane.showInputDialog("Ingrese el tiempo");
-        int posicion = controladorAdministradores.iniciarComputadora(tiempoSalida, 3);
-        controladorAdministradores.
-                getAdministradorComputadoras().
-                getCompu(posicion).
-                getCronometro().
-                agregar(this);
+        this.iniciarUsoCompu(tiempoSalida, 3);
         
     }//GEN-LAST:event_btnComputadora4ActionPerformed
 
     private void btnXbox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXbox1ActionPerformed
         
         String tiempoSalida = JOptionPane.showInputDialog("Ingrese el tiempo");
-        int posicion = controladorAdministradores.iniciarXbox(tiempoSalida, 0);
-        controladorAdministradores.
-                getAdministradorXboxs().
-                getXbox(posicion).
-                getCronometro().
-                agregar(this);
+        this.iniciarUsoXbox(tiempoSalida,0);
         
     }//GEN-LAST:event_btnXbox1ActionPerformed
 
     private void btnXbox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXbox2ActionPerformed
         
         String tiempoSalida = JOptionPane.showInputDialog("Ingrese el tiempo");
-        int posicion = controladorAdministradores.iniciarXbox(tiempoSalida, 1);
-        controladorAdministradores.
-                getAdministradorXboxs().
-                getXbox(posicion).
-                getCronometro().
-                agregar(this);
+       this.iniciarUsoXbox(tiempoSalida,1);
         
     }//GEN-LAST:event_btnXbox2ActionPerformed
 
@@ -392,7 +396,12 @@ public class MenuPrincipal extends javax.swing.JFrame implements Observador {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel lblPrecio1;
+    private javax.swing.JLabel lblPrecioCompu1;
+    private javax.swing.JLabel lblPrecioCompu2;
+    private javax.swing.JLabel lblPrecioCompu3;
+    private javax.swing.JLabel lblPrecioCompu4;
+    private javax.swing.JLabel lblPrecioXbox1;
+    private javax.swing.JLabel lblPrecioXbox2;
     private javax.swing.JLabel lblTiempoCompu1;
     private javax.swing.JLabel lblTiempoCompu2;
     private javax.swing.JLabel lblTiempoCompu3;
@@ -400,46 +409,122 @@ public class MenuPrincipal extends javax.swing.JFrame implements Observador {
     private javax.swing.JLabel lblTiempoXbox1;
     private javax.swing.JLabel lblTiempoXbox2;
     // End of variables declaration//GEN-END:variables
-
+    
+    /**
+     * Me agrega un observador a un cronometro
+     * @param obs La ventana MenuPrincipal
+     * @param posicion La posicion de la computadora dentro del arreglo
+     */
+    private void agregarObservadorCompu(Observador obs, int posicion){
+        controladorAdministradores.getAdministradorComputadoras().
+                getCompu(posicion).getCronometro().getObservado().agregar(this);                
+    }
+    
+    private void agregarObservadorXbox(Observador obs, int posicion){
+        controladorAdministradores.getAdministradorXboxs().
+                getXbox(posicion).getCronometro().getObservado().agregar(this);
+    }
+    
+    private void iniciarUsoCompu(String tiempoSalida, int numCompu){
+        controladorAdministradores.iniciarComputadora(tiempoSalida, numCompu);
+        int posicion = controladorAdministradores.getAdministradorComputadoras().getPosicionCompuActual();
+        agregarObservadorCompu(this, posicion);
+        
+    }
+    
+    private void iniciarUsoXbox(String tiempoSalida,int numXbox){
+        controladorAdministradores.iniciarXbox(tiempoSalida, numXbox);
+        int posicion = controladorAdministradores.getAdministradorXboxs().getPosicionActual();
+        agregarObservadorXbox(this, posicion);
+    }
+    
+    /**
+     * Actualizar los datos del observador
+     * @param tiempo El tiempo que transcurre
+     * @param numero El numero de maquina
+     * @param maquina El tipo de maquina (Computadora o Xbox)
+     */
     @Override
-    public void Actualizar(String tiempo, int numero, String maquina) {
+    public void actualizarTiempo(String tiempo, int numero, String maquina) {
 
         switch (maquina) {
+            
             case "Computadora":
-                this.actualizarLabelComputadora(numero, tiempo);
+                this.actualizarTiempoComputadora(numero, tiempo);
                 break;
+                
             case "Xbox":
-                this.actualizarLabelXbox(numero, tiempo);
+                this.actualizarTiempoXbox(numero, tiempo);
                 break;
+                
             default:
                 JOptionPane.showMessageDialog(this, "Error, Xbox");
+                
         }
         
     }
-
-    private void actualizarLabelComputadora(int numComputadora, String tiempo) {
+    
+    @Override
+    public void actualizarPrecio(String precio, int numero, String maquina){
+        
+         switch (maquina) {
+            
+            case "Computadora":
+                this.actualizarPrecioComputadora(numero, precio);
+                break;
+                
+            case "Xbox":
+                this.actualizarPrecioXbox(numero, precio);
+                break;
+                
+            default:
+                JOptionPane.showMessageDialog(this, "Error, Xbox");
+                
+        }
+        
+    }
+    
+    /**
+     * Me actualiza el labal de una computadora
+     * @param numComputadora El numero de la computadora
+     * @param tiempo El tiempo que transcurre
+     */
+    private void actualizarTiempoComputadora(int numComputadora, String tiempo) {
+        
         int numero = numComputadora;
 
         switch (numero) {
+            
             case 0:
                 lblTiempoCompu1.setText(tiempo);
                 break;
+                
             case 1:
                 lblTiempoCompu2.setText(tiempo);
                 break;
+                
             case 2:
                 lblTiempoCompu3.setText(tiempo);
                 break;
+                
             case 3:
                 lblTiempoCompu4.setText(tiempo);
                 break;
+                
             default:
                 JOptionPane.showMessageDialog(this, "Error, Computadora");
+                
         }
         
     }
 
-    private void actualizarLabelXbox(int numXbox, String tiempo) {
+    /**
+     * Me actualiza el labal de un Xbox
+     * @param numXbox El numero del Xbox
+     * @param tiempo El tiempo que transcurre
+     */
+    private void actualizarTiempoXbox(int numXbox, String tiempo) {
+        
         int numero = numXbox;
 
         switch (numero) {
@@ -453,6 +538,55 @@ public class MenuPrincipal extends javax.swing.JFrame implements Observador {
                 JOptionPane.showMessageDialog(this, "Error, Xbox");
         }
         
+    }
+
+    private void actualizarPrecioComputadora(int numComputadora, String precio) {
+        
+        int numero = numComputadora;
+
+        switch (numero) {
+            
+            case 0:
+                lblPrecioCompu1.setText(precio);
+                break;
+                
+            case 1:
+                lblPrecioCompu2.setText(precio);
+                break;
+                
+            case 2:
+                lblPrecioCompu3.setText(precio);
+                break;
+                
+            case 3:
+                lblPrecioCompu4.setText(precio);
+                break;
+                
+            default:
+                JOptionPane.showMessageDialog(this, "Error, Computadora");
+                
+        }
+        
+    }
+
+    
+
+    private void actualizarPrecioXbox(int numXbox, String precio) {
+         
+        int numero = numXbox;
+
+        switch (numero) {
+            case 0:
+                lblPrecioXbox1.setText(precio);
+                break;
+                
+            case 1:
+                lblPrecioXbox2.setText(precio);
+                break;
+                
+            default:
+                JOptionPane.showMessageDialog(this, "Error, Xbox");
+        }
     }
     
 }

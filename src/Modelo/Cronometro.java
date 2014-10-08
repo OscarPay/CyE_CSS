@@ -5,10 +5,6 @@
  */
 package Modelo;
 
-import Controlador.Observador;
-import Vista.MenuPrincipal;
-import java.awt.HeadlessException;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,52 +13,54 @@ import javax.swing.JOptionPane;
  */
 public final class Cronometro extends Thread{
 
-    int numero = 0;
-    String tiempoTranscurrido = "";
-    String tiempoSalida = "";
-    String maquina = "";
-    boolean activo = true; 
-    public ArrayList observadores;    
+    private String tiempoTranscurrido = "";
+    private String tiempoSalida = "";
+    private String tipoMaquina = "";
+    private int numMaquina = 0;    
+    private boolean activo = true; 
+    private Observado observado;
+       
 
-    public Cronometro(String tiempoSalida, int numMaquina, String maquina) {
+    public Cronometro(String tiempoSalida, int numMaquina, String tipoMaquina) {
         
         this.tiempoSalida = tiempoSalida;
-        this.observadores = new ArrayList();
-        this.numero = numMaquina;
-        this.maquina = maquina;
+        this.observado = Observado.getINSTANCE();
+        this.numMaquina = numMaquina;
+        this.tipoMaquina = tipoMaquina;
         
     }
     
-    public void run(){
+    public void comenzarTiepo(){
         
-         this.comenzarTiempo();
+         //la funcion start() de la clase Thread ejecuta a run() como un hilo
+         start();
          
     }
 
     
-    public void comenzarTiempo()  {
+    public void run()  {
         
         Integer horas = 0, minutos = 0, segundos = 0;
         String hora = "", min = "", seg = "";
-
+            
         try {
             
             while (isActivo()) {
                 
-                Thread.sleep(1000); //Pase un segundo
+                Thread.sleep(1000); //Esperar un segundo
                 
                 segundos = aumentarSegundos(segundos);               
 
-                //Aumenta el tiempo
+                //Aumenta el tiempo                
                 if (segundos == 60) {
                     
                     segundos = 0;
-                    minutos += 1;
+                    minutos += 1; //Aumenta un minuto
 
                     if (minutos == 60) {
                         
                         minutos = 0;
-                        horas++;
+                        horas++; //Aumenta una hora
                         
                     }
                     
@@ -116,7 +114,8 @@ public final class Cronometro extends Thread{
             
         };
         
-    }
+    }    
+    
     
     private Integer aumentarSegundos(Integer segundos){
         
@@ -136,41 +135,17 @@ public final class Cronometro extends Thread{
         
     }
 
-    private void cambioTiempo(String hora, String min, String seg) {
-        
-         //System.out.println(hora + ":" + min + ":" + seg);
+    private void cambioTiempo(String hora, String min, String seg) {        
+         
          this.tiempoTranscurrido = hora + ":" + min + ":" + seg;
-         notificarObservadores();
+         observado.notificarObservadoresTiempo(this.tiempoTranscurrido, 
+                                              this.numMaquina, this.tipoMaquina);
          
-    }
-    
-     public void agregar(Observador obs) { 
-         
-        observadores.add(obs);
-        
     }
 
-    
-    public void eliminar(Observador obs) {
+    public Observado getObservado() {
         
-        int i = observadores.indexOf(obs);
-        
-        if (i >= 0) {
-            
-            observadores.remove(i);
-            
-        }
-        
-    }
-    
-    public void notificarObservadores(){
-        
-        for (int i = 0; i < observadores.size(); i++) {
-            
-            Observador observer = (Observador) observadores.get(i);
-            observer.Actualizar(this.tiempoTranscurrido, this.numero, this.maquina);
-            
-        }
+        return observado;
         
     }
 
