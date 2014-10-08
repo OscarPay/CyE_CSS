@@ -10,13 +10,13 @@ package Modelo;
  *
  * @author Oscar
  */
-public abstract class Usuario {
+public class Usuario {
     
     String nombreUsuario;
     String telefono;
     String correo;
     String clave;
-    String tipo;
+    String tipoUsuario;
 
     public Usuario(String nombreUsuario, String telefono, 
                     String correo, String clave, String tipo) {
@@ -25,8 +25,49 @@ public abstract class Usuario {
         this.telefono = telefono;
         this.correo = correo;
         this.clave = clave;
-        this.tipo = tipo;
+        this.tipoUsuario = tipo;
         
     }    
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
+
+    public String getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public void setTipoUsuario(String tipo) {
+        this.tipoUsuario = tipo;
+    }
+    
     
 }

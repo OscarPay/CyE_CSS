@@ -11,13 +11,13 @@ package Modelo;
  */
 public class Producto {
 
-    int id;
+    String id;
     String nombreProduc;
     String tipoProducto;
     Double precioCompra;
     Double precioVenta;    
-
-    public Producto(int id, String nombreProduc, String tipoProducto, 
+    
+    public Producto(String id, String nombreProduc, String tipoProducto, 
                      Double precioCompra, Double precioVenta) {
         
         this.id = id;
@@ -27,5 +27,47 @@ public class Producto {
         this.precioVenta = precioVenta;       
         
     }   
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getNombreProduc() {
+        return nombreProduc;
+    }
+
+    public void setNombreProduc(String nombreProduc) {
+        this.nombreProduc = nombreProduc;
+    }
+
+    public String getTipoProducto() {
+        return tipoProducto;
+    }
+
+    public void setTipoProducto(String tipoProducto) {
+        this.tipoProducto = tipoProducto;
+    }
+
+    public Double getPrecioCompra() {
+        return precioCompra;
+    }
+
+    public void setPrecioCompra(Double precioCompra) {
+        this.precioCompra = precioCompra;
+    }
+
+    public Double getPrecioVenta() {
+        return precioVenta;
+    }
+
+    public void setPrecioVenta(Double precioVenta) {
+        this.precioVenta = precioVenta;
+    }
+    
+    
 
 }
