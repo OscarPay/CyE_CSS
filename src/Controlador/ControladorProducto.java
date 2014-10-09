@@ -15,28 +15,34 @@ import java.sql.SQLException;
  * @author Oscar
  */
 public class ControladorProducto {
-    GestorBDProducto gestorProduc;
+    
+    GestorBDProducto g_gestorProduc;
     
     public void agregarProducto(Producto produc){
-        gestorProduc=new GestorBDProducto();
-        gestorProduc.establecerConexion();
+        
+        g_gestorProduc=new GestorBDProducto();
+        g_gestorProduc.establecerConexion();
        
         try {
             
-            gestorProduc.agregarProducto(produc);
+            g_gestorProduc.agregarProducto(produc);
             
         } catch (SQLException ex) {
+            
             ex.printStackTrace();
+            
         }
+        
     }
     
     public void editarProducto(Producto produc,String idproduc){
-        gestorProduc=new GestorBDProducto();
-        gestorProduc.establecerConexion();
+        
+        g_gestorProduc = new GestorBDProducto();
+        g_gestorProduc.establecerConexion();
         
         try {
              
-            gestorProduc.modificarProducto(produc,idproduc);
+            g_gestorProduc.modificarProducto(produc,idproduc);
             
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -44,30 +50,38 @@ public class ControladorProducto {
     }
     
     public Producto buscarProducto(String idproduc){
-        gestorProduc=new GestorBDProducto();
-        gestorProduc.establecerConexion();
+        
+        g_gestorProduc = new GestorBDProducto();
+        g_gestorProduc.establecerConexion();
         
         try {
         
-            return   gestorProduc.buscarProducto(idproduc);
+            return   g_gestorProduc.buscarProducto(idproduc);
         
         } catch (SQLException ex) {
+            
             ex.printStackTrace();
+            
         }
          
          return null;
     }
     
     public void eliminarProducto(Producto produc){
-        gestorProduc=new GestorBDProducto();
-        gestorProduc.establecerConexion();
+        
+        g_gestorProduc = new GestorBDProducto();
+        g_gestorProduc.establecerConexion();
         
          try {
         
-             gestorProduc.eliminarProducto(produc);
+             g_gestorProduc.eliminarProducto(produc);
              
         } catch (SQLException ex) {
+            
             ex.printStackTrace();
+            
         }
+         
     }
+    
 }

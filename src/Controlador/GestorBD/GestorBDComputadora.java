@@ -3,42 +3,44 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Controlador.GestorBD;
 
-import Modelo.Computadora;
+import Modelo.RentaComputadora;
 import java.sql.Connection;
 import java.util.ArrayList;
-
 
 /**
  *
  * @author x
  */
 public class GestorBDComputadora extends GestorBD {
-    public void agregarComputadora(Computadora computadora){
-         String consulta="INSERT INTO usuarios  (,,'','','',) VALUES(";
-                
+
+    public void agregarComputadora(RentaComputadora computadora) {
+
+        String consulta = "INSERT INTO usuarios  (,,'','','',) VALUES(";
+
     }
-    
-    public void modificarComputadora(Computadora computadora,String condicion){
-        
+
+    public void modificarComputadora(RentaComputadora computadora, String condicion) {
+
     }
-    
-    public void eliminarComputadora(Computadora computadora){
-        
+
+    public void eliminarComputadora(RentaComputadora computadora) {
+
     }
-    
-    public void buscarComputadora(Computadora computadora){
-        
+
+    public void buscarComputadora(RentaComputadora computadora) {
+
     }
-    
-    public ArrayList <Computadora> consultarComputadoras(String condicion){
-    return null;
+
+    public ArrayList<RentaComputadora> consultarComputadoras(String condicion) {
+        return null;
     }
-    
+
     public static void main(String[] args) {
-        GestorBDComputadora gestor=new GestorBDComputadora();
+
+        GestorBDComputadora gestor = new GestorBDComputadora();
         gestor.establecerConexion();
+
     }
 }

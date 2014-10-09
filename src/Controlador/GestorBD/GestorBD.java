@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Controlador.GestorBD;
 
 import java.sql.Connection;
@@ -13,61 +12,57 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-
 /**
  *
  * @author Abner
  */
 public abstract class GestorBD {
-        String host="localhost";
-        String puerto="666";
-        String usuario="root";
-        String contrasena="renba";
-        String nombreBD="scc";
-        Connection conexion=null;
-        
+
+    private final String g_host = "localhost";
+    private final String g_puerto = "666";
+    private final String g_usuario = "root";
+    private final String g_contrasena = "renba";
+    private final String g_nombreBD = "scc";
+    Connection g_conexion = null;
+
     public void establecerConexion() {
-        
+
         try {
-           
+
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-            
-            this.conexion =this.obtenerConexion(this.puerto, this.usuario,
-                                                this.contrasena);
-                            
+
+            g_conexion = this.obtenerConexion(g_puerto, g_usuario,
+                    g_contrasena);
+
         } catch (Exception ex) {// handle the error
-            
-           
-            System.out.println("SQLException: " + ex.getMessage());   
-            
+
+            System.out.println("SQLException: " + ex.getMessage());
+
         }
-    
+
     }
-    
-    private Connection obtenerConexion(String puerto,String usuario,String contrasena) throws SQLException{  
-        
-       return DriverManager.getConnection("jdbc:mysql://"+this.host+":"+puerto+"/"+this.nombreBD, 
-                                            usuario, contrasena);
-       
+
+    private Connection obtenerConexion(String puerto, String usuario, String contrasena) throws SQLException {
+
+        return DriverManager.getConnection("jdbc:mysql://" + g_host + ":" + puerto + "/" + g_nombreBD,
+                usuario, contrasena);
+
     }
-    
-    public void cerrarConexion(Connection con){
+
+    public void cerrarConexion(Connection con) {
         try {
-            
-            if ( con != null ){               
-                if ( !con.isClosed() ){ // Si no esta cerrada, se cierra
-                    con.close();                
-                }    
+
+            if (con != null) {
+                if (!con.isClosed()) { // Si no esta cerrada, se cierra
+                    con.close();
+                }
             }
-            
-        } catch (SQLException e) { 
-            
-            e.printStackTrace(); 
-            
-          }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+
+        }
     }
-    
-    
-   
-    
+
 }

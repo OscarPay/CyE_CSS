@@ -11,63 +11,61 @@ package Modelo;
  */
 public class Producto {
 
-    String id;
-    String nombreProduc;
-    String tipoProducto;
-    Double precioCompra;
-    Double precioVenta;    
+    String g_id;
+    String g_nombreProduc;
+    String g_tipoProducto;
+    Double g_precioCompra;
+    Double g_precioVenta;    
     
     public Producto(String id, String nombreProduc, String tipoProducto, 
                      Double precioCompra, Double precioVenta) {
         
-        this.id = id;
-        this.nombreProduc = nombreProduc;
-        this.tipoProducto = tipoProducto;
-        this.precioCompra = precioCompra;
-        this.precioVenta = precioVenta;       
+        g_id = id;
+        g_nombreProduc = nombreProduc;
+        g_tipoProducto = tipoProducto;
+        g_precioCompra = precioCompra;
+        g_precioVenta = precioVenta;       
         
     }   
 
     public String getId() {
-        return id;
+        return g_id;
     }
 
     public void setId(String id) {
-        this.id = id;
+        g_id = id;
     }
 
     public String getNombreProduc() {
-        return nombreProduc;
+        return g_nombreProduc;
     }
 
     public void setNombreProduc(String nombreProduc) {
-        this.nombreProduc = nombreProduc;
+        g_nombreProduc = nombreProduc;
     }
 
     public String getTipoProducto() {
-        return tipoProducto;
+        return g_tipoProducto;
     }
 
     public void setTipoProducto(String tipoProducto) {
-        this.tipoProducto = tipoProducto;
+        g_tipoProducto = tipoProducto;
     }
 
     public Double getPrecioCompra() {
-        return precioCompra;
+        return g_precioCompra;
     }
 
     public void setPrecioCompra(Double precioCompra) {
-        this.precioCompra = precioCompra;
+        g_precioCompra = precioCompra;
     }
 
     public Double getPrecioVenta() {
-        return precioVenta;
+        return g_precioVenta;
     }
 
     public void setPrecioVenta(Double precioVenta) {
-        this.precioVenta = precioVenta;
-    }
-    
-    
+        g_precioVenta = precioVenta;
+    }  
 
 }

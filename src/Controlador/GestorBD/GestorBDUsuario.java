@@ -28,11 +28,11 @@ public class GestorBDUsuario extends GestorBD {
                         "','"+usr.getClave()+"','"+usr.getTelefono()+"','"+clvtipousr+"')";
         
         Statement sentencia;
-        sentencia = this.conexion.createStatement();         
+        sentencia = g_conexion.createStatement();         
         sentencia.executeUpdate(consulta); 
         
         sentencia.close();
-        this.cerrarConexion(this.conexion);
+        this.cerrarConexion(g_conexion);
       
     }
     
@@ -46,11 +46,11 @@ public class GestorBDUsuario extends GestorBD {
                     "WHERE Correo_Usr='"+correousr+"'";
        
         Statement sentencia;
-        sentencia = this.conexion.createStatement();
+        sentencia = g_conexion.createStatement();
 
         sentencia.executeUpdate(consulta);
         sentencia.close();
-        this.cerrarConexion(this.conexion);
+        this.cerrarConexion(g_conexion);
                
     }
     
@@ -60,11 +60,11 @@ public class GestorBDUsuario extends GestorBD {
                             usuario.getNombreUsuario()+"' or Correo_usr='"+
                             usuario.getCorreo()+"'";
         Statement sentencia;
-        sentencia = this.conexion.createStatement();
+        sentencia = g_conexion.createStatement();
         sentencia.executeUpdate(consulta);
         
         sentencia.close();
-        this.cerrarConexion(this.conexion);
+        this.cerrarConexion(g_conexion);
          
     }
     
@@ -78,7 +78,7 @@ public class GestorBDUsuario extends GestorBD {
                              "WHERE Correo_usr='"+condicion+"'";
             
         Statement sentencia;
-        sentencia = this.conexion.createStatement();    
+        sentencia = g_conexion.createStatement();    
         ResultSet busqueda=sentencia.executeQuery(consulta);
             
         Usuario usr=null;
@@ -92,7 +92,7 @@ public class GestorBDUsuario extends GestorBD {
             usr=new Usuario(nombre,telefono,correo,clave,tipousr);
         }
         sentencia.close();
-        this.cerrarConexion(this.conexion);
+        this.cerrarConexion(g_conexion);
         
         return usr;
     
@@ -108,7 +108,7 @@ public class GestorBDUsuario extends GestorBD {
         String consulta="SELECT clv_tipousr FROM tipo_usr "+
                          "WHERE Nombre_tipousr='"+tipousuario+"'";
         
-        Statement sentencia = this.conexion.createStatement();
+        Statement sentencia = g_conexion.createStatement();
         ResultSet resultado = sentencia.executeQuery (consulta);  
          
         int clavetipousr=0;

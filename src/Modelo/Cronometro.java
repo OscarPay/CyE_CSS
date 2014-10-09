@@ -13,24 +13,24 @@ import javax.swing.JOptionPane;
  */
 public final class Cronometro extends Thread{
 
-    private String tiempoTranscurrido = "";
-    private String tiempoSalida = "";
-    private String tipoMaquina = "";
-    private int numMaquina = 0;    
-    private boolean activo = true; 
-    private Observado observado;
+    private String g_tiempoTranscurrido = "";
+    private String g_tiempoSalida = "";
+    private String g_tipoMaquina = "";
+    private int g_numMaquina = 0;    
+    private boolean g_activo = true; 
+    private Observado g_observado;
        
 
     public Cronometro(String tiempoSalida, int numMaquina, String tipoMaquina) {
         
-        this.tiempoSalida = tiempoSalida;
-        this.observado = Observado.getINSTANCE();
-        this.numMaquina = numMaquina;
-        this.tipoMaquina = tipoMaquina;
+        g_tiempoSalida = tiempoSalida;
+        g_observado = Observado.getINSTANCE();
+        g_numMaquina = numMaquina;
+        g_tipoMaquina = tipoMaquina;
         
     }
     
-    public void comenzarTiepo(){
+    public void comenzarTiempo(){
         
          //la funcion start() de la clase Thread ejecuta a run() como un hilo
          start();
@@ -99,7 +99,7 @@ public final class Cronometro extends Thread{
                
                 this.cambioTiempo(hora, min, seg); //Indica al observador que se modifico el tiempo
 
-                if (this.tiempoTranscurrido.equals(this.tiempoSalida)) {
+                if (g_tiempoTranscurrido.equals(g_tiempoSalida)) {
                     
                     pararTiempo();
                     JOptionPane.showMessageDialog(null, "Se termino el tiempo");
@@ -125,27 +125,27 @@ public final class Cronometro extends Thread{
     
     private void pararTiempo() {
         
-        this.activo = false;
+        g_activo = false;
         
     }
     
     public boolean isActivo(){
         
-        return this.activo;
+        return g_activo;
         
     }
 
     private void cambioTiempo(String hora, String min, String seg) {        
          
-         this.tiempoTranscurrido = hora + ":" + min + ":" + seg;
-         observado.notificarObservadoresTiempo(this.tiempoTranscurrido, 
-                                              this.numMaquina, this.tipoMaquina);
+         g_tiempoTranscurrido = hora + ":" + min + ":" + seg;
+         g_observado.notificarObservadoresTiempo(g_tiempoTranscurrido, 
+                                                 g_numMaquina, g_tipoMaquina);
          
     }
 
     public Observado getObservado() {
         
-        return observado;
+        return g_observado;
         
     }
 

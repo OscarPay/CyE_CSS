@@ -6,7 +6,6 @@
 
 package Modelo;
 
-import Controlador.Observador;
 import java.util.ArrayList;
 
 /**
@@ -15,29 +14,29 @@ import java.util.ArrayList;
  */
 public class Observado {
     
-    public static final Observado INSTANCE = new Observado();
-    private ArrayList<Observador> observadores = new ArrayList<Observador>(); 
+    public static final Observado g_INSTANCE = new Observado();
+    private ArrayList<Observador> g_observadores = new ArrayList<Observador>(); 
 
     public static Observado getINSTANCE() {
         
-        return INSTANCE;
+        return g_INSTANCE;
         
     }   
     
     public void agregar(Observador obs) { 
          
-        observadores.add(obs);
+        g_observadores.add(obs);
         
     }
 
     
     public void eliminar(Observador obs) {
         
-        int i = observadores.indexOf(obs);
+        int i = g_observadores.indexOf(obs);
         
         if (i >= 0) {
             
-            observadores.remove(i);
+            g_observadores.remove(i);
             
         }
         
@@ -45,9 +44,9 @@ public class Observado {
     
     public void notificarObservadoresTiempo(String tiempoTranscurrido, int numero, String maquina){
         
-        for (int i = 0; i < observadores.size(); i++) {
+        for (int i = 0; i < g_observadores.size(); i++) {
             
-            Observador observer = (Observador) observadores.get(i);
+            Observador observer = (Observador) g_observadores.get(i);
             observer.actualizarTiempo(tiempoTranscurrido, numero, maquina);
             
         }
@@ -55,9 +54,9 @@ public class Observado {
     }
     
     public void notificarObservadoresPrecio(String precioTotal, int numero, String maquina){
-    for (int i = 0; i < observadores.size(); i++) {
+    for (int i = 0; i < g_observadores.size(); i++) {
             
-            Observador observer = (Observador) observadores.get(i);
+            Observador observer = (Observador) g_observadores.get(i);
             observer.actualizarPrecio(precioTotal, numero, maquina);
             
         }

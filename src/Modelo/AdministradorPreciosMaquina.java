@@ -15,19 +15,19 @@ import javax.swing.JOptionPane;
  */
 public class AdministradorPreciosMaquina extends Thread {
     
-    private Double precioTotal = 0.00;
-    private Cronometro cronometro = null;
-    private Observado observado = null;
+    private Double g_precioTotal = 0.00;
+    private Cronometro g_cronometro = null;
+    private Observado g_observado = null;
     
-    private int numEquipo = 0;
-    private String maquina = "";
+    private int g_numEquipo = 0;
+    private String g_maquina = "";
     
     public AdministradorPreciosMaquina(Cronometro cronometro, int numEquipo, String maquina){
        
-        this.cronometro = cronometro;
-        this.numEquipo = numEquipo;
-        this.maquina = maquina;
-        this.observado = Observado.getINSTANCE();
+        g_cronometro = cronometro;
+        g_numEquipo = numEquipo;
+        g_maquina = maquina;
+        g_observado = Observado.getINSTANCE();
         
     }
     
@@ -46,7 +46,7 @@ public class AdministradorPreciosMaquina extends Thread {
         
         try {
             
-            while(cronometro.isActivo()){
+            while(g_cronometro.isActivo()){
                 Thread.sleep(1000);
                 precio += .0028;                
                 precioRedondeado = formatoPrecio.format(precio);
@@ -63,7 +63,7 @@ public class AdministradorPreciosMaquina extends Thread {
     
     private void cambioPrecio(String precioRedondeado){        
         
-        observado.notificarObservadoresPrecio(precioRedondeado, this.numEquipo, this.maquina);
+        g_observado.notificarObservadoresPrecio(precioRedondeado, g_numEquipo, g_maquina);
         
     }
     

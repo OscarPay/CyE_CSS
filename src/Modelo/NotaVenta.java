@@ -15,16 +15,16 @@ import java.util.Date;
  */
 public class NotaVenta {
 
-    ArrayList productos;
-    Date fechaDeVenta;
-    Double precioTotal;
-    Double dineroEntregado;
+    ArrayList g_productos;
+    Date g_fechaDeVenta;
+    Double g_precioTotal;
+    Double g_dineroEntregado;
 
     public NotaVenta(ArrayList productos, Date fechaDeVenta, Double precioTotal, Double dineroEntregado) {
-        this.productos = productos;
-        this.fechaDeVenta = fechaDeVenta;
-        this.precioTotal = precioTotal;
-        this.dineroEntregado = dineroEntregado;
+        g_productos = productos;
+        g_fechaDeVenta = fechaDeVenta;
+        g_precioTotal = precioTotal;
+        g_dineroEntregado = dineroEntregado;
     }    
 
     public Double calcular_Cambio(){

@@ -14,33 +14,33 @@ import java.util.ArrayList;
  */
 public class AdministradorXboxs {
    
-    public static final AdministradorXboxs INSTANCE = new AdministradorXboxs();   
-    public ArrayList<Xbox> xboxs = new ArrayList<Xbox>();  
-    private int posicionActual = 0;
+    public static final AdministradorXboxs g_INSTANCE = new AdministradorXboxs();   
+    public ArrayList<RentaXbox> g_xboxs = new ArrayList<RentaXbox>();  
+    private int g_posicionActual = 0;
     
     public void iniciarXbox(String tiempoSalida, int numXbox) {
         
         //El numero 1 es el numero de controles
-        Xbox xbox = new Xbox(tiempoSalida, 1 , numXbox);       
-        this.xboxs.add(xbox); //Agrega un xbox
-        this.posicionActual = xboxs.indexOf(xbox); //Obtiene la pocision del xbox dentro del ArrayList        
+        RentaXbox xbox = new RentaXbox(tiempoSalida, 1 , numXbox);       
+        this.g_xboxs.add(xbox); //Agrega un xbox
+        this.g_posicionActual = g_xboxs.indexOf(xbox); //Obtiene la pocision del xbox dentro del ArrayList        
         xbox.activarXbox();        
         
     }   
     
     public static AdministradorXboxs getInstance(){
         
-        return INSTANCE;
+        return g_INSTANCE;
         
     }
 
     public int getPosicionActual() {
-        return posicionActual;
+        return g_posicionActual;
     }    
 
-    public Xbox getXbox(int NumXbox){
+    public RentaXbox getXbox(int NumXbox){
         
-        return xboxs.get(NumXbox);
+        return g_xboxs.get(NumXbox);
         
     }   
     

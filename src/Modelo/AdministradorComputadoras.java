@@ -6,7 +6,6 @@
 
 package Modelo;
 
-import Controlador.Observador;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -16,39 +15,39 @@ import javax.swing.JOptionPane;
  */
 public class AdministradorComputadoras {
     
-    private static final AdministradorComputadoras INSTANCE = 
+    private static final AdministradorComputadoras g_INSTANCE = 
                                                 new AdministradorComputadoras();
     
-    private ArrayList<Computadora> computadoras = new ArrayList<Computadora>(); 
+    private ArrayList<RentaComputadora> g_computadoras = new ArrayList<RentaComputadora>(); 
     
-    private int posicionCompuActual = 0;
+    private int g_posicionCompuActual = 0;
     
     
     public void iniciarComputadora(String tiempoSalida, int numComputadora) {
         
-        Computadora computadora = new Computadora(tiempoSalida, numComputadora); 
-        this.computadoras.add(computadora); //Agrega un objeto computadora
+        RentaComputadora computadora = new RentaComputadora(tiempoSalida, numComputadora); 
+        g_computadoras.add(computadora); //Agrega un objeto computadora
         //Obtiene la pocision de la computadora dentro del ArrayList
-        this.posicionCompuActual = computadoras.indexOf(computadora);         
+        g_posicionCompuActual = g_computadoras.indexOf(computadora);         
         computadora.activarComputadora();        
         
     }   
     
     public static AdministradorComputadoras getInstance(){
         
-        return INSTANCE;
+        return g_INSTANCE;
         
     }
 
     public int getPosicionCompuActual() {
         
-        return posicionCompuActual;
+        return g_posicionCompuActual;
         
     }   
 
-    public Computadora getCompu(int posicion){
+    public RentaComputadora getCompu(int posicion){
         
-        return (Computadora) computadoras.get(posicion);
+        return (RentaComputadora) g_computadoras.get(posicion);
         
     }
     
