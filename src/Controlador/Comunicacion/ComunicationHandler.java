@@ -43,6 +43,7 @@ public class ComunicationHandler extends Thread{
             //El printWriter se encargara de enviar mensajes al cliente
              out = new PrintWriter(cliente.getOutputStream(), true);
 
+             
             //Este loop infinito se encarga de leer y verificar
             //que la conexion sea permanente y tratar las entradas
             out.println("ID");
@@ -111,6 +112,7 @@ public class ComunicationHandler extends Thread{
     public String getIdConexion() {
         return IdConexion;
     }
+    
     
     public boolean isActive(){
         return active;

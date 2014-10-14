@@ -42,6 +42,7 @@ public class Servidor {
         }catch(IOException e){
             
               System.out.println("IOException");  
+              
         }
         finally{
             try {
