@@ -28,6 +28,7 @@ public class ComunicationHandler extends Thread{
     public ComunicationHandler(Socket cliente) {
         this.cliente = cliente;
         this.active = true;
+        
         System.out.println("Nuevo arrivo de cliente num" + this.numCliente);
     }
 

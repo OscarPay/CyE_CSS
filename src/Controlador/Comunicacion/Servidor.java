@@ -40,6 +40,7 @@ public class Servidor {
                 conexiones.add(com);
             }
         }catch(IOException e){
+            
               System.out.println("IOException");  
         }
         finally{
