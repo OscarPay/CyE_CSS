@@ -12,15 +12,15 @@ package Modelo;
  */
 public class Existencia {
     
-    String g_tipoAlmacenamiento;
-    Producto g_producto;
-    int g_cantidad;
+    String tipoAlmacenamiento;
+    Producto producto;
+    int cantidad;
 
     public Existencia(String tipoAlmacenamiento, Producto producto, int cantidad) {
         
-        g_tipoAlmacenamiento = tipoAlmacenamiento;
-        g_producto = producto;
-        g_cantidad = cantidad;
+        this.tipoAlmacenamiento = tipoAlmacenamiento;
+        this.producto = producto;
+        this.cantidad = cantidad;
         
     } 
     

@@ -11,61 +11,63 @@ package Modelo;
  */
 public class Producto {
 
-    String g_id;
-    String g_nombreProduc;
-    String g_tipoProducto;
-    Double g_precioCompra;
-    Double g_precioVenta;    
+    private String id = "";
+    private String nombreProduc = "";
+    private String tipoProducto = "";
+    private Double precioCompra = 0.00;
+    private Double precioVenta = 0.00;    
     
     public Producto(String id, String nombreProduc, String tipoProducto, 
                      Double precioCompra, Double precioVenta) {
         
-        g_id = id;
-        g_nombreProduc = nombreProduc;
-        g_tipoProducto = tipoProducto;
-        g_precioCompra = precioCompra;
-        g_precioVenta = precioVenta;       
+        this.id = id;
+        this.nombreProduc = nombreProduc;
+        this.tipoProducto = tipoProducto;
+        this.precioCompra = precioCompra;
+        this.precioVenta = precioVenta;       
         
-    }   
+    } 
 
     public String getId() {
-        return g_id;
+        return id;
     }
 
     public void setId(String id) {
-        g_id = id;
+        this.id = id;
     }
 
     public String getNombreProduc() {
-        return g_nombreProduc;
+        return nombreProduc;
     }
 
     public void setNombreProduc(String nombreProduc) {
-        g_nombreProduc = nombreProduc;
+        this.nombreProduc = nombreProduc;
     }
 
     public String getTipoProducto() {
-        return g_tipoProducto;
+        return tipoProducto;
     }
 
     public void setTipoProducto(String tipoProducto) {
-        g_tipoProducto = tipoProducto;
+        this.tipoProducto = tipoProducto;
     }
 
     public Double getPrecioCompra() {
-        return g_precioCompra;
+        return precioCompra;
     }
 
     public void setPrecioCompra(Double precioCompra) {
-        g_precioCompra = precioCompra;
+        this.precioCompra = precioCompra;
     }
 
     public Double getPrecioVenta() {
-        return g_precioVenta;
+        return precioVenta;
     }
 
     public void setPrecioVenta(Double precioVenta) {
-        g_precioVenta = precioVenta;
-    }  
+        this.precioVenta = precioVenta;
+    }
+    
+    
 
 }

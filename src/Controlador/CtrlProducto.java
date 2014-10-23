@@ -14,7 +14,7 @@ import java.sql.SQLException;
  *
  * @author Oscar
  */
-public class ControladorProducto {
+public class CtrlProducto {
     
     GestorBDProducto g_gestorProduc;
     

@@ -13,7 +13,7 @@ import java.sql.SQLException;
  *
  * @author Abner
  */
-public class ControladorUsuario {
+public class CtrlUsuario {
 
     GestorBDUsuario g_gestorUsr;
 

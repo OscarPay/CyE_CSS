@@ -15,37 +15,13 @@ import javax.swing.JOptionPane;
  */
 public class RentaXbox{
 
-    int g_numXbox = 0;
-    int g_numControles = 0;
-    String g_tiempoEntrada = "";
-    String g_tiempoSalida = "";    
-    Double g_precio = 0.0;    
     
-    private Cronometro g_cronometro = null;
-    private boolean g_encendida = false;
-    private AdministradorPreciosMaquina g_adminPrecios = null;
+    private int numControles = 0;
+    private String tiempoEntrada = "";
+    private String tiempoSalida = "";    
+    private Double precio = 0.0;    
+   
 
-    public RentaXbox(String tiempoSalida, int numControles, int numXbox) {
-        
-        g_numXbox = numXbox;     
-        g_numControles = numControles;
-        g_cronometro = new Cronometro(tiempoSalida, numXbox, "Xbox"); 
-        g_adminPrecios = new AdministradorPreciosMaquina(g_cronometro, 
-                                                            numXbox, "Xbox");
-        
-    }
     
-    public void activarXbox(){
-        
-        g_cronometro.comenzarTiempo();
-        g_adminPrecios.calcularPrecio();
-        
-    } 
-
-    public Cronometro getCronometro() {
-        
-        return g_cronometro;
-        
-    }  
     
 }

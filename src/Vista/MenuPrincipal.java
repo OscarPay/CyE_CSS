@@ -5,9 +5,8 @@
  */
 package Vista;
 
-import Controlador.ControladorAdministradores;
+import Controlador.CtrlAdministradores;
 import Modelo.Observador;
-import Modelo.Cronometro;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,7 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class MenuPrincipal extends javax.swing.JFrame implements Observador {
 
-    ControladorAdministradores g_controladorAdministradores;
+    private CtrlAdministradores ctrlAdministradores;
 
     /**
      * Creates new form MenuPrincipal
@@ -24,7 +23,7 @@ public class MenuPrincipal extends javax.swing.JFrame implements Observador {
     public MenuPrincipal() {
 
         initComponents();
-        g_controladorAdministradores = new ControladorAdministradores();
+        ctrlAdministradores = new CtrlAdministradores();
 
     }
 
@@ -416,18 +415,18 @@ public class MenuPrincipal extends javax.swing.JFrame implements Observador {
      * @param posicion La posicion de la computadora dentro del arreglo
      */
     private void agregarObservadorCompu(Observador obs, int posicion){
-        g_controladorAdministradores.getAdministradorComputadoras().
+        ctrlAdministradores.getAdminComputadoras().
                 getCompu(posicion).getCronometro().getObservado().agregar(this);                
     }
     
     private void agregarObservadorXbox(Observador obs, int posicion){
-        g_controladorAdministradores.getAdministradorXboxs().
+        ctrlAdministradores.getAdminXboxs().
                 getXbox(posicion).getCronometro().getObservado().agregar(this);
     }
     
     private void iniciarUsoCompu(String tiempoSalida, int numCompu){
-        g_controladorAdministradores.iniciarComputadora(tiempoSalida, numCompu);
-        int posicionCompu = g_controladorAdministradores.getAdministradorComputadoras().
+        ctrlAdministradores.iniciarComputadora(tiempoSalida, numCompu);
+        int posicionCompu = ctrlAdministradores.getAdminComputadoras().
                                         getPosicionCompuActual();
         agregarObservadorCompu(this, posicionCompu);
         
@@ -435,8 +434,8 @@ public class MenuPrincipal extends javax.swing.JFrame implements Observador {
     
     private void iniciarUsoXbox(String tiempoSalida,int numXbox){
         
-        g_controladorAdministradores.iniciarXbox(tiempoSalida, numXbox);
-        int posicionXbox = g_controladorAdministradores.getAdministradorXboxs().
+        ctrlAdministradores.iniciarXbox(tiempoSalida, numXbox);
+        int posicionXbox = ctrlAdministradores.getAdminXboxs().
                                         getPosicionActual();
         agregarObservadorXbox(this, posicionXbox);
         
