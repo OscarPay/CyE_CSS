@@ -34,6 +34,8 @@ public class Servidor {
         //Se crear una puerta de entrada cliente y se acepta la conexion
         try{
             while(true){
+                verifyConections();
+                
                 ComunicationHandler com =new ComunicationHandler(server.accept());
                 com.start();
                 
