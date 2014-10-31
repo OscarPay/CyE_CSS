@@ -8,6 +8,11 @@ package Controlador;
 import Controlador.GestorBD.GestorBDUsuario;
 import Modelo.Usuario;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,72 +20,79 @@ import java.sql.SQLException;
  */
 public class CtrlUsuario {
 
-    GestorBDUsuario g_gestorUsr;
+    GestorBDUsuario gestorUsr;
 
-    public void agregarUsuario(Usuario usr) {
-        g_gestorUsr = new GestorBDUsuario();
-        g_gestorUsr.establecerConexion();
+    public boolean agregarUsuario(String nombreUsuario, String telefono,
+            String correo, String clave, String tipoUsuario) throws SQLException {
+        
+        Usuario usr = new Usuario(nombreUsuario, telefono, correo, clave, tipoUsuario);
+        gestorUsr = new GestorBDUsuario();
+        gestorUsr.establecerConexion();
 
-        try {
-
-            g_gestorUsr.agregarUsuario(usr);
-
-        } catch (SQLException ex) {
-
-            ex.printStackTrace();
-
-        }
-    }
-
-    public void editarUsuario(Usuario usr, String idusr) {
-
-        g_gestorUsr = new GestorBDUsuario();
-        g_gestorUsr.establecerConexion();
-
-        try {
-
-            g_gestorUsr.modificarUsuario(usr, idusr);
-
-        } catch (SQLException ex) {
-
-            ex.printStackTrace();
-
-        }
+        return gestorUsr.agregarUsuario(usr);
 
     }
 
-    public Usuario buscarUsuario(String idusr) {
+    public boolean editarUsuario(String nombreUsuario, String telefono,
+            String correo, String clave, String tipoUsuario) throws SQLException {
+        
+        gestorUsr = new GestorBDUsuario();
+        gestorUsr.establecerConexion();
+        Usuario usr = new Usuario(nombreUsuario, telefono, correo, clave, tipoUsuario);
+        
+        return gestorUsr.modificarUsuario(usr, correo);
 
-        g_gestorUsr = new GestorBDUsuario();
-        g_gestorUsr.establecerConexion();
+    }
+
+    public Usuario buscarUsuario(String correo) throws SQLException {
+        gestorUsr = new GestorBDUsuario();
+        gestorUsr.establecerConexion();
+        Usuario usrBD = null;
+
+        usrBD = gestorUsr.buscarUsuario(correo);
+
+        return usrBD;
+    }
+
+    
+
+    public ArrayList<Usuario> buscarUsuarios() {
+        gestorUsr = new GestorBDUsuario();
+        gestorUsr.establecerConexion();
 
         try {
-
-            return g_gestorUsr.buscarUsuario(idusr);
+            return gestorUsr.consultarUsuarios(null);
 
         } catch (SQLException ex) {
-
             ex.printStackTrace();
-
         }
 
         return null;
     }
 
-    public int determinarPermisoUsuario(Usuario usr) {
+    public void llenarTablaUsr(JTable tableUsr) {
+        ArrayList<Usuario> listaUsr = new ArrayList<Usuario>();
+        listaUsr = this.buscarUsuarios();
+        DefaultTableModel modelo;
+        Usuario usrTemp;
 
-        g_gestorUsr = new GestorBDUsuario();
-        g_gestorUsr.establecerConexion();
+        for (int indiceUsr = 0; indiceUsr < listaUsr.size(); indiceUsr++) {
 
-        try {
-            
-            return g_gestorUsr.obtenerTipoUsuario(usr.getTipoUsuario());
-            
-        } catch (SQLException ex) {
-            
-            ex.printStackTrace();
-            
+            usrTemp = listaUsr.get(indiceUsr);
+            String nombreUsr = usrTemp.getNombreUsuario();
+            String tipoUsr = usrTemp.getTipoUsuario();
+            String telefonoUsr = usrTemp.getTelefono();
+            String correoUsr = usrTemp.getCorreo();
+
+            String[] datosProduc = {nombreUsr,correoUsr,telefonoUsr,tipoUsr };
+
+            modelo = (DefaultTableModel) tableUsr.getModel();
+            modelo.addRow(datosProduc);
+
         }
-        return 1;
+
     }
+    
+
+    
 }

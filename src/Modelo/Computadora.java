@@ -23,14 +23,11 @@ public class Computadora {
     }
 
     public void empezarUso(String tiempoSalida) {
-        
+
         temporizador = new Temporizador(tiempoSalida, idCompu, "Computadora");
 
-        adminPrecios = new CalculadoraPreciosMaquina(
-                                            temporizador,
-                                            idCompu,
-                                            "Computadora",
-                                             1);
+        adminPrecios = new CalculadoraPreciosMaquina(temporizador, idCompu,
+                                                        "Computadora", 1);
 
     }
 

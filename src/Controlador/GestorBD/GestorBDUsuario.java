@@ -18,9 +18,13 @@ import java.util.ArrayList;
  * @author Abner
  */
 public class GestorBDUsuario extends GestorBD {
-    
-     public void agregarUsuario(Usuario usr) throws SQLException{
-         
+    /*
+    La funcion recibe un usuario, checa si existe, si existe el Usuario lo 
+    modifica con los nuevos datos, si no existe lo agrega. 
+    */
+     public boolean agregarUsuario(Usuario usr) throws SQLException{
+         boolean usrAgregado=false;
+        if(!this.existeUsr(usr.getCorreo())){
         int clvtipousr=this.obtenerTipoUsuario(usr.getTipoUsuario());
         String consulta="INSERT INTO usuarios (Nombre_Usr,Correo_Usr,"+
                         "Contrasena_Usr,Telefono_Usr,Clv_tipousr) values "+
@@ -28,29 +32,36 @@ public class GestorBDUsuario extends GestorBD {
                         "','"+usr.getClave()+"','"+usr.getTelefono()+"','"+clvtipousr+"')";
         
         Statement sentencia;
-        sentencia = g_conexion.createStatement();         
+        sentencia = this.conexion.createStatement();         
         sentencia.executeUpdate(consulta); 
         
         sentencia.close();
-        this.cerrarConexion(g_conexion);
-      
+        usrAgregado=true;
+        }
+       return usrAgregado;
     }
     
-    public void modificarUsuario(Usuario usuario,String correousr) throws SQLException{
+    public boolean modificarUsuario(Usuario usr,String correousr) throws SQLException{
+        boolean seModificoUsr=false;
+        if(this.existeUsr(usr.getCorreo())){
+
         String consulta="UPDATE usuarios SET "+
-                    "Nombre_Usr='"+usuario.getNombreUsuario()+"',"+
-                    "Telefono_Usr='"+usuario.getTelefono()+"',"+
-                    "Correo_Usr='"+usuario.getCorreo()+"',"+
-                    "Contrasena_Usr='"+usuario.getClave()+"',"+
-                    "Clv_TipoUsr='"+this.obtenerTipoUsuario(usuario.getTipoUsuario())+"'"+
+                    "Nombre_Usr='"+usr.getNombreUsuario()+"',"+
+                    "Telefono_Usr='"+usr.getTelefono()+"',"+
+                    "Correo_Usr='"+usr.getCorreo()+"',"+
+                    "Contrasena_Usr='"+usr.getClave()+"',"+
+                    "Clv_TipoUsr='"+this.obtenerTipoUsuario(usr.getTipoUsuario())+"'"+
                     "WHERE Correo_Usr='"+correousr+"'";
        
         Statement sentencia;
-        sentencia = g_conexion.createStatement();
+        sentencia = this.conexion.createStatement();
 
         sentencia.executeUpdate(consulta);
         sentencia.close();
-        this.cerrarConexion(g_conexion);
+        seModificoUsr=true;
+        }
+        
+        return seModificoUsr;
                
     }
     
@@ -60,11 +71,11 @@ public class GestorBDUsuario extends GestorBD {
                             usuario.getNombreUsuario()+"' or Correo_usr='"+
                             usuario.getCorreo()+"'";
         Statement sentencia;
-        sentencia = g_conexion.createStatement();
+        sentencia = this.conexion.createStatement();
         sentencia.executeUpdate(consulta);
         
         sentencia.close();
-        this.cerrarConexion(g_conexion);
+        
          
     }
     
@@ -78,10 +89,10 @@ public class GestorBDUsuario extends GestorBD {
                              "WHERE Correo_usr='"+condicion+"'";
             
         Statement sentencia;
-        sentencia = g_conexion.createStatement();    
+        sentencia = this.conexion.createStatement();    
         ResultSet busqueda=sentencia.executeQuery(consulta);
             
-        Usuario usr=null;
+        Usuario usr=new Usuario();
         while(busqueda.next()){
             String nombre=busqueda.getString("Nombre_Usr");
             String telefono=busqueda.getString("Telefono_Usr");
@@ -92,15 +103,38 @@ public class GestorBDUsuario extends GestorBD {
             usr=new Usuario(nombre,telefono,correo,clave,tipousr);
         }
         sentencia.close();
-        this.cerrarConexion(g_conexion);
         
+      
         return usr;
     
     }
     
     
-    public ArrayList <Usuario> consultarUsuarios(String condicion){
-         return null;
+    public ArrayList <Usuario> consultarUsuarios(String condicion) throws SQLException{
+        String consulta="SELECT * FROM scc.usuarios join tipo_usr ON"
+                + " usuarios.Clv_TipoUsr=tipo_usr.Clv_TipoUsr";
+        if(condicion!=null)
+            consulta+="WHERE"+condicion;
+            
+                
+        Statement sentencia;
+        sentencia = this.conexion.createStatement();    
+        ResultSet busqueda=sentencia.executeQuery(consulta);
+        
+        Usuario usrTemp;
+        ArrayList <Usuario> listaUsr=new ArrayList <Usuario>();
+        while(busqueda.next()){
+            String nombre=busqueda.getString("Nombre_Usr");
+            String telefono=busqueda.getString("Telefono_Usr");
+            String correo=busqueda.getString("Correo_Usr");
+            String clave=busqueda.getString("Contrasena_usr");
+            String tipousr=busqueda.getString("Nombre_TipoUsr");
+           
+            usrTemp=new Usuario(nombre,telefono,correo,clave,tipousr);
+            listaUsr.add(usrTemp);
+        }
+        
+         return listaUsr;
     }
     
     public int obtenerTipoUsuario(String tipousuario) throws SQLException{
@@ -108,7 +142,7 @@ public class GestorBDUsuario extends GestorBD {
         String consulta="SELECT clv_tipousr FROM tipo_usr "+
                          "WHERE Nombre_tipousr='"+tipousuario+"'";
         
-        Statement sentencia = g_conexion.createStatement();
+        Statement sentencia = this.conexion.createStatement();
         ResultSet resultado = sentencia.executeQuery (consulta);  
          
         int clavetipousr=0;
@@ -121,11 +155,30 @@ public class GestorBDUsuario extends GestorBD {
         return clavetipousr;   
     }
     
+    private boolean existeUsr(String condicion) throws SQLException{
+        boolean existeUsr=false;
+        String consulta="SELECT usuarios.Nombre_Usr, usuarios.Telefono_Usr,"+
+                            "usuarios.Correo_Usr, usuarios.Contrasena_Usr,"+
+                            " tipo_usr.Nombre_TipoUsr\n" +
+                            "FROM usuarios JOIN tipo_usr\n" +
+                            "ON usuarios.Clv_TipoUsr = tipo_usr.Clv_TipoUsr "+
+                             "WHERE Correo_usr='"+condicion+"'";
+            
+        Statement sentencia;
+        sentencia = this.conexion.createStatement();    
+        ResultSet busqueda=sentencia.executeQuery(consulta);
+        if(busqueda.next()){
+            existeUsr=true;
+        }
+      return existeUsr;
+            
+        
+          
+    }
+    
     public static void main(String[] args) throws SQLException {
-      Usuario usr;
-        GestorBDUsuario gestor=new GestorBDUsuario();
-        gestor.establecerConexion();
-        System.out.println(gestor.obtenerTipoUsuario("Administrador"));
+     
+           
         
     }
 }

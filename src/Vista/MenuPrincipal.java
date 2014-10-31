@@ -426,8 +426,8 @@ public class MenuPrincipal extends javax.swing.JFrame implements Observador {
     
     private void iniciarUsoCompu(String tiempoSalida, int numCompu){
         ctrlAdministradores.iniciarComputadora(tiempoSalida, numCompu);
-        int posicionCompu = ctrlAdministradores.getAdminComputadoras().
-                                        getPosicionCompuActual();
+        int posicionCompu = ctrlAdministradores.getAdminComputadoras()
+                                        .getPosicionCompuActual();
         agregarObservadorCompu(this, posicionCompu);
         
     }

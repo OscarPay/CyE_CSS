@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
 
 /**
@@ -54,15 +55,18 @@ public final class Temporizador extends Thread {
                 }
                 
                 convertirTiempoString(horas, minutos, segundos);
-
-                if (tiempoTranscurrido.equals(tiempoParo)) {
-                    pararTemp();
-                    JOptionPane.showMessageDialog(null, "Se termino el tiempo");
-                }
+                verificarTiempo();
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         };
+    }
+
+    private void verificarTiempo() throws HeadlessException {
+        if (tiempoTranscurrido.equals(tiempoParo)) {
+            pararTemp();
+            JOptionPane.showMessageDialog(null, "Se termino el tiempo");
+        }
     }
 
     private Integer aumentarSegundos(Integer segundos) throws InterruptedException {
