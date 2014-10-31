@@ -6,6 +6,8 @@
 package Modelo;
 
 import java.awt.HeadlessException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -28,52 +30,62 @@ public final class Temporizador extends Thread {
         this.observado = Observado.getINSTANCE();
         this.idMaquina = numMaquina;
         this.tipoMaquina = tipoMaquina;
-
-    }
-
-    public void comenzarTemp() {
-        //la funcion start() de la clase Thread ejecuta a run() como un hilo
         start();
     }
 
-    @Override
-    public void run() {
-        Integer horas = 0, minutos = 0, segundos = 0;
-        try {
-            while (isActivo()) {
-
-                segundos = aumentarSegundos(segundos);
-
-                //Aumenta el tiempo                
-                if (segundos == 60) {
-                    segundos = 0;
-                    minutos += 1; //Aumenta un minuto
-                    if (minutos == 60) {
-                        minutos = 0;
-                        horas++; //Aumenta una hora                        
-                    }
-                }
-                
-                convertirTiempoString(horas, minutos, segundos);
-                verificarTiempo();
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        };
+    public boolean isActivo() {
+        return activo;
+    }
+    
+    public boolean desactivar(){
+        return this.activo = false;
     }
 
-    private void verificarTiempo() throws HeadlessException {
+    public Observado getObservado() {
+        return observado;
+    }    
+    
+    public void run(){
+        try {
+            comenzarTiempo();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Temporizador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void comenzarTiempo() throws InterruptedException {
+        Integer horas = 0, minutos = 0, segundos = 0;
+        while (isActivo()) {
+            
+            segundos = aumentarSegundos(segundos);
+
+            if (segundos == 60) {
+                segundos = 0;
+                minutos++;
+                if (minutos == 60) {
+                    minutos = 0;
+                    horas++;
+                } //fin if
+            }//fin if
+            
+            convertirTiempoString(horas, minutos, segundos);
+            verificarTiempo();
+        } //fin while        
+    }
+
+    private void verificarTiempo(){
         if (tiempoTranscurrido.equals(tiempoParo)) {
-            pararTemp();
+            desactivar();
             JOptionPane.showMessageDialog(null, "Se termino el tiempo");
         }
     }
 
     private Integer aumentarSegundos(Integer segundos) throws InterruptedException {
-        Thread.sleep(1000); //Esperar un segundo
-        return segundos + 1;
+        Thread.sleep(1000);
+        segundos++;
+        return segundos;
     }
-
+    
     private void convertirTiempoString(Integer horas, Integer minutos, Integer segundos) {
         String hora = "", min = "", seg = "";
         
@@ -95,31 +107,12 @@ public final class Temporizador extends Thread {
             seg = segundos.toString();
         }
 
-        this.actualizarTiempoTranscurrido(hora, min, seg); //Indica al observador que se modifico el tiempo
-    }
-
-    private void pararTemp() {
-        activo = false;
-    }
-
-    public boolean isActivo() {
-        return activo;
+        actualizarTiempoTranscurrido(hora, min, seg);
     }
 
     private void actualizarTiempoTranscurrido(String hora, String min, String seg) {
-
-        tiempoTranscurrido = hora + ":" + min + ":" + seg;
-        observado.notificarObservadoresTiempo(tiempoTranscurrido,
-                idMaquina, tipoMaquina);
-
-    }
-
-    public Observado getObservado() {
-        return observado;
-    }
-
-    public void aumentarTiempoParo(String tiempoParo) {
-        this.tiempoParo = tiempoParo;
+        tiempoTranscurrido = hora+":"+min+":"+seg;
+        observado.notificarObservadoresTiempo(tiempoTranscurrido, idMaquina, tipoMaquina);
     }
 
 }

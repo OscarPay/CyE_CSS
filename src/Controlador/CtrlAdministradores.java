@@ -5,27 +5,54 @@
  */
 package Controlador;
 
-import Modelo.AdminComputadoras;
-import Modelo.AdminXboxs;
+import Modelo.AdminRegistroCompu;
+import Modelo.AdminRegistrosXbox;
+import Modelo.RegistroCompu;
+import Modelo.RegistroXbox;
 
 public class CtrlAdministradores {
     
-    public void iniciarComputadora(String tiempoSalida, int numComputadora) {
-        AdminComputadoras adminComputadoras = AdminComputadoras.getInstance();
-        adminComputadoras.iniciarComputadora(tiempoSalida, numComputadora);
+    public void agregarRegComputadora(int idCompu, String tiempoSolicitado) {
+        AdminRegistroCompu adminComputadoras = AdminRegistroCompu.getINSTANCE();
+        RegistroCompu registroCompu = new RegistroCompu(idCompu,tiempoSolicitado);
+        adminComputadoras.agregarRegistroCompu(registroCompu);
     }
     
-    public void iniciarXbox(String tiempoSalida, int numXbox) {
-        AdminXboxs adminXboxs = AdminXboxs.getInstance();
-        adminXboxs.iniciarXbox(tiempoSalida, numXbox);
+    public void eliminarRegComputadora(int idCompu){
+        AdminRegistroCompu adminRentaCompu = AdminRegistroCompu.getINSTANCE();        
+        adminRentaCompu.eliminarRegistroCompu(idCompu);
     }
+    
+    public RegistroCompu buscarRegCompuPorId(int idCompu){
+        AdminRegistroCompu adminRentaCompu = AdminRegistroCompu.getINSTANCE();        
+        return adminRentaCompu.buscarRegistroCompuPorId(idCompu);
+    }
+    
+    public void agregarRegXbox(int idXbox, int numControles, String tiempoSolicitado) {
+        AdminRegistrosXbox adminRegistrosXbox = AdminRegistrosXbox.getINSTANCE();
+        RegistroXbox registroXbox = new RegistroXbox(idXbox, numControles, tiempoSolicitado);
+        adminRegistrosXbox.agregarRegistroXbox(registroXbox);
+    }
+    
+    public void eliminarRegistroComputadora(int idXbox){
+        AdminRegistrosXbox adminRegistrosXbox = AdminRegistrosXbox.getINSTANCE();        
+        adminRegistrosXbox.eliminarRegistroXbox(idXbox);
+    }
+    
+    
+    public RegistroXbox buscarRegXboxPorId(int idXbox){
+        AdminRegistrosXbox adminRegistrosXbox = AdminRegistrosXbox.getINSTANCE();        
+        return adminRegistrosXbox.buscarRegistroXboxPorId(idXbox);
+    }    
 
-    public AdminXboxs getAdminXboxs() {         
-        return AdminXboxs.getInstance();
+    public AdminRegistrosXbox getAdminXboxs() {         
+        return AdminRegistrosXbox.getINSTANCE();
     }
     
-    public AdminComputadoras getAdminComputadoras(){
-        return AdminComputadoras.getInstance();
+    public AdminRegistroCompu getAdminComputadoras(){
+        return AdminRegistroCompu.getINSTANCE();
     }
+    
+    
 
 }

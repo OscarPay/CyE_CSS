@@ -6,7 +6,7 @@
 
 package Controlador.GestorBD;
 
-import Modelo.Computadora;
+import Modelo.RegistroCompu;
 import Modelo.RentaComputadora;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -22,19 +22,19 @@ public class GestorBDRenta extends GestorBD {
                 
     }
     
-    public void modificarComputadora(Computadora computadora,String condicion){
+    public void modificarComputadora(RegistroCompu computadora,String condicion){
         
     }
     
-    public void eliminarComputadora(Computadora computadora){
+    public void eliminarComputadora(RegistroCompu computadora){
         
     }
     
-    public void buscarComputadora(Computadora computadora){
+    public void buscarComputadora(RegistroCompu computadora){
         
     }
     
-    public ArrayList <Computadora> consultarComputadoras(String condicion){
+    public ArrayList <RegistroCompu> consultarComputadoras(String condicion){
     return null;
     }
     

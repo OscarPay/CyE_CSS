@@ -14,17 +14,16 @@ import javax.swing.JOptionPane;
  * @author Oscar
  */
 public class MenuPrincipal extends javax.swing.JFrame implements Observador {
-
-    private CtrlAdministradores ctrlAdministradores;
+    
+    private CtrlAdministradores ctrlAdministradores = new CtrlAdministradores();
 
     /**
      * Creates new form MenuPrincipal
      */
     public MenuPrincipal() {
-
-        initComponents();
-        ctrlAdministradores = new CtrlAdministradores();
-
+        
+        initComponents();        
+        
     }
 
     /**
@@ -299,44 +298,44 @@ public class MenuPrincipal extends javax.swing.JFrame implements Observador {
     }// </editor-fold>//GEN-END:initComponents
         
     private void btnComputadora1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComputadora1ActionPerformed
-
-        String tiempoSalida = JOptionPane.showInputDialog("Ingrese el tiempo");        
-        this.iniciarUsoCompu(tiempoSalida, 0);
+        
+        String tiempoSolicitado = JOptionPane.showInputDialog("Ingrese el tiempo");        
+        this.iniciarUsoCompu(1, tiempoSolicitado);
         
     }//GEN-LAST:event_btnComputadora1ActionPerformed
 
     private void btnComputadora2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComputadora2ActionPerformed
-       
-        String tiempoSalida = JOptionPane.showInputDialog("Ingrese el tiempo");
-        this.iniciarUsoCompu(tiempoSalida, 1);
+        
+        String tiempoSolicitado = JOptionPane.showInputDialog("Ingrese el tiempo");
+        this.iniciarUsoCompu(2, tiempoSolicitado);
         
     }//GEN-LAST:event_btnComputadora2ActionPerformed
 
     private void btnComputadora3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComputadora3ActionPerformed
         
-        String tiempoSalida = JOptionPane.showInputDialog("Ingrese el tiempo");
-        this.iniciarUsoCompu(tiempoSalida, 2);
+        String tiempoSolicitado = JOptionPane.showInputDialog("Ingrese el tiempo");
+        this.iniciarUsoCompu(3, tiempoSolicitado);
         
     }//GEN-LAST:event_btnComputadora3ActionPerformed
 
     private void btnComputadora4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComputadora4ActionPerformed
         
-        String tiempoSalida = JOptionPane.showInputDialog("Ingrese el tiempo");
-        this.iniciarUsoCompu(tiempoSalida, 3);
+        String tiempoSolicitado = JOptionPane.showInputDialog("Ingrese el tiempo");
+        this.iniciarUsoCompu(4, tiempoSolicitado);
         
     }//GEN-LAST:event_btnComputadora4ActionPerformed
 
     private void btnXbox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXbox1ActionPerformed
         
-        String tiempoSalida = JOptionPane.showInputDialog("Ingrese el tiempo");
-        this.iniciarUsoXbox(tiempoSalida,0);
+        String tiempoSolicitado = JOptionPane.showInputDialog("Ingrese el tiempo");
+        this.iniciarUsoXbox(1, 1, tiempoSolicitado);
         
     }//GEN-LAST:event_btnXbox1ActionPerformed
 
     private void btnXbox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXbox2ActionPerformed
         
-        String tiempoSalida = JOptionPane.showInputDialog("Ingrese el tiempo");
-       this.iniciarUsoXbox(tiempoSalida,1);
+        String tiempoSolicitado = JOptionPane.showInputDialog("Ingrese el tiempo");
+        this.iniciarUsoXbox(2, 1, tiempoSolicitado);
         
     }//GEN-LAST:event_btnXbox2ActionPerformed
 
@@ -408,133 +407,127 @@ public class MenuPrincipal extends javax.swing.JFrame implements Observador {
     private javax.swing.JLabel lblTiempoXbox1;
     private javax.swing.JLabel lblTiempoXbox2;
     // End of variables declaration//GEN-END:variables
-    
+
     /**
      * Me agrega un observador a un cronometro
+     *
      * @param obs La ventana MenuPrincipal
      * @param posicion La posicion de la computadora dentro del arreglo
      */
-    private void agregarObservadorCompu(Observador obs, int posicion){
-        ctrlAdministradores.getAdminComputadoras().
-                getCompu(posicion).getCronometro().getObservado().agregar(this);                
+    private void agregarObservadorCompu(int idCompu) {
+        ctrlAdministradores.getAdminComputadoras().buscarRegistroCompuPorId(idCompu)
+                .getTemporizador().getObservado().agregar(this);        
     }
     
-    private void agregarObservadorXbox(Observador obs, int posicion){
-        ctrlAdministradores.getAdminXboxs().
-                getXbox(posicion).getCronometro().getObservado().agregar(this);
+    private void agregarObservadorXbox(int idXbox) {
+        ctrlAdministradores.getAdminXboxs().buscarRegistroXboxPorId(idXbox)
+                .getTemporizador().getObservado().agregar(this);                
     }
     
-    private void iniciarUsoCompu(String tiempoSalida, int numCompu){
-        ctrlAdministradores.iniciarComputadora(tiempoSalida, numCompu);
-        int posicionCompu = ctrlAdministradores.getAdminComputadoras()
-                                        .getPosicionCompuActual();
-        agregarObservadorCompu(this, posicionCompu);
-        
+    private void iniciarUsoCompu(int idCompu, String tiempoSolicitado) {
+        ctrlAdministradores.agregarRegComputadora(idCompu, tiempoSolicitado);        
+        agregarObservadorCompu(idCompu);        
     }
     
-    private void iniciarUsoXbox(String tiempoSalida,int numXbox){
-        
-        ctrlAdministradores.iniciarXbox(tiempoSalida, numXbox);
-        int posicionXbox = ctrlAdministradores.getAdminXboxs().
-                                        getPosicionActual();
-        agregarObservadorXbox(this, posicionXbox);
-        
+    private void iniciarUsoXbox(int idXbox, int numControles, String tiempoSolicitado) {        
+        ctrlAdministradores.agregarRegXbox(idXbox, numControles, tiempoSolicitado);        
+        agregarObservadorXbox(idXbox);        
     }
-    
+
     /**
      * Actualizar los datos del observador
+     *
      * @param tiempo El tiempo que transcurre
      * @param numero El numero de maquina
      * @param maquina El tipo de maquina (RentaComputadora o RentaXbox)
      */
     @Override
     public void actualizarTiempo(String tiempo, int numero, String maquina) {
-
+        
         switch (maquina) {
             
             case "Computadora":
                 this.actualizarTiempoComputadora(numero, tiempo);
                 break;
-                
+            
             case "Xbox":
                 this.actualizarTiempoXbox(numero, tiempo);
                 break;
-                
+            
             default:
                 JOptionPane.showMessageDialog(this, "Error, Xbox");
-                
+            
         }
         
     }
     
     @Override
-    public void actualizarPrecio(String precio, int numero, String maquina){
+    public void actualizarPrecio(String precio, int numero, String maquina) {
         
-         switch (maquina) {
+        switch (maquina) {
             
             case "Computadora":
                 this.actualizarPrecioComputadora(numero, precio);
                 break;
-                
+            
             case "Xbox":
                 this.actualizarPrecioXbox(numero, precio);
                 break;
-                
+            
             default:
                 JOptionPane.showMessageDialog(this, "Error, Xbox");
-                
+            
         }
         
     }
-    
+
     /**
      * Me actualiza el labal de una computadora
-     * @param numComputadora El numero de la computadora
+     *
+     * @param idCompu El numero de la computadora
      * @param tiempo El tiempo que transcurre
      */
-    private void actualizarTiempoComputadora(int numComputadora, String tiempo) {
+    private void actualizarTiempoComputadora(int idCompu, String tiempo) {
         
-        int numero = numComputadora;
-
-        switch (numero) {
+        switch (idCompu) {
             
-            case 0:
+            case 1:
                 lblTiempoCompu1.setText(tiempo);
                 break;
-                
-            case 1:
+            
+            case 2:
                 lblTiempoCompu2.setText(tiempo);
                 break;
-                
-            case 2:
+            
+            case 3:
                 lblTiempoCompu3.setText(tiempo);
                 break;
-                
-            case 3:
+            
+            case 4:
                 lblTiempoCompu4.setText(tiempo);
                 break;
-                
+            
             default:
                 JOptionPane.showMessageDialog(this, "Error, Computadora");
-                
+            
         }
         
     }
 
     /**
      * Me actualiza el labal de un RentaXbox
-     * @param numXbox El numero del RentaXbox
+     *
+     * @param idXbox El numero del RentaXbox
      * @param tiempo El tiempo que transcurre
      */
-    private void actualizarTiempoXbox(int numXbox, String tiempo) {
+    private void actualizarTiempoXbox(int idXbox, String tiempo) {
         
-        int numero = numXbox;
-
-        switch (numero) {
-            case 0:
+               
+        switch (idXbox) {
+            case 1:
                 lblTiempoXbox1.setText(tiempo);
                 break;
-            case 1:
+            case 2:
                 lblTiempoXbox2.setText(tiempo);
                 break;
             default:
@@ -542,51 +535,45 @@ public class MenuPrincipal extends javax.swing.JFrame implements Observador {
         }
         
     }
-
-    private void actualizarPrecioComputadora(int numComputadora, String precio) {
+    
+    private void actualizarPrecioComputadora(int idCompu, String precio) {
         
-        int numero = numComputadora;
-
-        switch (numero) {
+       switch (idCompu) {
             
-            case 0:
+            case 1:
                 lblPrecioCompu1.setText(precio);
                 break;
-                
-            case 1:
+            
+            case 2:
                 lblPrecioCompu2.setText(precio);
                 break;
-                
-            case 2:
+            
+            case 3:
                 lblPrecioCompu3.setText(precio);
                 break;
-                
-            case 3:
+            
+            case 4:
                 lblPrecioCompu4.setText(precio);
                 break;
-                
+            
             default:
                 JOptionPane.showMessageDialog(this, "Error, Computadora");
-                
+            
         }
         
     }
-
     
-
-    private void actualizarPrecioXbox(int numXbox, String precio) {
-         
-        int numero = numXbox;
-
-        switch (numero) {
-            case 0:
+    private void actualizarPrecioXbox(int idXbox, String precio) {
+        
+        switch (idXbox) {
+            case 1:
                 lblPrecioXbox1.setText(precio);
                 break;
-                
-            case 1:
+            
+            case 2:
                 lblPrecioXbox2.setText(precio);
                 break;
-                
+            
             default:
                 JOptionPane.showMessageDialog(this, "Error, Xbox");
         }

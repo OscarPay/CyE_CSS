@@ -29,7 +29,8 @@ public class CalculadoraPreciosMaquina extends Thread {
         this.numEquipo = numEquipo;
         this.maquina = tipoMaquina;
         this.observado = Observado.getINSTANCE();
-        this.precioBase = ListaPrecios.getPrecioBase(tipoMaquina, numControles);          
+        this.precioBase = ListaPrecios.getPrecioBase(tipoMaquina, numControles);
+        calcularPrecio();
     }
     
     public void calcularPrecio(){        
