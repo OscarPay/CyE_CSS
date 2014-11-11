@@ -73,4 +73,8 @@ public class Servidor {
             }
         }
     }
+    
+    public ArrayList<ComunicationHandler> getConections(){
+        return conexiones;
+    }
 }
