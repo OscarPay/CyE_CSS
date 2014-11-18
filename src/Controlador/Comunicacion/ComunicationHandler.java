@@ -58,7 +58,7 @@ public class ComunicationHandler extends Thread {
             System.out.println("Error en la comunicacion con el cliente");
             this.active = false;
         } finally {
-            
+
             //Este metodo se cambiara de lugar
             try {
                 cliente.close();
@@ -96,6 +96,11 @@ public class ComunicationHandler extends Thread {
             case "ED"://Fin de la conexion  
             default:
                 System.out.println("Se ah pedido que se cierre la conexion o esta inactiva");
+                try {
+                    cliente.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(ComunicationHandler.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 break;
 
         }
