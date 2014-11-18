@@ -9,79 +9,109 @@ package Controlador;
 import Controlador.GestorBD.GestorBDProducto;
 import Modelo.Producto;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Oscar
  */
 public class CtrlProducto {
+    GestorBDProducto gestorProduc;
     
-    GestorBDProducto g_gestorProduc;
-    
-    public void agregarProducto(Producto produc){
-        
-        g_gestorProduc=new GestorBDProducto();
-        g_gestorProduc.establecerConexion();
+    public boolean agregarProducto(String id, String nombreProduc,Double precioCom
+            ,Double precioVen,String tipoproduc) throws SQLException{
+            gestorProduc=new GestorBDProducto();
+            gestorProduc.establecerConexion();
+            Producto produc=new Producto(id,nombreProduc,tipoproduc,precioCom,precioVen);
        
-        try {
-            
-            g_gestorProduc.agregarProducto(produc);
-            
-        } catch (SQLException ex) {
-            
-            ex.printStackTrace();
-            
-        }
-        
+            return gestorProduc.agregarProducto(produc);
     }
     
-    public void editarProducto(Producto produc,String idproduc){
+    public boolean editarProducto(String id, String nombreProduc,Double precioCom
+            ,Double precioVen,String tipoproduc) throws SQLException{
+        gestorProduc=new GestorBDProducto();
+        gestorProduc.establecerConexion();
         
-        g_gestorProduc = new GestorBDProducto();
-        g_gestorProduc.establecerConexion();
-        
-        try {
+       Producto produc=new Producto(id,nombreProduc,tipoproduc,precioCom,precioVen);
              
-            g_gestorProduc.modificarProducto(produc,idproduc);
+       return gestorProduc.modificarProducto(produc,id);
             
+        
+    }
+    
+    public Producto buscarProducto(String idproduc) throws SQLException{
+        gestorProduc=new GestorBDProducto();
+        gestorProduc.establecerConexion();
+        Producto producBD=null;
+       
+        
+          producBD= gestorProduc.buscarProducto(idproduc);
+        
+        return producBD;
+         
+        
+    }
+    
+    public void eliminarProducto(Producto produc){
+        gestorProduc=new GestorBDProducto();
+        gestorProduc.establecerConexion();
+        
+         try {
+        
+             gestorProduc.eliminarProducto(produc);
+             
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
     }
     
-    public Producto buscarProducto(String idproduc){
-        
-        g_gestorProduc = new GestorBDProducto();
-        g_gestorProduc.establecerConexion();
+    public ArrayList<Producto> buscarProductos(){
+        gestorProduc=new GestorBDProducto();
+        gestorProduc.establecerConexion();
         
         try {
         
-            return   g_gestorProduc.buscarProducto(idproduc);
+            return   gestorProduc.consultarProductos(null);
         
         } catch (SQLException ex) {
-            
             ex.printStackTrace();
-            
         }
          
          return null;
     }
     
-    public void eliminarProducto(Producto produc){
-        
-        g_gestorProduc = new GestorBDProducto();
-        g_gestorProduc.establecerConexion();
-        
-         try {
-        
-             g_gestorProduc.eliminarProducto(produc);
-             
-        } catch (SQLException ex) {
+    public boolean existeProduc(Producto produc)throws NullPointerException, SQLException{
+        boolean existeProduc=false;
+       
+        Producto producBuscado=null;
+        producBuscado=this.buscarProducto(produc.getId());
+        if(producBuscado.getId().equals(produc.getId())){
             
-            ex.printStackTrace();
-            
+            existeProduc=true;
         }
-         
+        
+        return existeProduc;
     }
     
+     public void llenarListaProduc(JTable tableProduc){
+        ArrayList <Producto> listaProduc=new ArrayList<>();
+        listaProduc=this.buscarProductos();
+        DefaultTableModel modelo;
+        Producto producTemp;
+       
+        for (Producto producto : listaProduc) {
+            producTemp = producto;
+            String idProduc=producTemp.getId();
+            String nombreProduc=producTemp.getNombreProduc();
+            String tipoProduc=producTemp.getTipoProducto();
+            String precioVen=Double.toString(producTemp.getPrecioVenta());
+            String precioCom=Double.toString(producTemp.getPrecioCompra());
+            String[] datosProduc={idProduc,nombreProduc,tipoProduc,precioVen,precioCom};
+            modelo = (DefaultTableModel) tableProduc.getModel();
+            modelo.addRow(datosProduc);
+        }
+        
+    }
 }

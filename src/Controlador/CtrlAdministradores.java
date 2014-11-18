@@ -5,27 +5,66 @@
  */
 package Controlador;
 
-import Modelo.AdminComputadoras;
-import Modelo.AdminXboxs;
+import Controlador.LogicaNegocios.AdminPrecios;
+import Controlador.LogicaNegocios.AdminRegistroCompu;
+import Controlador.LogicaNegocios.AdminRegistrosXbox;
+import Controlador.LogicaNegocios.AdminTemp;
+import Modelo.CalculadoraPrecios;
+import Modelo.RegistroCompu;
+import Modelo.RegistroXbox;
+import Modelo.Temporizador;
 
 public class CtrlAdministradores {
     
-    public void iniciarComputadora(String tiempoSalida, int numComputadora) {
-        AdminComputadoras adminComputadoras = AdminComputadoras.getInstance();
-        adminComputadoras.iniciarComputadora(tiempoSalida, numComputadora);
-    }
+    private final AdminRegistroCompu adminRegistrosCompus = AdminRegistroCompu.getINSTANCE();
+    private final AdminRegistrosXbox adminRegistrosXbox = AdminRegistrosXbox.getINSTANCE();
     
-    public void iniciarXbox(String tiempoSalida, int numXbox) {
-        AdminXboxs adminXboxs = AdminXboxs.getInstance();
-        adminXboxs.iniciarXbox(tiempoSalida, numXbox);
+    public void agregarRegComputadora(int idCompu, String tiempoSolicitado) {
+        RegistroCompu registroCompu = crearRegistroCompu(idCompu, tiempoSolicitado);
+        adminRegistrosCompus.agregarRegistroCompu(registroCompu);
     }
 
-    public AdminXboxs getAdminXboxs() {         
-        return AdminXboxs.getInstance();
+    private RegistroCompu crearRegistroCompu(int idCompu, String tiempoSolicitado) {
+        Temporizador temp = AdminTemp.nuevoTemporizador(idCompu, tiempoSolicitado, "Computadora");
+        CalculadoraPrecios calcu = AdminPrecios.nuevaCalculadora(temp, idCompu, "Computadora", 1);
+        RegistroCompu registroCompu = new RegistroCompu(idCompu, tiempoSolicitado, temp, calcu);
+        return registroCompu;
     }
     
-    public AdminComputadoras getAdminComputadoras(){
-        return AdminComputadoras.getInstance();
+    public void eliminarRegComputadora(int idCompu){                
+        adminRegistrosCompus.eliminarRegistroCompu(idCompu);
     }
+    
+    public RegistroCompu buscarRegCompuPorId(int idCompu){             
+        return adminRegistrosCompus.buscarRegistroCompuPorId(idCompu);
+    }
+    
+    public void agregarRegXbox(int idXbox, int numControles, String tiempoSolicitado) {
+        RegistroXbox registroXbox = crearRegistroXbox(idXbox, tiempoSolicitado, numControles);
+        adminRegistrosXbox.agregarRegistroXbox(registroXbox);
+    }
+
+    private RegistroXbox crearRegistroXbox(int idXbox, String tiempoSolicitado, int numControles) {
+        Temporizador temp = AdminTemp.nuevoTemporizador(idXbox, tiempoSolicitado, "Xbox");
+        CalculadoraPrecios calcu = AdminPrecios.nuevaCalculadora(temp, idXbox, "Xbox", numControles);
+        RegistroXbox registroXbox = new RegistroXbox(idXbox, numControles, tiempoSolicitado, temp, calcu);
+        return registroXbox;
+    }
+    
+    public void eliminarRegistroComputadora(int idXbox){                
+        adminRegistrosXbox.eliminarRegistroXbox(idXbox);
+    }    
+    
+    public RegistroXbox buscarRegXboxPorId(int idXbox){             
+        return adminRegistrosXbox.buscarRegistroXboxPorId(idXbox);
+    }    
+
+    public AdminRegistrosXbox getAdminXboxs() {         
+        return AdminRegistrosXbox.getINSTANCE();
+    }
+    
+    public AdminRegistroCompu getAdminComputadoras(){
+        return AdminRegistroCompu.getINSTANCE();
+    }   
 
 }

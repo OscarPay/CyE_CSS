@@ -12,61 +12,65 @@ package Modelo;
  */
 public class Usuario {
     
-    String g_nombreUsuario;
-    String g_telefono;
-    String g_correo;
-    String g_clave;
-    String g_tipoUsuario;
+    String nombreUsuario;
+    String telefono;
+    String correo;
+    String clave;
+    String tipoUsuario;
 
     public Usuario(String nombreUsuario, String telefono, 
                     String correo, String clave, String tipo) {
         
-        g_nombreUsuario = nombreUsuario;
-        g_telefono = telefono;
-        g_correo = correo;
-        g_clave = clave;
-        g_tipoUsuario = tipo;
+        this.nombreUsuario = nombreUsuario;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.clave = clave;
+        tipoUsuario = tipo;
         
     }    
 
+    public Usuario() {
+        //To change body of generated methods, choose Tools | Templates.
+    }
+
     public String getNombreUsuario() {
-        return g_nombreUsuario;
+        return nombreUsuario;
     }
 
     public void setNombreUsuario(String nombreUsuario) {
-        g_nombreUsuario = nombreUsuario;
+        this.nombreUsuario = nombreUsuario;
     }
 
     public String getTelefono() {
-        return g_telefono;
+        return telefono;
     }
 
     public void setTelefono(String telefono) {
-        g_telefono = telefono;
+        this.telefono = telefono;
     }
 
     public String getCorreo() {
-        return g_correo;
+        return correo;
     }
 
     public void setCorreo(String correo) {
-        g_correo = correo;
+        this.correo = correo;
     }
 
     public String getClave() {
-        return g_clave;
+        return clave;
     }
 
     public void setClave(String clave) {
-        g_clave = clave;
+        this.clave = clave;
     }
 
     public String getTipoUsuario() {
-        return g_tipoUsuario;
+        return tipoUsuario;
     }
 
     public void setTipoUsuario(String tipo) {
-        g_tipoUsuario = tipo;
+        tipoUsuario = tipo;
     }  
     
 }
