@@ -95,7 +95,7 @@ public class CtrlProducto {
         return existeProduc;
     }
     
-     public void llenarTablaUsr(JTable tableProduc){
+     public void llenarListaProduc(JTable tableProduc){
         ArrayList <Producto> listaProduc=new ArrayList<>();
         listaProduc=this.buscarProductos();
         DefaultTableModel modelo;

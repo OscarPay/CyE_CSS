@@ -13,9 +13,8 @@ import javax.swing.JOptionPane;
  *
  * @author Oscar
  */
-public class CalculadoraPreciosMaquina extends Thread {
+public class CalculadoraPrecios extends Thread {    
     
-    private Double precioTotal = 0.00;
     private Temporizador temporizador = null;
     private Observado observado = null;
     
@@ -24,21 +23,21 @@ public class CalculadoraPreciosMaquina extends Thread {
     private double precioBase = 0;
     
     
-    public CalculadoraPreciosMaquina(Temporizador temporizador, int numEquipo, String tipoMaquina, int numControles){       
+    public CalculadoraPrecios(Temporizador temporizador, int numEquipo, String tipoMaquina, int numControles){       
         this.temporizador = temporizador;
         this.numEquipo = numEquipo;
         this.maquina = tipoMaquina;
         this.observado = Observado.getINSTANCE();
-        this.precioBase = ListaPrecios.getPrecioBase(tipoMaquina, numControles);
-        calcularPrecio();
+        this.precioBase = ListaPrecios.getPrecioBase(tipoMaquina, numControles);       
     }
     
-    public void calcularPrecio(){        
+    @Override
+    public void run(){        
         //la funcion start() de la clase Thread ejecuta a run() como un hilo
-        start();        
+        calcularPrecio();        
     }
     
-    public void run(){
+    public void calcularPrecio(){
         
         DecimalFormat formatoPrecio = new DecimalFormat();
         Double precioSegundo = 0.00; 

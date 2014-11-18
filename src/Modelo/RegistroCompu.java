@@ -23,19 +23,23 @@ public class RegistroCompu {
     private boolean ocupado = false;
 
     private Temporizador temporizador = null;
-    private CalculadoraPreciosMaquina calculadoraPrecio = null;
+    private CalculadoraPrecios calculadoraPrecio = null;
 
-    public RegistroCompu(int idCompu, String tiempoSolicitado) {
+    public RegistroCompu(int idCompu, String tiempoSolicitado, Temporizador temp, CalculadoraPrecios calcu) {
         this.idCompu = idCompu;
         this.tiempoSolicitado = tiempoSolicitado;
         this.tiempoEntrada = new Date();
         this.ocupado = true;
-        this.temporizador = new Temporizador(tiempoSolicitado, idCompu, "Computadora");
-        this.calculadoraPrecio = new CalculadoraPreciosMaquina(temporizador, idCompu, "Computadora", 1);
+        this.temporizador = temp;                
+        this.calculadoraPrecio = calcu;                
     }
 
     public Temporizador getTemporizador() {
         return temporizador;
+    }
+    
+    public String getTiempoTranscurrido(){
+        return temporizador.getTiempoTranscurrido();
     }
 
     public int getIdCompu() {

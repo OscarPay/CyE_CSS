@@ -36,10 +36,6 @@ public class GestorBDRenta extends GestorBD {
     
     public ArrayList <RegistroCompu> consultarComputadoras(String condicion){
     return null;
-    }
+    }    
     
-    public static void main(String[] args) {
-        GestorBDRenta gestor=new GestorBDRenta();
-        gestor.establecerConexion();
-    }
 }

@@ -21,18 +21,19 @@ public class RegistroXbox {
     private Date tiempoEntrada = null;
     private Date tiempoSalida = null;
     private Double precio = 0.00;
-    private boolean ocupado = false;
+    private boolean ocupado = false;   
 
     private Temporizador temporizador = null;
-    private CalculadoraPreciosMaquina calculadoraPrecio = null;
+    private CalculadoraPrecios calculadoraPrecio = null;   
 
-    public RegistroXbox(int idXbox, int numControles, String tiempoSolicitado) {
+    public RegistroXbox(int idXbox, int numControles, String tiempoSolicitado, Temporizador temp, CalculadoraPrecios calcu) {        
         this.idXbox = idXbox;
+        this.numComtroles = numControles;
         this.tiempoSolicitado = tiempoSolicitado;
         this.tiempoEntrada = new Date();
         this.ocupado = true;
-        this.temporizador = new Temporizador(tiempoSolicitado, idXbox, "Xbox");
-        this.calculadoraPrecio = new CalculadoraPreciosMaquina(temporizador, idXbox, "Xbox", numControles);
+        this.temporizador = temp;                
+        this.calculadoraPrecio = calcu;                
     }
 
     public Temporizador getTemporizador() {

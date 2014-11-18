@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 
-package Modelo;
+package Controlador.LogicaNegocios;
 
+import Modelo.RegistroXbox;
 import java.util.ArrayList;
 
 /**

@@ -7,17 +7,37 @@ package Modelo;
 
 /**
  *
- * @author Oscar 
+ * @author Oscar
  */
 public class RentaComputadora {
 
+    private int idCompu = 0;
+    private Double precio = 0.0;
     private String tiempoEntrada = "";
     private String tiempoSalida = "";
-    private int idComputadora = 0;    
-    private Double precio = 0.0;
 
+    public RentaComputadora(int idCompu, Double precio, String tiempoEntrada, 
+                             String tiempoSalida) {
+        this.idCompu = idCompu;
+        this.precio = precio;
+        this.tiempoEntrada = tiempoEntrada;
+        this.tiempoSalida = tiempoSalida;
+    }
+
+    public int getIdComp() {
+        return idCompu;
+    }
+
+    public Double getPrecio() {
+        return precio;
+    }
+
+    public String getTiempoEntrada() {
+        return tiempoEntrada;
+    }
+
+    public String getTiempoSalida() {
+        return tiempoSalida;
+    }
     
-
-    
-
 }

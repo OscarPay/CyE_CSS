@@ -70,7 +70,7 @@ public class CtrlUsuario {
         return null;
     }
 
-    public void llenarTablaUsr(JTable tableUsr) {
+    public void llenarListaUsr(JTable tableUsr) {
         ArrayList<Usuario> listaUsr = new ArrayList<Usuario>();
         listaUsr = this.buscarUsuarios();
         DefaultTableModel modelo;

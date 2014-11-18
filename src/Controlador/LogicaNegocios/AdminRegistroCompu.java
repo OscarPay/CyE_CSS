@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 
-package Modelo;
+package Controlador.LogicaNegocios;
 
+import Modelo.RegistroCompu;
 import java.util.ArrayList;
 
 /**
@@ -24,7 +25,7 @@ public class AdminRegistroCompu {
         return INSTANCE;
     }    
     
-    public void agregarRegistroCompu(RegistroCompu rentaCompuTemp){
+    public void agregarRegistroCompu(RegistroCompu rentaCompuTemp){        
         registrosCompu.add(rentaCompuTemp);
     }
 
