@@ -32,11 +32,11 @@ public class ComunicationHandler extends Thread {
         this.active = true;
 
         System.out.println("Nuevo arrivo de cliente num" + this.numCliente);
+        initializeBuffers();
     }
 
-    public void run() {
+    public void initializeBuffers() {
         try {
-
             //Se declara un BufferedReader que manejara
             //Las entradas del cliente
             in = new BufferedReader(
@@ -44,16 +44,6 @@ public class ComunicationHandler extends Thread {
 
             //El printWriter se encargara de enviar mensajes al cliente
             out = new PrintWriter(cliente.getOutputStream(), true);
-
-            //Este loop infinito se encarga de leer y verificar
-            //que la conexion sea permanente y tratar las entradas
-            out.println("ID");
-
-            while (true) {
-                readBuffer();
-                processInfo();
-            }
-
         } catch (IOException e) {
             System.out.println("Error en la comunicacion con el cliente");
             this.active = false;
@@ -68,6 +58,20 @@ public class ComunicationHandler extends Thread {
             }
         }
     }
+
+    public void run() {
+            //Este loop infinito se encarga de leer y verificar
+            //que la conexion sea permanente y tratar las entradas
+            out.println("ID");
+
+            while (true) {
+                readBuffer();
+                processInfo();
+            }
+
+        }
+
+    
 
     public void processInfo() {
         System.out.println("Se recibio el siguiente mensaje del cliente: " + this.IdConexion + ", " + this.message);

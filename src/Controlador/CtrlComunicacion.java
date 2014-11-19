@@ -14,6 +14,10 @@ import Controlador.Comunicacion.Servidor;
 public class CtrlComunicacion {
     private Servidor server = new Servidor();
     
+    public void initializeHandOfConection(){
+        server.handConections();
+    }
+    
     public void sendMessage(String Id, String message){
         server.sendMessageToConexion(Id, message);
     }
