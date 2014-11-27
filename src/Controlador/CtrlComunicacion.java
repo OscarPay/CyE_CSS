@@ -15,7 +15,7 @@ public class CtrlComunicacion {
     private Servidor server = new Servidor();
     
     public void initializeHandOfConection(){
-        server.handConections();
+        server.start();
     }
     
     public void sendMessage(String Id, String message){

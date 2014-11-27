@@ -1,17 +1,16 @@
+package Controlador.Comunicacion;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controlador.Comunicacion;
 
-import java.io.BufferedReader;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -23,8 +22,8 @@ public class ComunicationHandler extends Thread {
     private Socket cliente;
     private int numCliente;
     private String message;
-    private BufferedReader in;
-    private PrintWriter out;
+    private DataInputStream in;
+    private DataOutputStream out;
     private boolean active = false;
 
     public ComunicationHandler(Socket cliente) {
@@ -33,55 +32,51 @@ public class ComunicationHandler extends Thread {
 
         System.out.println("Nuevo arrivo de cliente num" + this.numCliente);
         initializeBuffers();
+        
+        SendToBuffer("ID");
+        
     }
 
     public void initializeBuffers() {
         try {
             //Se declara un BufferedReader que manejara
             //Las entradas del cliente
-            in = new BufferedReader(
-                    new InputStreamReader(cliente.getInputStream()));
+            in = new DataInputStream(cliente.getInputStream());
 
             //El printWriter se encargara de enviar mensajes al cliente
-            out = new PrintWriter(cliente.getOutputStream(), true);
+            out = new DataOutputStream(cliente.getOutputStream());
+            //out = new PrintWriter(cliente.getOutputStream(), true);
         } catch (IOException e) {
             System.out.println("Error en la comunicacion con el cliente");
             this.active = false;
-        } finally {
-
-            //Este metodo se cambiara de lugar
-            try {
-                cliente.close();
-                this.active = false;
-            } catch (IOException e) {
-                System.out.println("No se pudo cerrar el socket ¿Esta en uso?");
-            }
         }
     }
 
     public void run() {
-            //Este loop infinito se encarga de leer y verificar
-            //que la conexion sea permanente y tratar las entradas
-            out.println("ID");
-
-            while (true) {
-                readBuffer();
-                processInfo();
-            }
-
+        //SendToBuffer("ID");
+        
+        while (true) {
+            readBuffer();
+            processInfo();
         }
 
-    
+    }
 
     public void processInfo() {
         System.out.println("Se recibio el siguiente mensaje del cliente: " + this.IdConexion + ", " + this.message);
+        
+        if(message == null) return;
+        
+        System.out.println(message);
+        
         String infoId = message.substring(0, 2);
         String infoString = message.substring(3);
 
         switch (infoId) {
             case "ID"://ID del cliente
                 this.IdConexion = infoString;
-                SendToBuffer("ID-true");
+                
+                System.out.println(infoString);
                 break;
             case "ET"://End Time, cuando el cliente notifica que se ah acabado el tiempo
                 if (infoString.equals("true")) {
@@ -97,13 +92,17 @@ public class ComunicationHandler extends Thread {
                     System.out.println("El tiempo esta listo");
                 }
                 break;
+            case "AT":
+
+                break;
             case "ED"://Fin de la conexion  
             default:
                 System.out.println("Se ah pedido que se cierre la conexion o esta inactiva");
                 try {
                     cliente.close();
+                    System.out.println("se cerro el socke");
                 } catch (IOException ex) {
-                    Logger.getLogger(ComunicationHandler.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println("Error cerrando la conexion");
                 }
                 break;
 
@@ -112,16 +111,22 @@ public class ComunicationHandler extends Thread {
 
     public void readBuffer() {
         try {
-            this.message = in.readLine();
+            
+            this.message = in.readUTF();
 
         } catch (IOException ex) {
-            Logger.getLogger(ComunicationHandler.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error leyendo los mensajes");
         }
 
     }
 
     public void SendToBuffer(String input) {
-        out.println(input);
+        try {
+            System.out.println("Se envia el sig mensaje" + input);
+            out.writeUTF(input);
+        } catch (IOException ex) {
+            System.out.println("Error al enviar mensaje");
+        }
     }
 
     /**
