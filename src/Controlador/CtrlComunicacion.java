@@ -5,7 +5,9 @@
  */
 package Controlador;
 
+import Controlador.Comunicacion.ComunicationHandler;
 import Controlador.Comunicacion.Servidor;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,7 +16,7 @@ import Controlador.Comunicacion.Servidor;
 public class CtrlComunicacion {
     private Servidor server = new Servidor();
     
-    public void initializeHandOfConection(){
+    public void initializeServer(){
         server.start();
     }
     
@@ -22,6 +24,8 @@ public class CtrlComunicacion {
         server.sendMessageToConexion(Id, message);
     }
     
-    
+    public ArrayList<ComunicationHandler> getConectionsAvailables(){
+        return server.getConections();
+    }
     
 }
