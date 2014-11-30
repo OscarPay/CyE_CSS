@@ -12,11 +12,11 @@ package Modelo;
 public class RentaComputadora {
 
     private int idCompu = 0;
-    private Double precio = 0.0;
+    private String precio = "";
     private String tiempoEntrada = "";
     private String tiempoSalida = "";
 
-    public RentaComputadora(int idCompu, Double precio, String tiempoEntrada, 
+    public RentaComputadora(int idCompu, String precio, String tiempoEntrada, 
                              String tiempoSalida) {
         this.idCompu = idCompu;
         this.precio = precio;
@@ -28,7 +28,7 @@ public class RentaComputadora {
         return idCompu;
     }
 
-    public Double getPrecio() {
+    public String getPrecio() {
         return precio;
     }
 
@@ -38,6 +38,16 @@ public class RentaComputadora {
 
     public String getTiempoSalida() {
         return tiempoSalida;
+    }
+    
+    @Override
+    public String toString(){
+        System.out.println("Computadora");
+        String datos = "id: "+idCompu+"\n"+
+                       "precio: "+precio+"\n"+
+                        "tiempo entrada: "+tiempoEntrada+"\n"+
+                        "tiempo salida: "+tiempoSalida;
+        return datos;
     }
     
 }

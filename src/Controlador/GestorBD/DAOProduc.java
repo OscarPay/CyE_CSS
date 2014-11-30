@@ -17,18 +17,19 @@ import java.util.ArrayList;
  *
  * @author Abner
  */
-public class GestorBDProducto extends GestorBD {
+public class DAOProduc extends DAOBD <Producto> {
+    private final String Nombre="Nombre_Produc";
+    private final String ID="Id_Produc";
+    private final String PrecioCom="PrecioCom_Produc";
+    private final String PrecioVen="PrecioVen_Produc";
+    private final String Tipo="Clv_TipoProduc";
     
-     public boolean agregarProducto(Producto producto) throws SQLException{
+     public boolean agregarElemento(Producto producto) throws SQLException{
          boolean seagregoProduc=false;
                  
-         if(!this.existeProduc(producto.getId())){
+         if(!this.existeElemento(producto.getId())){
         int clvtipoproduc=this.obtenerTipoProducto(producto.getTipoProducto());
-         String consulta="INSERT INTO productos (Nombre_Produc,Id_Produc,"+
-                        "PrecioCom_Produc,PrecioVen_Produc,Clv_TipoProduc) VALUES"
-                        + " ('"+producto.getNombreProduc()+"','"+producto.getId()+
-                        "','"+producto.getPrecioCompra()+"','"+producto.getPrecioVenta()+
-                        "','"+clvtipoproduc+"')";
+         String consulta=this.armarConsultaInserta(producto);
                         
         
         Statement sentencia;
@@ -42,18 +43,12 @@ public class GestorBDProducto extends GestorBD {
          return seagregoProduc;
     }
     
-    public boolean modificarProducto(Producto producto,String idproduc ) throws SQLException{
+    public boolean modificarElemento(Producto producto,String idproduc ) throws SQLException{
         boolean seEditoProduc=false;
-        if(this.existeProduc(idproduc)){
+        if(this.existeElemento(idproduc)){
         
         int clvtipoproduc=this.obtenerTipoProducto(producto.getTipoProducto());
-        String consulta="UPDATE productos SET "+
-                    "Nombre_Produc='"+producto.getNombreProduc()+"',"+
-                    "Id_Produc='"+producto.getId()+"',"+
-                    "PrecioCom_Produc='"+producto.getPrecioCompra()+"',"+
-                    "PrecioVen_Produc='"+producto.getPrecioVenta()+"',"+
-                    "Clv_TipoProduc='"+clvtipoproduc+"'"+
-                    "WHERE Id_Produc='"+idproduc+"'";
+        String consulta=this.armarConsultaUpdate(producto, idproduc);
        
         Statement sentencia;
         sentencia = this.conexion.createStatement();
@@ -66,9 +61,9 @@ public class GestorBDProducto extends GestorBD {
         return seEditoProduc;
     }
     
-    public void eliminarProducto(Producto producto) throws SQLException{
-         String consulta = "DELETE FROM productos WHERE Id_Produc='"+
-                            producto.getId()+"'";
+    public void eliminarElemento(Producto producto) throws SQLException{
+        String consulta = this.armarConsultaDelete(producto);
+         
         Statement sentencia;
         sentencia = this.conexion.createStatement();
 
@@ -78,7 +73,7 @@ public class GestorBDProducto extends GestorBD {
         
     }
     
-    public Producto buscarProducto(String condicion) throws SQLException{
+    public Producto buscarElemento(String condicion) throws SQLException{
          String consulta="SELECT productos.Nombre_Produc, productos.Id_Produc,"+
                             "productos.PrecioVen_Produc, productos.PrecioCom_Produc,"+
                             " tipo_produc.Nombre_TipoProduc\n" +
@@ -109,11 +104,8 @@ public class GestorBDProducto extends GestorBD {
     
     
     
-    public ArrayList <Producto> consultarProductos(String condicion) throws SQLException{
-        String consulta="SELECT * FROM productos JOIN tipo_produc ON "
-                        + "productos.Clv_TipoProduc=tipo_produc.Clv_TipoProduc";
-        if(condicion!=null)
-            consulta+="WHERE"+condicion;
+    public ArrayList <Producto> consultarElementos(String condicion) throws SQLException{
+        String consulta=this.armarConsultaSelects(condicion);
         
         Statement sentencia;
         sentencia = this.conexion.createStatement();    
@@ -137,8 +129,7 @@ public class GestorBDProducto extends GestorBD {
     }
     
     public int obtenerTipoProducto(String tipoproduc) throws SQLException{
-        String consulta="SELECT Clv_TipoProduc FROM tipo_produc "+
-                         "WHERE Nombre_TipoProduc='"+tipoproduc+"'";
+        String consulta=this.armarConsutaTipoProduc(tipoproduc);
         
         Statement sentencia = this.conexion.createStatement();
         ResultSet resultado = sentencia.executeQuery (consulta);  
@@ -152,14 +143,9 @@ public class GestorBDProducto extends GestorBD {
         
     }
     
-    public boolean existeProduc(String id) throws SQLException{
+    public boolean existeElemento(String id) throws SQLException{
         boolean existeProduc=false;
-         String consulta="SELECT productos.Nombre_Produc, productos.Id_Produc,"+
-                            "productos.PrecioVen_Produc, productos.PrecioCom_Produc,"+
-                            " tipo_produc.Nombre_TipoProduc\n" +
-                            "FROM productos JOIN tipo_produc\n" +
-                            "ON productos.Clv_TipoProduc = tipo_produc.Clv_TipoProduc "+
-                             "WHERE Id_Produc='"+id+"'";
+         String consulta=this.armarConsultaSelect(contrasena);
             
         Statement sentencia;
         sentencia = this.conexion.createStatement();    
@@ -171,5 +157,62 @@ public class GestorBDProducto extends GestorBD {
          return existeProduc;
         
     }
+
+    @Override
+    protected String armarConsultaInserta(Producto producto) throws SQLException {
+        int clvtipoproduc=this.obtenerTipoProducto(producto.getTipoProducto());
+        String consulta="INSERT INTO productos (Nombre_Produc,Id_Produc,"+
+                        "PrecioCom_Produc,PrecioVen_Produc,Clv_TipoProduc) VALUES"
+                        + " ('"+producto.getNombreProduc()+"','"+producto.getId()+
+                        "','"+producto.getPrecioCompra()+"','"+producto.getPrecioVenta()+
+                        "','"+clvtipoproduc+"')";
+        return consulta;
+    }
+
+    @Override
+    protected String armarConsultaUpdate(Producto producto, String idproduc) throws SQLException {
+        int clvtipoproduc=this.obtenerTipoProducto(producto.getTipoProducto());
+        String consulta="UPDATE productos SET "+
+                    "Nombre_Produc='"+producto.getNombreProduc()+"',"+
+                    "Id_Produc='"+producto.getId()+"',"+
+                    "PrecioCom_Produc='"+producto.getPrecioCompra()+"',"+
+                    "PrecioVen_Produc='"+producto.getPrecioVenta()+"',"+
+                    "Clv_TipoProduc='"+clvtipoproduc+"'"+
+                    "WHERE Id_Produc='"+idproduc+"'";
+        return consulta;
+    }
+
+    @Override
+    protected String armarConsultaDelete(Producto producto) {
+        String consulta = "DELETE FROM productos WHERE Id_Produc='"+
+                            producto.getId()+"'";
+        return consulta;
+    }
+
+    @Override
+    protected String armarConsultaSelect(String condicion) {
+         String consulta="SELECT productos.Nombre_Produc, productos.Id_Produc,"+
+                            "productos.PrecioVen_Produc, productos.PrecioCom_Produc,"+
+                            " tipo_produc.Nombre_TipoProduc\n" +
+                            "FROM productos JOIN tipo_produc\n" +
+                            "ON productos.Clv_TipoProduc = tipo_produc.Clv_TipoProduc "+
+                             "WHERE Id_Produc='"+condicion+"'";
+    return consulta;
+    }
+
+    @Override
+    protected String armarConsultaSelects(String condicion) {
+        String consulta="SELECT * FROM productos JOIN tipo_produc ON "
+                        + "productos.Clv_TipoProduc=tipo_produc.Clv_TipoProduc";
+        if(condicion!=null)
+            consulta+="WHERE"+condicion;
+    
+    return consulta;
+    }
   
+    private String armarConsutaTipoProduc(String tipoproduc){
+        String consulta="SELECT Clv_TipoProduc FROM tipo_produc "+
+                         "WHERE Nombre_TipoProduc='"+tipoproduc+"'";
+    return consulta;
+    }
 }

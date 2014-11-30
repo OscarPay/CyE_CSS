@@ -6,6 +6,7 @@
 package Controlador.LogicaNegocios;
 
 import Modelo.Temporizador;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,12 +16,12 @@ public class AdminTemp {
     
     public static Temporizador nuevoTemporizador(int id, String tiempoSolicitado, String tipo){
      Temporizador temp = new Temporizador(id, tiempoSolicitado, tipo);
-     iniciarTemporizador(temp);
+     iniciarTemporizador(temp);     
      return temp;
     }
 
     private static void iniciarTemporizador(Temporizador temp) {
         temp.start();
-    }
+    }    
     
 }

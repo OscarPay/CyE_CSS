@@ -17,47 +17,46 @@ import java.util.ArrayList;
  *
  * @author Abner
  */
-public class GestorBDUsuario extends GestorBD {
+public class DAOUsr extends DAOBD <Usuario>{
+    
+        private final String Nombre="Nombre_Usr";
+        private final String Correo="Correo_Usr";
+        private final String Contrasena="Contrasena_Usr";
+        private final String Telefono="Telefono_Usr";
+        private final String Tipo="Clv_tipoUsr";
     /*
     La funcion recibe un usuario, checa si existe, si existe el Usuario lo 
     modifica con los nuevos datos, si no existe lo agrega. 
     */
-     public boolean agregarUsuario(Usuario usr) throws SQLException{
+     @Override
+     public boolean agregarElemento(Usuario usr) throws SQLException{
          boolean usrAgregado=false;
-        if(!this.existeUsr(usr.getCorreo())){
-        int clvtipousr=this.obtenerTipoUsuario(usr.getTipoUsuario());
-        String consulta="INSERT INTO usuarios (Nombre_Usr,Correo_Usr,"+
-                        "Contrasena_Usr,Telefono_Usr,Clv_tipousr) values "+
-                        "('"+usr.getNombreUsuario()+"','"+usr.getCorreo()+
-                        "','"+usr.getClave()+"','"+usr.getTelefono()+"','"+clvtipousr+"')";
+        if(!this.existeElemento(usr.getCorreo())){
+        
+        String consulta=this.armarConsultaInserta(usr);
         
         Statement sentencia;
         sentencia = this.conexion.createStatement();         
-        sentencia.executeUpdate(consulta); 
-        
+        sentencia.executeUpdate(consulta);        
         sentencia.close();
+        
         usrAgregado=true;
         }
        return usrAgregado;
     }
     
-    public boolean modificarUsuario(Usuario usr,String correousr) throws SQLException{
+     @Override
+    public boolean modificarElemento(Usuario usr,String correousr) throws SQLException{
         boolean seModificoUsr=false;
-        if(this.existeUsr(usr.getCorreo())){
+        if(this.existeElemento(usr.getCorreo())){
 
-        String consulta="UPDATE usuarios SET "+
-                    "Nombre_Usr='"+usr.getNombreUsuario()+"',"+
-                    "Telefono_Usr='"+usr.getTelefono()+"',"+
-                    "Correo_Usr='"+usr.getCorreo()+"',"+
-                    "Contrasena_Usr='"+usr.getClave()+"',"+
-                    "Clv_TipoUsr='"+this.obtenerTipoUsuario(usr.getTipoUsuario())+"'"+
-                    "WHERE Correo_Usr='"+correousr+"'";
+        String consulta=this.armarConsultaUpdate(usr, correousr);
        
         Statement sentencia;
         sentencia = this.conexion.createStatement();
-
         sentencia.executeUpdate(consulta);
         sentencia.close();
+        
         seModificoUsr=true;
         }
         
@@ -65,28 +64,23 @@ public class GestorBDUsuario extends GestorBD {
                
     }
     
-    public void eliminarUsuario(Usuario usuario) throws SQLException{
+     @Override
+    public void eliminarElemento(Usuario usuario) throws SQLException{
          
-        String consulta = "DELETE FROM usuarios WHERE Nombre_usr='"+
-                            usuario.getNombreUsuario()+"' or Correo_usr='"+
-                            usuario.getCorreo()+"'";
+        String consulta = this.armarConsultaDelete(usuario);
+        
         Statement sentencia;
         sentencia = this.conexion.createStatement();
         sentencia.executeUpdate(consulta);
-        
         sentencia.close();
         
          
     }
     
-    public Usuario buscarUsuario(String condicion) throws SQLException{
+     @Override
+    public Usuario buscarElemento(String condicion) throws SQLException{
            
-        String consulta="SELECT usuarios.Nombre_Usr, usuarios.Telefono_Usr,"+
-                            "usuarios.Correo_Usr, usuarios.Contrasena_Usr,"+
-                            " tipo_usr.Nombre_TipoUsr\n" +
-                            "FROM usuarios JOIN tipo_usr\n" +
-                            "ON usuarios.Clv_TipoUsr = tipo_usr.Clv_TipoUsr "+
-                             "WHERE Correo_usr='"+condicion+"'";
+        String consulta=this.armarConsultaSelect(condicion);
             
         Statement sentencia;
         sentencia = this.conexion.createStatement();    
@@ -110,11 +104,8 @@ public class GestorBDUsuario extends GestorBD {
     }
     
     
-    public ArrayList <Usuario> consultarUsuarios(String condicion) throws SQLException{
-        String consulta="SELECT * FROM scc.usuarios join tipo_usr ON"
-                + " usuarios.Clv_TipoUsr=tipo_usr.Clv_TipoUsr";
-        if(condicion!=null)
-            consulta+="WHERE"+condicion;
+    public ArrayList <Usuario> consultarElementos(String condicion) throws SQLException{
+        String consulta=this.armarConsultaSelects(condicion);
             
                 
         Statement sentencia;
@@ -155,7 +146,7 @@ public class GestorBDUsuario extends GestorBD {
         return clavetipousr;   
     }
     
-    private boolean existeUsr(String condicion) throws SQLException{
+    public boolean existeElemento(String condicion) throws SQLException{
         boolean existeUsr=false;
         String consulta="SELECT usuarios.Nombre_Usr, usuarios.Telefono_Usr,"+
                             "usuarios.Correo_Usr, usuarios.Contrasena_Usr,"+
@@ -176,10 +167,67 @@ public class GestorBDUsuario extends GestorBD {
           
     }
     
+   
+    
+    protected String armarConsultaUpdate(Usuario elemento,String correousr) throws SQLException{
+         String consulta="UPDATE usuarios SET "+
+                    "Nombre_Usr='"+elemento.getNombreUsuario()+"',"+
+                    "Telefono_Usr='"+elemento.getTelefono()+"',"+
+                    "Correo_Usr='"+elemento.getCorreo()+"',"+
+                    "Contrasena_Usr='"+elemento.getClave()+"',"+
+                    "Clv_TipoUsr='"+this.obtenerTipoUsuario(elemento.getTipoUsuario())+"'"+
+                    "WHERE Correo_Usr='"+correousr+"'";
+         
+         return consulta;
+    }
+    
+    protected String armarConsultaDelete(Usuario usuario){
+        String consulta = "DELETE FROM usuarios WHERE Nombre_usr='"+
+                            usuario.getNombreUsuario()+"' or Correo_usr='"+
+                            usuario.getCorreo()+"'";
+        return consulta;
+    }
+    
+    protected String armarConsultaSelect(String condicion){
+        String consulta="SELECT usuarios.Nombre_Usr, usuarios.Telefono_Usr,"+
+                            "usuarios.Correo_Usr, usuarios.Contrasena_Usr,"+
+                            " tipo_usr.Nombre_TipoUsr\n" +
+                            "FROM usuarios JOIN tipo_usr\n" +
+                            "ON usuarios.Clv_TipoUsr = tipo_usr.Clv_TipoUsr "+
+                             "WHERE Correo_usr='"+condicion+"'";
+        return consulta;
+        
+    }
+    
+    protected String armarConsultaSelects(String condicion){
+        String consulta="SELECT * FROM scc.usuarios join tipo_usr ON"
+                + " usuarios.Clv_TipoUsr=tipo_usr.Clv_TipoUsr";
+        if(condicion!=null)
+            consulta+="WHERE"+condicion;
+    
+    return consulta;
+    }
+   
+    @Override
+    protected String armarConsultaInserta(Usuario elemento)throws SQLException  {
+        int clvtipousr=this.obtenerTipoUsuario(elemento.getTipoUsuario());
+        String consulta="INSERT INTO usuarios (Nombre_Usr,Correo_Usr,"+
+                        "Contrasena_Usr,Telefono_Usr,Clv_tipousr) values "+
+                        "('"+elemento.getNombreUsuario()+"','"+elemento.getCorreo()+
+                        "','"+elemento.getClave()+"','"+elemento.getTelefono()+"','"+clvtipousr+"')";
+       
+        
+        return consulta;
+    }
+
+    
     public static void main(String[] args) throws SQLException {
      
            
         
     }
+   
+
+   
 }
 

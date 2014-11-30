@@ -44,4 +44,14 @@ public class AdminRegistrosXbox {
         return registroXbox;
     }    
     
+    public static void crearRentaXbox(int id){
+       AdminRegistrosXbox admin = AdminRegistrosXbox.getINSTANCE();
+       int numControles = admin.buscarRegistroXboxPorId(id).getNumComtroles();
+       String tiempoEntrada = admin.buscarRegistroXboxPorId(id).getTiempoEntrada();
+       String precioTotal = admin.buscarRegistroXboxPorId(id).getCalculadoraPrecio().getPrecioTotal();
+       String tiempoTranscurrido = admin.buscarRegistroXboxPorId(id).getTemporizador().getTiempoTranscurrido();
+       
+       AdminDatosRenta.crearRentaXbox(id,numControles, tiempoEntrada, tiempoTranscurrido, precioTotal);
+    }
+    
 }

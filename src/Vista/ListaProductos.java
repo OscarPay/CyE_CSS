@@ -23,7 +23,7 @@ public class ListaProductos extends javax.swing.JFrame {
      */
     public ListaProductos() {
     initComponents();
-    ctrlproduc.llenarListaProduc(tableProduc);
+    ctrlproduc.llenarTablaUsr(tableProduc);
     
     }
 

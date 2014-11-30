@@ -5,7 +5,7 @@
  */
 package Controlador;
 
-import Controlador.GestorBD.GestorBDUsuario;
+import Controlador.GestorBD.DAOUsr;
 import Modelo.Usuario;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -20,36 +20,36 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CtrlUsuario {
 
-    GestorBDUsuario gestorUsr;
+    DAOUsr daoUsr;
 
     public boolean agregarUsuario(String nombreUsuario, String telefono,
             String correo, String clave, String tipoUsuario) throws SQLException {
         
         Usuario usr = new Usuario(nombreUsuario, telefono, correo, clave, tipoUsuario);
-        gestorUsr = new GestorBDUsuario();
-        gestorUsr.establecerConexion();
+        daoUsr = new DAOUsr();
+        daoUsr.establecerConexion();
 
-        return gestorUsr.agregarUsuario(usr);
+        return daoUsr.agregarElemento(usr);
 
     }
 
     public boolean editarUsuario(String nombreUsuario, String telefono,
             String correo, String clave, String tipoUsuario) throws SQLException {
         
-        gestorUsr = new GestorBDUsuario();
-        gestorUsr.establecerConexion();
+        daoUsr = new DAOUsr();
+        daoUsr.establecerConexion();
         Usuario usr = new Usuario(nombreUsuario, telefono, correo, clave, tipoUsuario);
         
-        return gestorUsr.modificarUsuario(usr, correo);
+        return daoUsr.modificarElemento(usr, correo);
 
     }
 
     public Usuario buscarUsuario(String correo) throws SQLException {
-        gestorUsr = new GestorBDUsuario();
-        gestorUsr.establecerConexion();
+        daoUsr = new DAOUsr();
+        daoUsr.establecerConexion();
         Usuario usrBD = null;
 
-        usrBD = gestorUsr.buscarUsuario(correo);
+        usrBD = daoUsr.buscarElemento(correo);
 
         return usrBD;
     }
@@ -57,11 +57,11 @@ public class CtrlUsuario {
     
 
     public ArrayList<Usuario> buscarUsuarios() {
-        gestorUsr = new GestorBDUsuario();
-        gestorUsr.establecerConexion();
+        daoUsr = new DAOUsr();
+        daoUsr.establecerConexion();
 
         try {
-            return gestorUsr.consultarUsuarios(null);
+            return daoUsr.consultarElementos(null);
 
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -70,7 +70,7 @@ public class CtrlUsuario {
         return null;
     }
 
-    public void llenarListaUsr(JTable tableUsr) {
+    public void llenarTablaUsr(JTable tableUsr) {
         ArrayList<Usuario> listaUsr = new ArrayList<Usuario>();
         listaUsr = this.buscarUsuarios();
         DefaultTableModel modelo;

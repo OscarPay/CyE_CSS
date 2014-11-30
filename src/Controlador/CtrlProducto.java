@@ -6,7 +6,7 @@
 
 package Controlador;
 
-import Controlador.GestorBD.GestorBDProducto;
+import Controlador.GestorBD.DAOProduc;
 import Modelo.Producto;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,36 +18,36 @@ import javax.swing.table.DefaultTableModel;
  * @author Oscar
  */
 public class CtrlProducto {
-    GestorBDProducto gestorProduc;
+    DAOProduc gestorProduc;
     
     public boolean agregarProducto(String id, String nombreProduc,Double precioCom
             ,Double precioVen,String tipoproduc) throws SQLException{
-            gestorProduc=new GestorBDProducto();
+            gestorProduc=new DAOProduc();
             gestorProduc.establecerConexion();
             Producto produc=new Producto(id,nombreProduc,tipoproduc,precioCom,precioVen);
        
-            return gestorProduc.agregarProducto(produc);
+            return gestorProduc.agregarElemento(produc);
     }
     
     public boolean editarProducto(String id, String nombreProduc,Double precioCom
             ,Double precioVen,String tipoproduc) throws SQLException{
-        gestorProduc=new GestorBDProducto();
+        gestorProduc=new DAOProduc();
         gestorProduc.establecerConexion();
         
        Producto produc=new Producto(id,nombreProduc,tipoproduc,precioCom,precioVen);
              
-       return gestorProduc.modificarProducto(produc,id);
+       return gestorProduc.modificarElemento(produc,id);
             
         
     }
     
     public Producto buscarProducto(String idproduc) throws SQLException{
-        gestorProduc=new GestorBDProducto();
+        gestorProduc=new DAOProduc();
         gestorProduc.establecerConexion();
         Producto producBD=null;
        
         
-          producBD= gestorProduc.buscarProducto(idproduc);
+          producBD= gestorProduc.buscarElemento(idproduc);
         
         return producBD;
          
@@ -55,12 +55,12 @@ public class CtrlProducto {
     }
     
     public void eliminarProducto(Producto produc){
-        gestorProduc=new GestorBDProducto();
+        gestorProduc=new DAOProduc();
         gestorProduc.establecerConexion();
         
          try {
         
-             gestorProduc.eliminarProducto(produc);
+             gestorProduc.eliminarElemento(produc);
              
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -68,12 +68,12 @@ public class CtrlProducto {
     }
     
     public ArrayList<Producto> buscarProductos(){
-        gestorProduc=new GestorBDProducto();
+        gestorProduc=new DAOProduc();
         gestorProduc.establecerConexion();
         
         try {
         
-            return   gestorProduc.consultarProductos(null);
+            return   gestorProduc.consultarElementos(null);
         
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -95,7 +95,7 @@ public class CtrlProducto {
         return existeProduc;
     }
     
-     public void llenarListaProduc(JTable tableProduc){
+     public void llenarTablaUsr(JTable tableProduc){
         ArrayList <Producto> listaProduc=new ArrayList<>();
         listaProduc=this.buscarProductos();
         DefaultTableModel modelo;

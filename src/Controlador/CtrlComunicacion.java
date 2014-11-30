@@ -18,6 +18,4 @@ public class CtrlComunicacion {
         server.sendMessageToConexion(Id, message);
     }
     
-    
-    
 }

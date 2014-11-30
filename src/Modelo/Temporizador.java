@@ -7,7 +7,6 @@ package Modelo;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,12 +22,16 @@ public final class Temporizador extends Thread {
     private boolean activo = true;
     private Observado observado = null;
 
-    public Temporizador(int numMaquina, String tiempoSolicitado, String tipoMaquina) {
+    public Temporizador(int idMaquina, String tiempoSolicitado, String tipoMaquina) {
         this.tiempoSolicitado = tiempoSolicitado;
         this.observado = Observado.getINSTANCE();
-        this.idMaquina = numMaquina;
+        this.idMaquina = idMaquina;
         this.tipoMaquina = tipoMaquina;
     }
+
+    public int getIdMaquina() {
+        return idMaquina;
+    }    
 
     public String getTiempoTranscurrido() {
         return tiempoTranscurrido;
@@ -77,8 +80,7 @@ public final class Temporizador extends Thread {
 
     private void verificarTiempo() {
         if (tiempoTranscurrido.equals(tiempoSolicitado)) {
-            desactivar();
-            JOptionPane.showMessageDialog(null, "Se termino el tiempo de: " + tipoMaquina + " " + idMaquina);
+            desactivar();            
         }
     }
 

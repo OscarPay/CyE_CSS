@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class MenuPrincipal extends javax.swing.JFrame implements Observador {
     
-    private CtrlAdministradores ctrlAdministradores = new CtrlAdministradores();
+    private final CtrlAdministradores ctrlAdministradores = new CtrlAdministradores();
 
     /**
      * Creates new form MenuPrincipal

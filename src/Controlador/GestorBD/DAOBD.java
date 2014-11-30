@@ -6,6 +6,7 @@
 
 package Controlador.GestorBD;
 
+import Modelo.Usuario;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -18,11 +19,11 @@ import java.util.ArrayList;
  *
  * @author Abner
  */
-public abstract class GestorBD {
+public abstract class DAOBD <T> {
         String host="localhost";
         String puerto="666";
         String usuario="root";
-        String contrasena="thestrokes";
+        String contrasena="renba";
         String nombreBD="scc";
         Connection conexion=null;
         
@@ -68,6 +69,33 @@ public abstract class GestorBD {
     }
     
     
+   public abstract boolean agregarElemento(T elemento)throws SQLException;
+      
    
+   public abstract boolean modificarElemento(T elemento, String condicion)throws SQLException;
+ 
+    
+   public abstract void eliminarElemento(T elemento)throws SQLException;
+       
+   
+   public abstract T buscarElemento(String condicion)throws SQLException;
+      
+   public abstract ArrayList <T> consultarElementos(String condicion)throws SQLException;
+   
+   public abstract boolean existeElemento(String condicion)throws SQLException;
+    
+   
+       
+    protected abstract String armarConsultaInserta(T elemento)throws SQLException ;
+ 
+   
+    protected abstract String armarConsultaUpdate(T elemento,String correousr)throws SQLException ;
+   
+    protected abstract String armarConsultaDelete(T elemento);
+   
+    protected abstract String armarConsultaSelect(String condicion);
+    
+    protected abstract String armarConsultaSelects(String condicion);
+    
     
 }

@@ -25,7 +25,7 @@ CtrlUsuario ctrlusr=new CtrlUsuario();
     public ListaUsr() {
         initComponents();
      
-        ctrlusr.llenarListaUsr(this.tableUsr);
+        ctrlusr.llenarTablaUsr(this.tableUsr);
     }
 
     /**

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Observado {
 
     private static final Observado INSTANCE = new Observado();
-    private ArrayList<Observador> observadores = new ArrayList<Observador>();
+    private final ArrayList<Observador> observadores = new ArrayList<>();
 
     public static Observado getINSTANCE() {
         return INSTANCE;
@@ -34,20 +34,15 @@ public class Observado {
     }
 
     public void notificarObservadoresTiempo(String tiempoTranscurrido, int numero, String maquina) {
-
-        for (int i = 0; i < observadores.size(); i++) {
-
-            Observador observer = (Observador) observadores.get(i);
+        for (Observador obs : observadores) {
+            Observador observer = (Observador) obs;
             observer.actualizarTiempo(tiempoTranscurrido, numero, maquina);
-
         }
-
     }
 
-    public void notificarObservadoresPrecio(String precioTotal, int numero, String maquina) {
-       
-        for (int i = 0; i < observadores.size(); i++) {
-            Observador observer = (Observador) observadores.get(i);
+    public void notificarObservadoresPrecio(String precioTotal, int numero, String maquina) {       
+        for (Observador obs : observadores) {
+            Observador observer = (Observador) obs;
             observer.actualizarPrecio(precioTotal, numero, maquina);
         }
     }
