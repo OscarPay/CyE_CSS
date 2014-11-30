@@ -60,7 +60,7 @@ public class CalculadoraPrecios extends Thread {
         }
     }
     
-    private void cambioPrecio(String precioRedondeado){       
+    private void cambioPrecio(String precioRedondeado){         
         observado.notificarObservadoresPrecio(precioRedondeado, numEquipo, maquina);        
     }
     

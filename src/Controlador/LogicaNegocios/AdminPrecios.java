@@ -15,7 +15,7 @@ import Modelo.Temporizador;
 public class AdminPrecios {
     
     public static CalculadoraPrecios nuevaCalculadora(Temporizador temp, int id, String tipo, int numControles){
-     CalculadoraPrecios calcu = new CalculadoraPrecios(temp, id, "Computadora", numControles);
+     CalculadoraPrecios calcu = new CalculadoraPrecios(temp, id, tipo, numControles);
      iniciarCalculadora(calcu);
      return calcu;
     }
