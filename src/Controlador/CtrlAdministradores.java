@@ -6,17 +6,20 @@
 package Controlador;
 
 import Controlador.LogicaNegocios.AdminPrecios;
-import Controlador.LogicaNegocios.AdminRegistroCompu;
+import Controlador.LogicaNegocios.AdminRegistrosCompu;
 import Controlador.LogicaNegocios.AdminRegistrosXbox;
 import Controlador.LogicaNegocios.AdminTemp;
 import Modelo.CalculadoraPrecios;
 import Modelo.RegistroCompu;
 import Modelo.RegistroXbox;
 import Modelo.Temporizador;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class CtrlAdministradores {
     
-    private final AdminRegistroCompu adminRegistrosCompus = AdminRegistroCompu.getINSTANCE();
+    private final AdminRegistrosCompu adminRegistrosCompus = AdminRegistrosCompu.getINSTANCE();
     private final AdminRegistrosXbox adminRegistrosXbox = AdminRegistrosXbox.getINSTANCE();
     
     public void agregarRegComputadora(int idCompu, String tiempoSolicitado) {
@@ -27,7 +30,8 @@ public class CtrlAdministradores {
     private RegistroCompu crearRegistroCompu(int idCompu, String tiempoSolicitado) {
         Temporizador temp = AdminTemp.nuevoTemporizador(idCompu, tiempoSolicitado, "Computadora");
         CalculadoraPrecios calcu = AdminPrecios.nuevaCalculadora(temp, idCompu, "Computadora", 1);
-        RegistroCompu registroCompu = new RegistroCompu(idCompu, tiempoSolicitado, temp, calcu);
+        String tiempoEntrada = obtenerTiempoEntrada();
+        RegistroCompu registroCompu = new RegistroCompu(idCompu, tiempoSolicitado, tiempoEntrada, temp, calcu);
         return registroCompu;
     }
     
@@ -47,7 +51,8 @@ public class CtrlAdministradores {
     private RegistroXbox crearRegistroXbox(int idXbox, String tiempoSolicitado, int numControles) {
         Temporizador temp = AdminTemp.nuevoTemporizador(idXbox, tiempoSolicitado, "Xbox");
         CalculadoraPrecios calcu = AdminPrecios.nuevaCalculadora(temp, idXbox, "Xbox", numControles);
-        RegistroXbox registroXbox = new RegistroXbox(idXbox, numControles, tiempoSolicitado, temp, calcu);
+        String tiempoEntrada = obtenerTiempoEntrada();
+        RegistroXbox registroXbox = new RegistroXbox(idXbox, numControles, tiempoSolicitado, tiempoEntrada, temp, calcu);
         return registroXbox;
     }
     
@@ -63,8 +68,14 @@ public class CtrlAdministradores {
         return AdminRegistrosXbox.getINSTANCE();
     }
     
-    public AdminRegistroCompu getAdminComputadoras(){
-        return AdminRegistroCompu.getINSTANCE();
+    public AdminRegistrosCompu getAdminComputadoras(){
+        return AdminRegistrosCompu.getINSTANCE();
     }   
+
+    private String obtenerTiempoEntrada() {
+        Date tiempoEntrada = new Date();
+        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+        return hourFormat.format(tiempoEntrada);
+    }  
 
 }

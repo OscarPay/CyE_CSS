@@ -13,15 +13,15 @@ import java.util.ArrayList;
  *
  * @author Oscar
  */
-public class AdminRegistroCompu {
+public class AdminRegistrosCompu {
     
-    private static final AdminRegistroCompu INSTANCE = new AdminRegistroCompu();
+    private static final AdminRegistrosCompu INSTANCE = new AdminRegistrosCompu();
     private final ArrayList<RegistroCompu> registrosCompu = new ArrayList<>();
     
-    private AdminRegistroCompu(){    
+    private AdminRegistrosCompu(){    
     }
 
-    public static AdminRegistroCompu getINSTANCE() {
+    public static AdminRegistrosCompu getINSTANCE() {
         return INSTANCE;
     }    
     
@@ -42,6 +42,14 @@ public class AdminRegistroCompu {
             }
         }
         return rentaCompu;
+    }
+    
+    public static void crearRentaCompu(int id){
+       AdminRegistrosCompu admin = AdminRegistrosCompu.getINSTANCE();
+       String tiempoEntrada = admin.buscarRegistroCompuPorId(id).getTiempoEntrada();
+       String precioTotal = admin.buscarRegistroCompuPorId(id).getCalculadoraPrecio().getPrecioTotal();
+       String tiempoTranscurrido = admin.buscarRegistroCompuPorId(id).getTemporizador().getTiempoTranscurrido();
+       AdminDatosRenta.crearRentaCompu(id, tiempoEntrada, tiempoTranscurrido, precioTotal);
     }
     
 }

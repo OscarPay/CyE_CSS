@@ -17,22 +17,29 @@ public class RegistroCompu {
 
     private int idCompu = 0;
     private String tiempoSolicitado = "";
-    private Date tiempoEntrada = null;
-    private Date tiempoSalida = null;
+    private String tiempoEntrada = null;
+    private String tiempoSalida = null;
     private Double precio = 0.00;
     private boolean ocupado = false;
 
     private Temporizador temporizador = null;
     private CalculadoraPrecios calculadoraPrecio = null;
 
-    public RegistroCompu(int idCompu, String tiempoSolicitado, Temporizador temp, CalculadoraPrecios calcu) {
+    public RegistroCompu(int idCompu, String tiempoSolicitado, String tiempoEntrada, Temporizador temp, CalculadoraPrecios calcu) {
         this.idCompu = idCompu;
         this.tiempoSolicitado = tiempoSolicitado;
-        this.tiempoEntrada = new Date();
+        this.tiempoEntrada = tiempoEntrada;
         this.ocupado = true;
         this.temporizador = temp;                
         this.calculadoraPrecio = calcu;                
     }
+
+    public RegistroCompu() {
+    }
+
+    public CalculadoraPrecios getCalculadoraPrecio() {
+        return calculadoraPrecio;
+    }    
 
     public Temporizador getTemporizador() {
         return temporizador;
@@ -58,24 +65,19 @@ public class RegistroCompu {
         this.tiempoSolicitado = tiempoSolicitado;
     }
 
-    public Date getTiempoEntrada() {
+    public String getTiempoEntrada() {
         return tiempoEntrada;
-    }
+    }    
 
-    public String getTiempoEntradaString() {
-        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
-        return hourFormat.format(tiempoEntrada);
-    }
-
-    public void setTiempoEntrada(Date tiempoEntrada) {
+    public void setTiempoEntrada(String tiempoEntrada) {
         this.tiempoEntrada = tiempoEntrada;
     }
 
-    public Date getTiempoSalida() {
+    public String getTiempoSalida() {
         return tiempoSalida;
     }
 
-    public void setTiempoSalida(Date tiempoSalida) {
+    public void setTiempoSalida(String tiempoSalida) {
         this.tiempoSalida = tiempoSalida;
     }
 
@@ -94,5 +96,4 @@ public class RegistroCompu {
     public void setOcupado(boolean ocupado) {
         this.ocupado = ocupado;
     }
-
 }
