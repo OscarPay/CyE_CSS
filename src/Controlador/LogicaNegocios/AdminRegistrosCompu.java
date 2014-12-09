@@ -6,7 +6,9 @@
 
 package Controlador.LogicaNegocios;
 
+import Modelo.CalculadoraPrecios;
 import Modelo.RegistroCompu;
+import Modelo.Temporizador;
 import java.util.ArrayList;
 
 /**
@@ -16,7 +18,9 @@ import java.util.ArrayList;
 public class AdminRegistrosCompu {
     
     private static final AdminRegistrosCompu INSTANCE = new AdminRegistrosCompu();
+    private static final String COMPUTADORA = "Computadora";
     private final ArrayList<RegistroCompu> registrosCompu = new ArrayList<>();
+    
     
     private AdminRegistrosCompu(){    
     }
@@ -25,8 +29,17 @@ public class AdminRegistrosCompu {
         return INSTANCE;
     }    
     
-    public void agregarRegistroCompu(RegistroCompu rentaCompuTemp){        
-        registrosCompu.add(rentaCompuTemp);
+    public void agregarRegistroCompu(int idCompu, String tiempoSolicitado){ 
+        RegistroCompu registroCompu = crearRegistroCompu(idCompu, tiempoSolicitado);
+        registrosCompu.add(registroCompu);
+    }    
+
+    private RegistroCompu crearRegistroCompu(int idCompu, String tiempoSolicitado) {
+        Temporizador temp = AdminTiempo.nuevoTemporizador(idCompu, tiempoSolicitado, COMPUTADORA);
+        CalculadoraPrecios calcu = AdminPrecios.nuevaCalculadora(temp, idCompu, COMPUTADORA, 1);
+        String tiempoEntrada = AdminTiempo.obtenerHoraActual();
+        RegistroCompu registroCompu = new RegistroCompu(idCompu, tiempoSolicitado, tiempoEntrada, temp, calcu);
+        return registroCompu;
     }
 
     public void eliminarRegistroCompu(int idCompu) {

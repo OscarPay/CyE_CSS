@@ -6,7 +6,9 @@
 
 package Controlador.LogicaNegocios;
 
+import Modelo.CalculadoraPrecios;
 import Modelo.RegistroXbox;
+import Modelo.Temporizador;
 import java.util.ArrayList;
 
 /**
@@ -16,6 +18,7 @@ import java.util.ArrayList;
 public class AdminRegistrosXbox {
    
     private static final AdminRegistrosXbox INSTANCE = new AdminRegistrosXbox();
+    private static final String XBOX = "Xbox"; 
     private final ArrayList<RegistroXbox> registrosXbox = new ArrayList<>();
     
     private AdminRegistrosXbox(){    
@@ -25,8 +28,17 @@ public class AdminRegistrosXbox {
         return INSTANCE;
     }    
     
-    public void agregarRegistroXbox(RegistroXbox registroXbox){
+    public void agregarRegistroXbox(int idXbox, int numControles, String tiempoSolicitado){
+        RegistroXbox registroXbox = crearRegistroXbox(idXbox, tiempoSolicitado, numControles);
         registrosXbox.add(registroXbox);
+    }    
+
+    private RegistroXbox crearRegistroXbox(int idXbox, String tiempoSolicitado, int numControles) {
+        Temporizador temp = AdminTiempo.nuevoTemporizador(idXbox, tiempoSolicitado, XBOX);
+        CalculadoraPrecios calcu = AdminPrecios.nuevaCalculadora(temp, idXbox, XBOX, numControles);
+        String tiempoEntrada = AdminTiempo.obtenerHoraActual();
+        RegistroXbox registroXbox = new RegistroXbox(idXbox, numControles, tiempoSolicitado, tiempoEntrada, temp, calcu);
+        return registroXbox;
     }
 
     public void eliminarRegistroXbox(int idXbox) {
