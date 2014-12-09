@@ -5,10 +5,6 @@
  */
 package Modelo;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 /**
  *
  * @author Oscar
@@ -17,21 +13,22 @@ public class RegistroCompu {
 
     private int idCompu = 0;
     private String tiempoSolicitado = "";
-    private String tiempoEntrada = null;
-    private String tiempoSalida = null;
+    private String horaEntrada = null;
+    private String horaSalida = null;
     private Double precio = 0.00;
     private boolean ocupado = false;
 
     private Temporizador temporizador = null;
     private CalculadoraPrecios calculadoraPrecio = null;
 
-    public RegistroCompu(int idCompu, String tiempoSolicitado, String tiempoEntrada, Temporizador temp, CalculadoraPrecios calcu) {
+    public RegistroCompu(int idCompu, String tiempoSolicitado, String horaEntrada,
+            Temporizador temp, CalculadoraPrecios calcu) {
         this.idCompu = idCompu;
         this.tiempoSolicitado = tiempoSolicitado;
-        this.tiempoEntrada = tiempoEntrada;
+        this.horaEntrada = horaEntrada;
         this.ocupado = true;
-        this.temporizador = temp;                
-        this.calculadoraPrecio = calcu;                
+        this.temporizador = temp;
+        this.calculadoraPrecio = calcu;
     }
 
     public RegistroCompu() {
@@ -39,13 +36,13 @@ public class RegistroCompu {
 
     public CalculadoraPrecios getCalculadoraPrecio() {
         return calculadoraPrecio;
-    }    
+    }
 
     public Temporizador getTemporizador() {
         return temporizador;
     }
-    
-    public String getTiempoTranscurrido(){
+
+    public String getTiempoTranscurrido() {
         return temporizador.getTiempoTranscurrido();
     }
 
@@ -65,20 +62,20 @@ public class RegistroCompu {
         this.tiempoSolicitado = tiempoSolicitado;
     }
 
-    public String getTiempoEntrada() {
-        return tiempoEntrada;
-    }    
-
-    public void setTiempoEntrada(String tiempoEntrada) {
-        this.tiempoEntrada = tiempoEntrada;
+    public String getHoraEntrada() {
+        return horaEntrada;
     }
 
-    public String getTiempoSalida() {
-        return tiempoSalida;
+    public void setHoraEntrada(String horaEntrada) {
+        this.horaEntrada = horaEntrada;
     }
 
-    public void setTiempoSalida(String tiempoSalida) {
-        this.tiempoSalida = tiempoSalida;
+    public String getHoraSalida() {
+        return horaSalida;
+    }
+
+    public void setHoraSalida(String horaSalida) {
+        this.horaSalida = horaSalida;
     }
 
     public Double getPrecio() {

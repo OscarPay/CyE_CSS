@@ -27,9 +27,15 @@ public class AdminTiempo {
     }
     
     public static String obtenerHoraActual() {
-        Date tiempoEntrada = new Date();
-        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
-        return hourFormat.format(tiempoEntrada);
+        Date horaEntrada = new Date();
+        DateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
+        return formatoHora.format(horaEntrada);
+    }
+    
+    public static String obtenerFecha(){
+        Date fecha = new Date();
+        DateFormat formatoFecha = new SimpleDateFormat("dd/MMMM/yyyy");
+        return formatoFecha.format(fecha);
     }
     
 }

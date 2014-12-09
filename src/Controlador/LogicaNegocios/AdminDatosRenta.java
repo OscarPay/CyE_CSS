@@ -14,14 +14,19 @@ import Modelo.RentaXbox;
  */
 public class AdminDatosRenta {
 
-    public static void crearRentaCompu(int id, String tiempoEntrada, String tiempoTranscurrido, String precioTotal) {
-        RentaComputadora rentaCompu = new RentaComputadora(id, precioTotal, tiempoEntrada, tiempoTranscurrido);
+    //Creo que esta clase esta de mas, es una clase inutil
+    public static void crearRentaCompu(int id, String horaEntrada,
+            String tiempoTranscurrido, String precioTotal, String fecha) {
+        RentaComputadora rentaCompu = new RentaComputadora(id, precioTotal,
+                horaEntrada, tiempoTranscurrido, fecha);
         System.out.println(rentaCompu.toString());
     }
-    
-    public static void crearRentaXbox(int id,int numControles, String tiempoEntrada, String tiempoTranscurrido, String precioTotal) {
-        RentaXbox rentaXbox = new RentaXbox(id,numControles,  tiempoEntrada, tiempoTranscurrido, precioTotal);
+
+    public static void crearRentaXbox(int id, int numControles, String horaEntrada,
+            String tiempoTranscurrido, String precioTotal, String fecha) {
+        RentaXbox rentaXbox = new RentaXbox(id, numControles, horaEntrada,
+                tiempoTranscurrido, precioTotal, fecha);
         System.out.println(rentaXbox.toString());
     }
-    
+
 }

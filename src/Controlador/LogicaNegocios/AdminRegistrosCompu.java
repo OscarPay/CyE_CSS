@@ -57,12 +57,14 @@ public class AdminRegistrosCompu {
         return rentaCompu;
     }
     
-    public static void crearRentaCompu(int id){
+    public static void crearRentaCompu(int id){        
        AdminRegistrosCompu admin = AdminRegistrosCompu.getINSTANCE();
-       String tiempoEntrada = admin.buscarRegistroCompuPorId(id).getTiempoEntrada();
-       String precioTotal = admin.buscarRegistroCompuPorId(id).getCalculadoraPrecio().getPrecioTotal();
-       String tiempoTranscurrido = admin.buscarRegistroCompuPorId(id).getTemporizador().getTiempoTranscurrido();
-       AdminDatosRenta.crearRentaCompu(id, tiempoEntrada, tiempoTranscurrido, precioTotal);
+       RegistroCompu registroCompu = admin.buscarRegistroCompuPorId(id);
+       String horaEntrada = registroCompu.getHoraEntrada();
+       String precioTotal = registroCompu.getCalculadoraPrecio().getPrecioTotal();
+       String tiempoTranscurrido = registroCompu.getTemporizador().getTiempoTranscurrido();
+       String fecha = AdminTiempo.obtenerFecha();
+       AdminDatosRenta.crearRentaCompu(id, horaEntrada, tiempoTranscurrido, precioTotal, fecha);
     }
     
 }

@@ -58,12 +58,13 @@ public class AdminRegistrosXbox {
     
     public static void crearRentaXbox(int id){
        AdminRegistrosXbox admin = AdminRegistrosXbox.getINSTANCE();
-       int numControles = admin.buscarRegistroXboxPorId(id).getNumComtroles();
-       String tiempoEntrada = admin.buscarRegistroXboxPorId(id).getTiempoEntrada();
-       String precioTotal = admin.buscarRegistroXboxPorId(id).getCalculadoraPrecio().getPrecioTotal();
-       String tiempoTranscurrido = admin.buscarRegistroXboxPorId(id).getTemporizador().getTiempoTranscurrido();
-       
-       AdminDatosRenta.crearRentaXbox(id,numControles, tiempoEntrada, tiempoTranscurrido, precioTotal);
+       RegistroXbox registroXbox = admin.buscarRegistroXboxPorId(id);
+       int numControles = registroXbox.getNumComtroles();
+       String tiempoEntrada = registroXbox.getHoraEntrada();
+       String precioTotal = registroXbox.getCalculadoraPrecio().getPrecioTotal();
+       String tiempoTranscurrido = registroXbox.getTemporizador().getTiempoTranscurrido();
+       String fecha = AdminTiempo.obtenerFecha();
+       AdminDatosRenta.crearRentaXbox(id, numControles, tiempoEntrada, tiempoTranscurrido, precioTotal, fecha);
     }
       
     
