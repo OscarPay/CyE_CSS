@@ -15,15 +15,17 @@ public class RentaXbox {
     private int numControles = 0;
     private String horaEntrada = "";
     private String horaSalida = "";
+    private String tiempoTranscurrido = "";
     private String precio = "";
     private String fecha = "";
 
-    public RentaXbox(int id, int numControles, String horaEntrada,
-            String horaSalida, String precio, String fecha) {
+    public RentaXbox(int id, int numControles, String horaEntrada, String horaSalida, 
+            String tiempoTranscurrido, String precio, String fecha) {
         this.idXbox = id;
         this.numControles = numControles;
         this.horaEntrada = horaEntrada;
         this.horaSalida = horaSalida;
+        this.tiempoTranscurrido = tiempoTranscurrido;
         this.precio = precio;
         this.fecha = fecha;
     }
@@ -36,6 +38,7 @@ public class RentaXbox {
                 + "precio: " + precio + "\n"
                 + "hora entrada: " + horaEntrada + "\n"
                 + "hora salida: " + horaSalida + "\n"
+                + "tiempo Transcurrido: " + tiempoTranscurrido + "\n"
                 + "fecha: " + fecha;
         return datos;
     }

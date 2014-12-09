@@ -15,17 +15,17 @@ import Modelo.RentaXbox;
 public class AdminDatosRenta {
 
     //Creo que esta clase esta de mas, es una clase inutil
-    public static void crearRentaCompu(int id, String horaEntrada,
+    public static void crearRentaCompu(int id, String horaEntrada, String horaSalida,
             String tiempoTranscurrido, String precioTotal, String fecha) {
         RentaComputadora rentaCompu = new RentaComputadora(id, precioTotal,
-                horaEntrada, tiempoTranscurrido, fecha);
+                horaEntrada, horaSalida, tiempoTranscurrido, fecha);
         System.out.println(rentaCompu.toString());
     }
 
     public static void crearRentaXbox(int id, int numControles, String horaEntrada,
-            String tiempoTranscurrido, String precioTotal, String fecha) {
-        RentaXbox rentaXbox = new RentaXbox(id, numControles, horaEntrada,
-                tiempoTranscurrido, precioTotal, fecha);
+            String horaSalida, String tiempoTranscurrido, String precioTotal, String fecha) {
+        RentaXbox rentaXbox = new RentaXbox(id, numControles, horaEntrada, 
+                horaSalida, tiempoTranscurrido, precioTotal, fecha);
         System.out.println(rentaXbox.toString());
     }
 
