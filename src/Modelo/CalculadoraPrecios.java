@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Modelo;
 
 import Controlador.LogicaNegocios.AdminRegistrosCompu;
@@ -15,9 +14,9 @@ import javax.swing.JOptionPane;
  *
  * @author Oscar
  */
-public class CalculadoraPrecios extends Thread {    
-    
-     private int idMaquina = 0;
+public class CalculadoraPrecios extends Thread {
+
+    private int idMaquina = 0;
     private String maquina = "";
     private String precioTotal;
     private double precioBase = 0;
@@ -62,9 +61,7 @@ public class CalculadoraPrecios extends Thread {
             notificarAdmin();
 
         } catch (InterruptedException ex) {
-
             JOptionPane.showMessageDialog(null, "Error, en calcula precios");
-
         }
     }
 
@@ -73,17 +70,15 @@ public class CalculadoraPrecios extends Thread {
     }
 
     private void notificarAdmin() {
-        JOptionPane.showMessageDialog(null, "Precio: " + precioTotal + "Tiempo: " + temporizador.getTiempoTranscurrido());
         switch (maquina) {
-            case "Computadora":
-                AdminRegistrosCompu.crearRentaCompu(idMaquina);
+            case RentaComputadora.COMPUTADORA:
+                AdminRegistrosCompu.getINSTANCE().crearRentaCompu(idMaquina);
                 break;
-            case "Xbox":
-                AdminRegistrosXbox.crearRentaXbox(idMaquina);
+            case RentaXbox.XBOX:
+                AdminRegistrosXbox.getINSTANCE().crearRentaXbox(idMaquina);
                 break;
-
         }
 
     }
-    
+
 }

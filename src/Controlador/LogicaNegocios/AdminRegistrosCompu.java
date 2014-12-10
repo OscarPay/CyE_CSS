@@ -6,10 +6,15 @@
 
 package Controlador.LogicaNegocios;
 
+import Controlador.CtrlRenta;
 import Modelo.CalculadoraPrecios;
 import Modelo.RegistroCompu;
+import Modelo.RentaComputadora;
 import Modelo.Temporizador;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -20,6 +25,7 @@ public class AdminRegistrosCompu {
     private static final AdminRegistrosCompu INSTANCE = new AdminRegistrosCompu();
     private static final String COMPUTADORA = "Computadora";
     private final ArrayList<RegistroCompu> registrosCompu = new ArrayList<>();
+    private CtrlRenta ctrlRenta = new CtrlRenta();
     
     
     private AdminRegistrosCompu(){    
@@ -57,15 +63,26 @@ public class AdminRegistrosCompu {
         return rentaCompu;
     }
     
-    public static void crearRentaCompu(int id){        
-       AdminRegistrosCompu admin = AdminRegistrosCompu.getINSTANCE();
-       RegistroCompu registroCompu = admin.buscarRegistroCompuPorId(id);
-       String horaEntrada = registroCompu.getHoraEntrada();
-       String horaSalida = AdminTiempo.obtenerHoraActual();
-       String precioTotal = registroCompu.getCalculadoraPrecio().getPrecioTotal();
-       String tiempoTranscurrido = registroCompu.getTemporizador().getTiempoTranscurrido();
-       String fecha = AdminTiempo.obtenerFecha();
-       AdminDatosRenta.crearRentaCompu(id, horaEntrada, horaSalida, tiempoTranscurrido, precioTotal, fecha);
+    public void crearRentaCompu(int id){        
+       RentaComputadora rentaCompu = obtenerDatosRenta(id);
+        try {
+            ctrlRenta.agregarRentaCompu(rentaCompu);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminRegistrosCompu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private RentaComputadora obtenerDatosRenta(int id) {
+        AdminRegistrosCompu admin = AdminRegistrosCompu.getINSTANCE();
+        RegistroCompu registroCompu = admin.buscarRegistroCompuPorId(id);
+        String horaEntrada = registroCompu.getHoraEntrada();
+        String horaSalida = AdminTiempo.obtenerHoraActual();
+        String precioTotal = registroCompu.getCalculadoraPrecio().getPrecioTotal();
+        String tiempoTranscurrido = registroCompu.getTemporizador().getTiempoTranscurrido();
+        String fecha = AdminTiempo.obtenerFecha();
+        RentaComputadora rentaCompu = new RentaComputadora(id, precioTotal,
+                horaEntrada, horaSalida, tiempoTranscurrido, fecha);
+        return rentaCompu;
     }
     
 }

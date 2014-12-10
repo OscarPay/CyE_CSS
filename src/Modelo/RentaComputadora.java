@@ -17,6 +17,8 @@ public class RentaComputadora {
     private String horaSalida = "";
     private String tiempoTranscurrido = "";
     private String fecha = "";
+    
+    public static final String COMPUTADORA = "Computadora";
 
     public RentaComputadora(int idCompu, String precio, String horaEntrada,
             String horaSalida, String tiempoTranscurrido, String fecha) {

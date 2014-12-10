@@ -6,10 +6,15 @@
 
 package Controlador.LogicaNegocios;
 
+import Controlador.CtrlRenta;
 import Modelo.CalculadoraPrecios;
 import Modelo.RegistroXbox;
+import Modelo.RentaXbox;
 import Modelo.Temporizador;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -20,6 +25,7 @@ public class AdminRegistrosXbox {
     private static final AdminRegistrosXbox INSTANCE = new AdminRegistrosXbox();
     private static final String XBOX = "Xbox"; 
     private final ArrayList<RegistroXbox> registrosXbox = new ArrayList<>();
+    private CtrlRenta ctrlXbox = new CtrlRenta();
     
     private AdminRegistrosXbox(){    
     }
@@ -56,17 +62,27 @@ public class AdminRegistrosXbox {
         return registroXbox;
     }    
     
-    public static void crearRentaXbox(int id){
-       AdminRegistrosXbox admin = AdminRegistrosXbox.getINSTANCE();
-       RegistroXbox registroXbox = admin.buscarRegistroXboxPorId(id);
-       int numControles = registroXbox.getNumComtroles();
-       String horaEntrada = registroXbox.getHoraEntrada();
-       String horaSalida = AdminTiempo.obtenerHoraActual();
-       String precioTotal = registroXbox.getCalculadoraPrecio().getPrecioTotal();
-       String tiempoTranscurrido = registroXbox.getTemporizador().getTiempoTranscurrido();
-       String fecha = AdminTiempo.obtenerFecha();
-       AdminDatosRenta.crearRentaXbox(id, numControles, horaEntrada, horaSalida, 
-               tiempoTranscurrido, precioTotal, fecha);
+    public void crearRentaXbox(int id){
+       RentaXbox rentaXbox = obtenerDatosRenta(id);
+        try {
+            ctrlXbox.agregarRentaXbox(rentaXbox);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminRegistrosXbox.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private RentaXbox obtenerDatosRenta(int id) {
+        AdminRegistrosXbox admin = AdminRegistrosXbox.getINSTANCE();
+        RegistroXbox registroXbox = admin.buscarRegistroXboxPorId(id);
+        int numControles = registroXbox.getNumComtroles();
+        String horaEntrada = registroXbox.getHoraEntrada();
+        String horaSalida = AdminTiempo.obtenerHoraActual();
+        String precioTotal = registroXbox.getCalculadoraPrecio().getPrecioTotal();
+        String tiempoTranscurrido = registroXbox.getTemporizador().getTiempoTranscurrido();
+        String fecha = AdminTiempo.obtenerFecha();
+        RentaXbox rentaXbox = new RentaXbox(id, numControles, horaEntrada,
+                horaSalida, tiempoTranscurrido, precioTotal, fecha);
+        return rentaXbox;
     }
       
     

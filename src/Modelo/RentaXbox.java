@@ -18,6 +18,8 @@ public class RentaXbox {
     private String tiempoTranscurrido = "";
     private String precio = "";
     private String fecha = "";
+    
+    public static final String XBOX = "Xbox";
 
     public RentaXbox(int id, int numControles, String horaEntrada, String horaSalida, 
             String tiempoTranscurrido, String precio, String fecha) {
@@ -29,6 +31,34 @@ public class RentaXbox {
         this.precio = precio;
         this.fecha = fecha;
     }
+
+    public int getIdXbox() {
+        return idXbox;
+    }
+
+    public int getNumControles() {
+        return numControles;
+    }
+
+    public String getHoraEntrada() {
+        return horaEntrada;
+    }
+
+    public String getHoraSalida() {
+        return horaSalida;
+    }
+
+    public String getTiempoTranscurrido() {
+        return tiempoTranscurrido;
+    }
+
+    public String getPrecio() {
+        return precio;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }    
 
     @Override
     public String toString() {
