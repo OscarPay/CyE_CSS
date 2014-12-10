@@ -6,9 +6,6 @@
 package Vista;
 
 import Controlador.CtrlMenuPrincipal;
-import Controlador.LogicaNegocios.AdminRegistrosCompu;
-import Controlador.LogicaNegocios.AdminRegistrosXbox;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,17 +13,13 @@ import javax.swing.JOptionPane;
  */
 public class MenuPrincipal extends javax.swing.JFrame {
 
-    private final AdminRegistrosCompu adminRegistrosCompus = AdminRegistrosCompu.getINSTANCE();
-    private final AdminRegistrosXbox adminRegistrosXbox = AdminRegistrosXbox.getINSTANCE();
     private final CtrlMenuPrincipal ctrlMenuPrincipal = new CtrlMenuPrincipal();
-
+    
     /**
      * Creates new form MenuPrincipal
      */
     public MenuPrincipal() {
-
         initComponents();
-
     }
 
     /**
@@ -304,45 +297,27 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnComputadora1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComputadora1ActionPerformed
-
-        String tiempoSolicitado = JOptionPane.showInputDialog("Ingrese el tiempo");
-        this.iniciarUsoCompu(1, tiempoSolicitado);
-        ctrlMenuPrincipal.activarBotonComputadora(1, false);
+        ctrlMenuPrincipal.crearVentanaOpcionesCompu(1);
     }//GEN-LAST:event_btnComputadora1ActionPerformed
 
     private void btnComputadora2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComputadora2ActionPerformed
-
-        String tiempoSolicitado = JOptionPane.showInputDialog("Ingrese el tiempo");
-        this.iniciarUsoCompu(2, tiempoSolicitado);
-        ctrlMenuPrincipal.activarBotonComputadora(2, false);
+        ctrlMenuPrincipal.crearVentanaOpcionesCompu(2);        
     }//GEN-LAST:event_btnComputadora2ActionPerformed
 
     private void btnComputadora3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComputadora3ActionPerformed
-
-        String tiempoSolicitado = JOptionPane.showInputDialog("Ingrese el tiempo");
-        this.iniciarUsoCompu(3, tiempoSolicitado);
-        ctrlMenuPrincipal.activarBotonComputadora(3, false);
+        ctrlMenuPrincipal.crearVentanaOpcionesCompu(3);
     }//GEN-LAST:event_btnComputadora3ActionPerformed
 
     private void btnComputadora4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComputadora4ActionPerformed
-
-        String tiempoSolicitado = JOptionPane.showInputDialog("Ingrese el tiempo");
-        this.iniciarUsoCompu(4, tiempoSolicitado);
-        ctrlMenuPrincipal.activarBotonComputadora(4, false);
+        ctrlMenuPrincipal.crearVentanaOpcionesCompu(4);
     }//GEN-LAST:event_btnComputadora4ActionPerformed
 
     private void btnXbox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXbox1ActionPerformed
-
-        String tiempoSolicitado = JOptionPane.showInputDialog("Ingrese el tiempo");
-        this.iniciarUsoXbox(1, 1, tiempoSolicitado);
-        ctrlMenuPrincipal.activarBotonXbox(1, false);
+        ctrlMenuPrincipal.crearVentanaOpcionesXbox(1);
     }//GEN-LAST:event_btnXbox1ActionPerformed
 
     private void btnXbox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXbox2ActionPerformed
-
-        String tiempoSolicitado = JOptionPane.showInputDialog("Ingrese el tiempo");
-        this.iniciarUsoXbox(2, 1, tiempoSolicitado);
-        ctrlMenuPrincipal.activarBotonXbox(2, false);
+        ctrlMenuPrincipal.crearVentanaOpcionesXbox(2);
     }//GEN-LAST:event_btnXbox2ActionPerformed
 
     /**
@@ -413,31 +388,5 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public static javax.swing.JLabel lblTiempoXbox1;
     public static javax.swing.JLabel lblTiempoXbox2;
     // End of variables declaration//GEN-END:variables
-
-    /**
-     * Me agrega un observador a un cronometro
-     *
-     * @param obs La ventana MenuPrincipal
-     * @param posicion La posicion de la computadora dentro del arreglo
-     */
-    private void agregarObservadorCompu(int idCompu) {
-        adminRegistrosCompus.buscarRegistroCompuPorId(idCompu).getTemporizador()
-                .getObservado().agregar(ctrlMenuPrincipal);
-    }
-
-    private void agregarObservadorXbox(int idXbox) {
-        adminRegistrosXbox.buscarRegistroXboxPorId(idXbox).getTemporizador()
-                .getObservado().agregar(ctrlMenuPrincipal);
-    }
-
-    private void iniciarUsoCompu(int idCompu, String tiempoSolicitado) {
-        adminRegistrosCompus.agregarRegistroCompu(idCompu, tiempoSolicitado);
-        agregarObservadorCompu(idCompu);
-    }
-
-    private void iniciarUsoXbox(int idXbox, int numControles, String tiempoSolicitado) {
-        adminRegistrosXbox.agregarRegistroXbox(idXbox, numControles, tiempoSolicitado);
-        agregarObservadorXbox(idXbox);
-    }
 
 }

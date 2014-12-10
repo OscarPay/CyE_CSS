@@ -5,11 +5,14 @@
  */
 package Controlador;
 
+import Controlador.LogicaNegocios.AdminRegistrosCompu;
+import Controlador.LogicaNegocios.AdminRegistrosXbox;
 import Modelo.Observador;
 import Modelo.RentaComputadora;
 import Modelo.RentaXbox;
 import Vista.MenuPrincipal;
-import java.awt.Color;
+import Vista.VtnOpcionesCompu;
+import Vista.VtnOpcionesXbox;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,6 +21,45 @@ import javax.swing.JOptionPane;
  */
 public class CtrlMenuPrincipal implements Observador {
 
+    private final AdminRegistrosCompu adminRegistrosCompus = AdminRegistrosCompu.getINSTANCE();
+    private final AdminRegistrosXbox adminRegistrosXbox = AdminRegistrosXbox.getINSTANCE();
+    
+    public void crearVentanaOpcionesCompu(int idCompu) {
+        VtnOpcionesCompu vtnOpsCompu = new VtnOpcionesCompu(idCompu);
+        vtnOpsCompu.setVisible(true);
+    }
+    
+    public void crearVentanaOpcionesXbox(int idXbox) {
+        VtnOpcionesXbox vtnOpsXbox = new VtnOpcionesXbox(idXbox);
+        vtnOpsXbox.setVisible(true);
+    }
+    
+    /**
+     * Me agrega un observador a un cronometro
+     *
+     * @param obs La ventana MenuPrincipal
+     * @param posicion La posicion de la computadora dentro del arreglo
+     */
+    private void agregarObservadorCompu(int idCompu) {
+        adminRegistrosCompus.buscarRegistroCompuPorId(idCompu).getTemporizador()
+                .getObservado().agregar(this);
+    }
+
+    private void agregarObservadorXbox(int idXbox) {
+        adminRegistrosXbox.buscarRegistroXboxPorId(idXbox).getTemporizador()
+                .getObservado().agregar(this);
+    }
+
+    public void iniciarUsoCompu(int idCompu, String tiempoSolicitado) {
+        adminRegistrosCompus.agregarRegistroCompu(idCompu, tiempoSolicitado);
+        agregarObservadorCompu(idCompu);
+    }
+
+    public void iniciarUsoXbox(int idXbox, int numControles, String tiempoSolicitado) {
+        adminRegistrosXbox.agregarRegistroXbox(idXbox, numControles, tiempoSolicitado);
+        agregarObservadorXbox(idXbox);
+    }
+    
     /**
      * Actualizar los datos del observador
      *
@@ -188,5 +230,7 @@ public class CtrlMenuPrincipal implements Observador {
                 break;
         }
     }
+    
+       
     
 }
