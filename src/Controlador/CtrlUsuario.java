@@ -9,8 +9,6 @@ import Controlador.GestorBD.GestorBDUsuario;
 import Modelo.Usuario;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -71,28 +69,21 @@ public class CtrlUsuario {
     }
 
     public void llenarListaUsr(JTable tableUsr) {
-        ArrayList<Usuario> listaUsr = new ArrayList<Usuario>();
+        ArrayList<Usuario> listaUsr = new ArrayList<>();
         listaUsr = this.buscarUsuarios();
         DefaultTableModel modelo;
         Usuario usrTemp;
 
-        for (int indiceUsr = 0; indiceUsr < listaUsr.size(); indiceUsr++) {
-
-            usrTemp = listaUsr.get(indiceUsr);
+        for (Usuario listaUsr1 : listaUsr) {
+            usrTemp = listaUsr1;
             String nombreUsr = usrTemp.getNombreUsuario();
             String tipoUsr = usrTemp.getTipoUsuario();
             String telefonoUsr = usrTemp.getTelefono();
             String correoUsr = usrTemp.getCorreo();
-
             String[] datosProduc = {nombreUsr,correoUsr,telefonoUsr,tipoUsr };
-
             modelo = (DefaultTableModel) tableUsr.getModel();
             modelo.addRow(datosProduc);
-
         }
 
-    }
-    
-
-    
+    }    
 }
