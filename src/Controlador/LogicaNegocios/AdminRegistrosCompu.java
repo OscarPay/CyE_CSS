@@ -6,6 +6,7 @@
 
 package Controlador.LogicaNegocios;
 
+import Controlador.CtrlMenuPrincipal;
 import Controlador.CtrlRenta;
 import Modelo.CalculadoraPrecios;
 import Modelo.RegistroCompu;
@@ -25,7 +26,8 @@ public class AdminRegistrosCompu {
     private static final AdminRegistrosCompu INSTANCE = new AdminRegistrosCompu();
     private static final String COMPUTADORA = "Computadora";
     private final ArrayList<RegistroCompu> registrosCompu = new ArrayList<>();
-    private CtrlRenta ctrlRenta = new CtrlRenta();
+    private final CtrlRenta ctrlRenta = new CtrlRenta();
+    private final CtrlMenuPrincipal ctrlMenuPrincipal = new CtrlMenuPrincipal(); 
     
     
     private AdminRegistrosCompu(){    
@@ -67,6 +69,7 @@ public class AdminRegistrosCompu {
        RentaComputadora rentaCompu = obtenerDatosRenta(id);
         try {
             ctrlRenta.agregarRentaCompu(rentaCompu);
+            ctrlMenuPrincipal.activarBotonComputadora(id, true);
         } catch (SQLException ex) {
             Logger.getLogger(AdminRegistrosCompu.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -6,6 +6,7 @@
 
 package Controlador.LogicaNegocios;
 
+import Controlador.CtrlMenuPrincipal;
 import Controlador.CtrlRenta;
 import Modelo.CalculadoraPrecios;
 import Modelo.RegistroXbox;
@@ -26,6 +27,7 @@ public class AdminRegistrosXbox {
     private static final String XBOX = "Xbox"; 
     private final ArrayList<RegistroXbox> registrosXbox = new ArrayList<>();
     private CtrlRenta ctrlXbox = new CtrlRenta();
+    private CtrlMenuPrincipal ctrlMenuPrincipal = new CtrlMenuPrincipal();
     
     private AdminRegistrosXbox(){    
     }
@@ -66,6 +68,7 @@ public class AdminRegistrosXbox {
        RentaXbox rentaXbox = obtenerDatosRenta(id);
         try {
             ctrlXbox.agregarRentaXbox(rentaXbox);
+            ctrlMenuPrincipal.activarBotonXbox(id, true);
         } catch (SQLException ex) {
             Logger.getLogger(AdminRegistrosXbox.class.getName()).log(Level.SEVERE, null, ex);
         }
