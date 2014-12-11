@@ -37,7 +37,44 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel5 = new javax.swing.JLabel();
+        pmPC1 = new javax.swing.JPopupMenu();
+        miTiempoSolPC1 = new javax.swing.JMenuItem();
+        miHoraEntradaPC1 = new javax.swing.JMenuItem();
+        mOpcionesPC1 = new javax.swing.JMenu();
+        miAgregarTiempoPC1 = new javax.swing.JMenuItem();
+        miDetenerTiempoPC1 = new javax.swing.JMenuItem();
+        pmPC2 = new javax.swing.JPopupMenu();
+        miTiempoSolPC2 = new javax.swing.JMenuItem();
+        miHoraEntradaPC2 = new javax.swing.JMenuItem();
+        mOpcionesPC2 = new javax.swing.JMenu();
+        miAgregarTiempoPC2 = new javax.swing.JMenuItem();
+        miDetenerTiempoPC2 = new javax.swing.JMenuItem();
+        pmPC3 = new javax.swing.JPopupMenu();
+        miTiempoSolPC3 = new javax.swing.JMenuItem();
+        miHoraEntradaPC3 = new javax.swing.JMenuItem();
+        mOpcionesPC3 = new javax.swing.JMenu();
+        miAgregarTiempoPC3 = new javax.swing.JMenuItem();
+        miDetenerTiempoPC3 = new javax.swing.JMenuItem();
+        pmPC4 = new javax.swing.JPopupMenu();
+        miTiempoSolPC4 = new javax.swing.JMenuItem();
+        miHoraEntradaPC4 = new javax.swing.JMenuItem();
+        mOpcionesPC4 = new javax.swing.JMenu();
+        miAgregarTiempoPC4 = new javax.swing.JMenuItem();
+        miDetenerTiempoPC4 = new javax.swing.JMenuItem();
+        pmXbox1 = new javax.swing.JPopupMenu();
+        miTiempoSolXbox1 = new javax.swing.JMenuItem();
+        miHoraEntradaXbox1 = new javax.swing.JMenuItem();
+        miNumContrXbox1 = new javax.swing.JMenuItem();
+        mOpcionesXbox1 = new javax.swing.JMenu();
+        miAgregarTiempoXbox1 = new javax.swing.JMenuItem();
+        miDetenerTiempoXbox1 = new javax.swing.JMenuItem();
+        pmXbox2 = new javax.swing.JPopupMenu();
+        miTiempoSolXbox2 = new javax.swing.JMenuItem();
+        miHoraEntradaXbox2 = new javax.swing.JMenuItem();
+        miNumContrXbox2 = new javax.swing.JMenuItem();
+        mOpcionesXbox2 = new javax.swing.JMenu();
+        miAgregarTiempoXbox2 = new javax.swing.JMenuItem();
+        miDetenerTiempoXbox2 = new javax.swing.JMenuItem();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         lblPrecioXbox2 = new javax.swing.JLabel();
@@ -72,7 +109,117 @@ public class MenuPrincipal extends javax.swing.JFrame {
         lblPrecioCompu1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
 
-        jLabel5.setText("jLabel5");
+        miTiempoSolPC1.setText("Tiempo Solicitado: ");
+        pmPC1.add(miTiempoSolPC1);
+
+        miHoraEntradaPC1.setText("Hora Entrada:");
+        pmPC1.add(miHoraEntradaPC1);
+
+        mOpcionesPC1.setText("Opciones");
+
+        miAgregarTiempoPC1.setText("Agregar Tiempo");
+        miAgregarTiempoPC1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miAgregarTiempoPC1ActionPerformed(evt);
+            }
+        });
+        mOpcionesPC1.add(miAgregarTiempoPC1);
+
+        miDetenerTiempoPC1.setText("Detener Tiempo");
+        mOpcionesPC1.add(miDetenerTiempoPC1);
+
+        pmPC1.add(mOpcionesPC1);
+
+        miTiempoSolPC2.setText("Tiempo Solicitado: ");
+        pmPC2.add(miTiempoSolPC2);
+
+        miHoraEntradaPC2.setText("Hora Entrada:");
+        pmPC2.add(miHoraEntradaPC2);
+
+        mOpcionesPC2.setText("Opciones");
+
+        miAgregarTiempoPC2.setText("Agregar Tiempo");
+        mOpcionesPC2.add(miAgregarTiempoPC2);
+
+        miDetenerTiempoPC2.setText("Detener Tiempo");
+        mOpcionesPC2.add(miDetenerTiempoPC2);
+
+        pmPC2.add(mOpcionesPC2);
+
+        miTiempoSolPC3.setText("Tiempo Solicitado: ");
+        pmPC3.add(miTiempoSolPC3);
+
+        miHoraEntradaPC3.setText("Hora Entrada:");
+        pmPC3.add(miHoraEntradaPC3);
+
+        mOpcionesPC3.setText("Opciones");
+
+        miAgregarTiempoPC3.setText("Agregar Tiempo");
+        mOpcionesPC3.add(miAgregarTiempoPC3);
+
+        miDetenerTiempoPC3.setText("Detener Tiempo");
+        mOpcionesPC3.add(miDetenerTiempoPC3);
+
+        pmPC3.add(mOpcionesPC3);
+
+        miTiempoSolPC4.setText("Tiempo Solicitado: ");
+        miTiempoSolPC4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miTiempoSolPC4ActionPerformed(evt);
+            }
+        });
+        pmPC4.add(miTiempoSolPC4);
+
+        miHoraEntradaPC4.setText("Hora Entrada:");
+        pmPC4.add(miHoraEntradaPC4);
+
+        mOpcionesPC4.setText("Opciones");
+
+        miAgregarTiempoPC4.setText("Agregar Tiempo");
+        mOpcionesPC4.add(miAgregarTiempoPC4);
+
+        miDetenerTiempoPC4.setText("Detener Tiempo");
+        mOpcionesPC4.add(miDetenerTiempoPC4);
+
+        pmPC4.add(mOpcionesPC4);
+
+        miTiempoSolXbox1.setText("Tiempo Solicitado: ");
+        pmXbox1.add(miTiempoSolXbox1);
+
+        miHoraEntradaXbox1.setText("Hora Entrada:");
+        pmXbox1.add(miHoraEntradaXbox1);
+
+        miNumContrXbox1.setText("Controles: ");
+        pmXbox1.add(miNumContrXbox1);
+
+        mOpcionesXbox1.setText("Opciones");
+
+        miAgregarTiempoXbox1.setText("Agregar Tiempo");
+        mOpcionesXbox1.add(miAgregarTiempoXbox1);
+
+        miDetenerTiempoXbox1.setText("Detener Tiempo");
+        mOpcionesXbox1.add(miDetenerTiempoXbox1);
+
+        pmXbox1.add(mOpcionesXbox1);
+
+        miTiempoSolXbox2.setText("Tiempo Solicitado: ");
+        pmXbox2.add(miTiempoSolXbox2);
+
+        miHoraEntradaXbox2.setText("Hora Entrada:");
+        pmXbox2.add(miHoraEntradaXbox2);
+
+        miNumContrXbox2.setText("Controles: ");
+        pmXbox2.add(miNumContrXbox2);
+
+        mOpcionesXbox2.setText("Opciones");
+
+        miAgregarTiempoXbox2.setText("Agregar Tiempo");
+        mOpcionesXbox2.add(miAgregarTiempoXbox2);
+
+        miDetenerTiempoXbox2.setText("Detener Tiempo");
+        mOpcionesXbox2.add(miDetenerTiempoXbox2);
+
+        pmXbox2.add(mOpcionesXbox2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -115,6 +262,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         btnComputadora1.setText("PC 1");
         btnComputadora1.setAutoscrolls(true);
+        btnComputadora1.setComponentPopupMenu(pmPC1);
         btnComputadora1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnComputadora1ActionPerformed(evt);
@@ -122,6 +270,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
 
         btnXbox1.setText("Xbox1");
+        btnXbox1.setComponentPopupMenu(pmXbox1);
         btnXbox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXbox1ActionPerformed(evt);
@@ -129,6 +278,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
 
         btnComputadora2.setText("PC 2");
+        btnComputadora2.setComponentPopupMenu(pmPC2);
         btnComputadora2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnComputadora2ActionPerformed(evt);
@@ -136,6 +286,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
 
         btnComputadora3.setText("PC 3");
+        btnComputadora3.setComponentPopupMenu(pmPC3);
         btnComputadora3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnComputadora3ActionPerformed(evt);
@@ -143,6 +294,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
 
         btnXbox2.setText("Xbox2");
+        btnXbox2.setComponentPopupMenu(pmXbox2);
         btnXbox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXbox2ActionPerformed(evt);
@@ -152,6 +304,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel1.setText("Hora:");
 
         btnComputadora4.setText("PC 4");
+        btnComputadora4.setComponentPopupMenu(pmPC4);
         btnComputadora4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnComputadora4ActionPerformed(evt);
@@ -221,21 +374,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
                                     .addGap(18, 18, 18)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                    .addComponent(Hora)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                    .addComponent(lblTiempoCompu2))
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                    .addComponent(jLabel4)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                    .addComponent(lblPrecioCompu2)))
-                                            .addGap(62, 62, 62))
+                                            .addComponent(Hora)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(lblTiempoCompu2))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jLabel4)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(lblPrecioCompu2))
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                             .addComponent(btnComputadora2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGap(18, 18, 18)
-                                            .addComponent(btnXbox1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE))
+                                            .addComponent(btnXbox1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel8)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -252,7 +401,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                             .addComponent(jLabel9)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(lblPrecioCompu3)))
-                    .addContainerGap()))
+                    .addContainerGap(17, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -331,7 +480,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -368,6 +517,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void btnXbox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXbox2ActionPerformed
         ctrlMenuPrincipal.crearVentanaOpcionesXbox(2);
     }//GEN-LAST:event_btnXbox2ActionPerformed
+
+    private void miAgregarTiempoPC1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAgregarTiempoPC1ActionPerformed
+//       String tiempoAgregado = JOptionPane.showInputDialog(this, "Cuanto desea agregar?"); 
+//       ctrlMenuPrincipal.agregarTiempo(1, tiempoAgregado);
+    }//GEN-LAST:event_miAgregarTiempoPC1ActionPerformed
+
+    private void miTiempoSolPC4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miTiempoSolPC4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_miTiempoSolPC4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -421,7 +579,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -441,6 +598,44 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public static javax.swing.JLabel lblTiempoCompu4;
     public static javax.swing.JLabel lblTiempoXbox1;
     public static javax.swing.JLabel lblTiempoXbox2;
+    private javax.swing.JMenu mOpcionesPC1;
+    private javax.swing.JMenu mOpcionesPC2;
+    private javax.swing.JMenu mOpcionesPC3;
+    private javax.swing.JMenu mOpcionesPC4;
+    private javax.swing.JMenu mOpcionesXbox1;
+    private javax.swing.JMenu mOpcionesXbox2;
+    private javax.swing.JMenuItem miAgregarTiempoPC1;
+    private javax.swing.JMenuItem miAgregarTiempoPC2;
+    private javax.swing.JMenuItem miAgregarTiempoPC3;
+    private javax.swing.JMenuItem miAgregarTiempoPC4;
+    private javax.swing.JMenuItem miAgregarTiempoXbox1;
+    private javax.swing.JMenuItem miAgregarTiempoXbox2;
+    private javax.swing.JMenuItem miDetenerTiempoPC1;
+    private javax.swing.JMenuItem miDetenerTiempoPC2;
+    private javax.swing.JMenuItem miDetenerTiempoPC3;
+    private javax.swing.JMenuItem miDetenerTiempoPC4;
+    private javax.swing.JMenuItem miDetenerTiempoXbox1;
+    private javax.swing.JMenuItem miDetenerTiempoXbox2;
+    public static javax.swing.JMenuItem miHoraEntradaPC1;
+    public static javax.swing.JMenuItem miHoraEntradaPC2;
+    public static javax.swing.JMenuItem miHoraEntradaPC3;
+    public static javax.swing.JMenuItem miHoraEntradaPC4;
+    public static javax.swing.JMenuItem miHoraEntradaXbox1;
+    public static javax.swing.JMenuItem miHoraEntradaXbox2;
+    public static javax.swing.JMenuItem miNumContrXbox1;
+    public static javax.swing.JMenuItem miNumContrXbox2;
+    public static javax.swing.JMenuItem miTiempoSolPC1;
+    public static javax.swing.JMenuItem miTiempoSolPC2;
+    public static javax.swing.JMenuItem miTiempoSolPC3;
+    public static javax.swing.JMenuItem miTiempoSolPC4;
+    public static javax.swing.JMenuItem miTiempoSolXbox1;
+    public static javax.swing.JMenuItem miTiempoSolXbox2;
+    private javax.swing.JPopupMenu pmPC1;
+    private javax.swing.JPopupMenu pmPC2;
+    private javax.swing.JPopupMenu pmPC3;
+    private javax.swing.JPopupMenu pmPC4;
+    private javax.swing.JPopupMenu pmXbox1;
+    private javax.swing.JPopupMenu pmXbox2;
     // End of variables declaration//GEN-END:variables
 
 }
