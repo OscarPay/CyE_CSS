@@ -290,5 +290,29 @@ public class CtrlMenuPrincipal implements Observador {
     public void agregarTiempo(int id, String tiempoAgregado) {        
         adminRegistrosCompus.buscarRegistroCompuPorId(id).setTiempoSolicitado(tiempoAgregado);
     }
+    
+    public String adaptadorFomatoHora(String tiempoSolicitado) {
+        String tiempoSolicitadoAdaptado;
+        switch (tiempoSolicitado) {
+            case "15 minutos":
+                tiempoSolicitadoAdaptado = "00:15:00";
+                break;
+            case "30 minutos":
+                tiempoSolicitadoAdaptado = "00:30:00";
+                break;
+            case "45 minutos":
+                tiempoSolicitadoAdaptado = "00:45:00";
+                break;
+            case "1 hora":
+                tiempoSolicitadoAdaptado = "01:00:00";
+                break;
+            case "2 horas":
+                tiempoSolicitadoAdaptado = "02:00:00";
+                break;
+            default:
+                tiempoSolicitadoAdaptado = tiempoSolicitado;
+        }
+        return tiempoSolicitadoAdaptado;
+    }
 
 }

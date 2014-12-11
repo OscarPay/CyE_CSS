@@ -5,7 +5,10 @@
  */
 package Vista;
 
+import Controlador.CtrlExcepciones;
 import Controlador.CtrlMenuPrincipal;
+import Modelo.Exceptions.HoraInvalida;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,25 +17,28 @@ import Controlador.CtrlMenuPrincipal;
 public class VtnOpcionesXbox extends javax.swing.JFrame {
 
     private CtrlMenuPrincipal ctrlMenuPrincipal;
+    private CtrlExcepciones ctrlExcepciones;
     private int idXbox;
-    
+
     /**
      * Creates new form VtnOpcionesXbox
+     *
      * @param idXbox
      */
     public VtnOpcionesXbox(int idXbox) {
         this.ctrlMenuPrincipal = new CtrlMenuPrincipal();
+        this.ctrlExcepciones = new CtrlExcepciones();                
         this.idXbox = idXbox;
         initComponents();
     }
-    
+
     /**
      * Creates new form VtnOpcionesXbox
      */
     public VtnOpcionesXbox() {
         initComponents();
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -120,18 +126,23 @@ public class VtnOpcionesXbox extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        String tiempoSolicitado = cbTiempoXbox.getSelectedItem().toString();
-        int numControles = Integer.parseInt(cbNumControles.getSelectedItem().toString());
-        ctrlMenuPrincipal.iniciarUsoXbox(idXbox, numControles, tiempoSolicitado);
-        ctrlMenuPrincipal.activarBotonXbox(idXbox, false);
-        ctrlMenuPrincipal.actualizarPopUpMenuXbox(idXbox);
-        this.dispose();
+        String tiempoSolicitado = ctrlMenuPrincipal.adaptadorFomatoHora(cbTiempoXbox.getSelectedItem().toString());
+        try {
+            ctrlExcepciones.validarFormatoHora(tiempoSolicitado);
+            int numControles = Integer.parseInt(cbNumControles.getSelectedItem().toString());
+            ctrlMenuPrincipal.iniciarUsoXbox(idXbox, numControles, tiempoSolicitado);
+            ctrlMenuPrincipal.activarBotonXbox(idXbox, false);
+            ctrlMenuPrincipal.actualizarPopUpMenuXbox(idXbox);
+            this.dispose();        
+        } catch (HoraInvalida ex) {
+            JOptionPane.showMessageDialog(this, "Hora invalida\n Introduzca un formato de la forma hh:mm:ss");
+        }
     }//GEN-LAST:event_btnAceptarActionPerformed
-
+   
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
-
+     
     /**
      * @param args the command line arguments
      */
@@ -165,7 +176,7 @@ public class VtnOpcionesXbox extends javax.swing.JFrame {
                 new VtnOpcionesXbox().setVisible(true);
             }
         });
-    }
+    }     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;

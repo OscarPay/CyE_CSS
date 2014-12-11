@@ -5,28 +5,34 @@
  */
 package Vista;
 
+import Controlador.CtrlExcepciones;
 import Controlador.CtrlMenuPrincipal;
+import Modelo.Exceptions.HoraInvalida;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Oscar
  */
 public class VtnOpcionesCompu extends javax.swing.JFrame {
-    
+
     private CtrlMenuPrincipal ctrlMenuPrincipal;
+    private CtrlExcepciones ctrlExcepciones;
     private int idCompu;
-    
+
     /**
      * Creates new form vtnOpcionesXbox
+     *
      * @param idCompu
      */
     public VtnOpcionesCompu(int idCompu) {
         this.ctrlMenuPrincipal = new CtrlMenuPrincipal();
+        this.ctrlExcepciones = new CtrlExcepciones();
         this.idCompu = idCompu;
         initComponents();
     }
-    
-    public VtnOpcionesCompu(){
+
+    public VtnOpcionesCompu() {
         initComponents();
     }
 
@@ -104,18 +110,24 @@ public class VtnOpcionesCompu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        String tiempoSolicitado = cbTiempoPC.getSelectedItem().toString();
-        ctrlMenuPrincipal.iniciarUsoCompu(idCompu, tiempoSolicitado);
-        ctrlMenuPrincipal.activarBotonComputadora(idCompu, false);
-        ctrlMenuPrincipal.actualizarPopUpMenuPc(idCompu);
-        this.dispose();
+        String tiempoSolicitado = ctrlMenuPrincipal.adaptadorFomatoHora(cbTiempoPC.getSelectedItem().toString());
+
+        try {
+            ctrlExcepciones.validarFormatoHora(tiempoSolicitado);
+            ctrlMenuPrincipal.iniciarUsoCompu(idCompu, tiempoSolicitado);
+            ctrlMenuPrincipal.activarBotonComputadora(idCompu, false);
+            ctrlMenuPrincipal.actualizarPopUpMenuPc(idCompu);
+            this.dispose();
+        } catch (HoraInvalida ex) {
+            JOptionPane.showMessageDialog(this, "Hora invalida\n Introduzca un formato de la forma hh:mm:ss");
+        }
+
+
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
-
-    
 
     /**
      * @param args the command line arguments
@@ -159,9 +171,5 @@ public class VtnOpcionesCompu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 
-    
-   
-    
-    
     
 }
