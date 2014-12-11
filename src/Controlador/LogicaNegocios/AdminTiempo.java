@@ -32,10 +32,10 @@ public class AdminTiempo {
         return formatoHora.format(horaEntrada);
     }
     
-    public static String obtenerFecha(){
+    public static Date obtenerFecha(){
         Date fecha = new Date();
-        DateFormat formatoFecha = new SimpleDateFormat("dd/MMMM/yyyy");
-        return formatoFecha.format(fecha);
+        //DateFormat formatoFecha = new SimpleDateFormat("dd/MMMM/yyyy");
+        return fecha;
     }
     
 }

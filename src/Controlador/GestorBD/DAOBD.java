@@ -18,7 +18,7 @@ import java.util.ArrayList;
  *
  * @author Abner
  */
-public abstract class GestorBD {
+public abstract class DAOBD {
         String host="localhost";
         String puerto="666";
         String usuario="root";

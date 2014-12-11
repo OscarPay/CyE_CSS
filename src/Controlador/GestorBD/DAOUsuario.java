@@ -17,7 +17,7 @@ import java.util.ArrayList;
  *
  * @author Abner
  */
-public class GestorBDUsuario extends GestorBD {
+public class DAOUsuario extends DAOBD {
     /*
     La funcion recibe un usuario, checa si existe, si existe el Usuario lo 
     modifica con los nuevos datos, si no existe lo agrega. 

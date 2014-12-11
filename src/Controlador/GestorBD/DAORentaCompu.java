@@ -6,8 +6,11 @@
 package Controlador.GestorBD;
 
 import Modelo.RentaComputadora;
+import java.sql.Date;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -15,7 +18,7 @@ import java.util.logging.Logger;
  *
  * @author x
  */
-public class GestorBDRentaCompu extends GestorBD {
+public class DAORentaCompu extends DAOBD {
 
     public boolean agregarRenta(RentaComputadora renta) throws SQLException {
         boolean seAgregoRenta = false;
@@ -41,6 +44,37 @@ public class GestorBDRentaCompu extends GestorBD {
             seAgregoRenta = true;
         }
         return seAgregoRenta;
+    }
+    
+    public ArrayList<RentaComputadora> obtenerValoresPorFechas(Date fechaInicio,
+                                                                Date fechaFinal) throws SQLException{
+        ArrayList<RentaComputadora> rentas = new ArrayList();
+        
+        String consulta = "SELECT * FROM rentas WHERE ( fecha BETWEEN '"+ 
+                fechaInicio + "'  AND '"+ fechaFinal + "') AND "+
+                "tipo_maquina = 'Computadora'";
+        
+        Statement sentencia;
+        sentencia = this.conexion.createStatement();
+        ResultSet result = sentencia.executeQuery(consulta);
+        
+        while(result.next()){
+            int id = result.getInt("no_maquina");
+            String precio = result.getString("precio");
+            String horaEntrada = result.getString("hora_entrada");
+            String horaSalida = result.getString("hora_salida");
+            String tiempoTranscurrido = result.getString("tiempo_transcurrido");
+            Date fecha =result.getDate("fecha");
+            
+            RentaComputadora renta = new RentaComputadora(id,precio,horaEntrada,
+                                            horaSalida,tiempoTranscurrido,fecha);
+
+            rentas.add(renta);
+        }
+        
+        sentencia.close();
+        
+        return rentas;
     }
 
     /*
@@ -72,14 +106,17 @@ public class GestorBDRentaCompu extends GestorBD {
      */
     public static void main(String[] args) {
 
-        GestorBDRentaCompu dao = new GestorBDRentaCompu();
+        DAORentaCompu dao = new DAORentaCompu();
         dao.establecerConexion();
-        RentaComputadora renta = new RentaComputadora(1, "5.00", "6:17:00", "6:20:00", "00:03:00", "10/december/2014");
+        
+        Date fecha = new Date(2014,12,12);
+        
+        RentaComputadora renta = new RentaComputadora(1, "5.00", "6:17:00", "6:20:00", "00:03:00", fecha);
         System.out.println(renta.toString());
         try {
             dao.agregarRenta(renta);
         } catch (SQLException ex) {
-            Logger.getLogger(GestorBDRentaCompu.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DAORentaCompu.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

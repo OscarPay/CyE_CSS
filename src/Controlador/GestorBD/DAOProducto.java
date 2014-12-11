@@ -16,7 +16,7 @@ import java.util.ArrayList;
  *
  * @author Abner
  */
-public class GestorBDProducto extends GestorBD {
+public class DAOProducto extends DAOBD {
     
      public boolean agregarProducto(Producto producto) throws SQLException{
          boolean seagregoProduc=false;
