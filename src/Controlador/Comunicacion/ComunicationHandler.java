@@ -6,11 +6,12 @@ package Controlador.Comunicacion;
  * and open the template in the editor.
  */
 
-
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -32,9 +33,9 @@ public class ComunicationHandler extends Thread {
 
         System.out.println("Nuevo arrivo de cliente num" + this.numCliente);
         initializeBuffers();
-        
+
         SendToBuffer("ID");
-        
+
     }
 
     public void initializeBuffers() {
@@ -54,8 +55,8 @@ public class ComunicationHandler extends Thread {
 
     public void run() {
         //SendToBuffer("ID");
-        
-        while (true) {
+
+        while (active) {
             readBuffer();
             processInfo();
         }
@@ -64,18 +65,20 @@ public class ComunicationHandler extends Thread {
 
     public void processInfo() {
         System.out.println("Se recibio el siguiente mensaje del cliente: " + this.IdConexion + ", " + this.message);
-        
-        if(message == null) return;
-        
+
+        if (message == null) {
+            return;
+        }
+
         System.out.println(message);
-        
+
         String infoId = message.substring(0, 2);
         String infoString = message.substring(3);
 
         switch (infoId) {
             case "ID"://ID del cliente
                 this.IdConexion = infoString;
-                
+
                 System.out.println(infoString);
                 break;
             case "ET"://End Time, cuando el cliente notifica que se ah acabado el tiempo
@@ -93,17 +96,11 @@ public class ComunicationHandler extends Thread {
                 }
                 break;
             case "AT":
-
+                //SendToBuffer("SYN");
                 break;
             case "ED"://Fin de la conexion  
             default:
-                System.out.println("Se ah pedido que se cierre la conexion o esta inactiva");
-                try {
-                    cliente.close();
-                    System.out.println("se cerro el socke");
-                } catch (IOException ex) {
-                    System.out.println("Error cerrando la conexion");
-                }
+                closeConection();
                 break;
 
         }
@@ -111,13 +108,24 @@ public class ComunicationHandler extends Thread {
 
     public void readBuffer() {
         try {
-            
+
             this.message = in.readUTF();
 
         } catch (IOException ex) {
+            closeConection();
             System.out.println("Error leyendo los mensajes");
         }
+    }
 
+    public void closeConection() {
+        System.out.println("Se ah pedido que se cierre la conexion o esta inactiva");
+        try {
+            cliente.close();
+            System.out.println("se cerro el socket");
+            this.active = false;
+        } catch (IOException ex) {
+            System.out.println("Error cerrando la conexion");
+        }
     }
 
     public void SendToBuffer(String input) {
