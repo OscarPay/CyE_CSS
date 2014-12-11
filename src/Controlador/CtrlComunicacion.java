@@ -14,7 +14,17 @@ import java.util.ArrayList;
  * @author hyuchiha
  */
 public class CtrlComunicacion {
+    
+    private static final CtrlComunicacion INSTANCE = new CtrlComunicacion();
     private Servidor server = new Servidor();
+
+    private CtrlComunicacion() {
+       this.initializeServer();
+    }
+
+    public static CtrlComunicacion getINSTANCE() {
+        return INSTANCE;
+    }       
     
     public void initializeServer(){
         server.start();

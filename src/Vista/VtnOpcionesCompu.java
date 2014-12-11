@@ -107,6 +107,7 @@ public class VtnOpcionesCompu extends javax.swing.JFrame {
         String tiempoSolicitado = cbTiempoPC.getSelectedItem().toString();
         ctrlMenuPrincipal.iniciarUsoCompu(idCompu, tiempoSolicitado);
         ctrlMenuPrincipal.activarBotonComputadora(idCompu, false);
+        ctrlMenuPrincipal.actualizarPopUpMenuPc(idCompu);
         this.dispose();
     }//GEN-LAST:event_btnAceptarActionPerformed
 

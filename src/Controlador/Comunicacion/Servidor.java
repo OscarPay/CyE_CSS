@@ -36,6 +36,7 @@ public class Servidor extends Thread{
     @Override
     public void run() {
         //Se crear una puerta de entrada cliente y se acepta la conexion
+        System.out.println("Inicia");
         try {
             while (true) {
                 verifyConections();
