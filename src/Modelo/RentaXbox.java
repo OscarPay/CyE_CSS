@@ -5,6 +5,8 @@
  */
 package Modelo;
 
+import java.sql.Date;
+
 /**
  *
  * @author Oscar
@@ -17,12 +19,12 @@ public class RentaXbox {
     private String horaSalida = "";
     private String tiempoTranscurrido = "";
     private String precio = "";
-    private String fecha = "";
+    private Date fecha;
     
     public static final String XBOX = "Xbox";
 
     public RentaXbox(int id, int numControles, String horaEntrada, String horaSalida, 
-            String tiempoTranscurrido, String precio, String fecha) {
+            String tiempoTranscurrido, String precio, Date fecha) {
         this.idXbox = id;
         this.numControles = numControles;
         this.horaEntrada = horaEntrada;
@@ -56,7 +58,7 @@ public class RentaXbox {
         return precio;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }    
 
@@ -69,7 +71,7 @@ public class RentaXbox {
                 + "hora entrada: " + horaEntrada + "\n"
                 + "hora salida: " + horaSalida + "\n"
                 + "tiempo Transcurrido: " + tiempoTranscurrido + "\n"
-                + "fecha: " + fecha;
+                + "fecha: " + fecha.toString();
         return datos;
     }
 

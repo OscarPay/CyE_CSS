@@ -5,8 +5,8 @@
  */
 package Controlador;
 
-import Controlador.GestorBD.GestorBDRentaCompu;
-import Controlador.GestorBD.GestorBDRentaXbox;
+import Controlador.GestorBD.DAORentaCompu;
+import Controlador.GestorBD.DAORentaXbox;
 import Modelo.RentaComputadora;
 import Modelo.RentaXbox;
 import java.sql.SQLException;
@@ -17,8 +17,8 @@ import java.sql.SQLException;
  */
 public class CtrlRenta {
     
-    GestorBDRentaCompu gestorCompu = new GestorBDRentaCompu();
-    GestorBDRentaXbox gestorXbox = new GestorBDRentaXbox();
+    DAORentaCompu gestorCompu = new DAORentaCompu();
+    DAORentaXbox gestorXbox = new DAORentaXbox();
     
     public boolean agregarRentaCompu(RentaComputadora renta) throws SQLException{            
             gestorCompu.establecerConexion();      

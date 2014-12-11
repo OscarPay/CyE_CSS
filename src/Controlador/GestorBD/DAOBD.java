@@ -8,14 +8,17 @@ package Controlador.GestorBD;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 
 /**
  *
  * @author Abner
  */
-public abstract class GestorBD {
+public abstract class DAOBD {
         String host="localhost";
         String puerto="666";
         String usuario="root";

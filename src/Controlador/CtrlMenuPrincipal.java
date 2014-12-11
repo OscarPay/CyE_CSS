@@ -63,7 +63,7 @@ public class CtrlMenuPrincipal implements Observador {
 
     public void iniciarUsoCompu(int idCompu, String tiempoSolicitado) {        
         adminRegistrosCompus.agregarRegistroCompu(idCompu, tiempoSolicitado);        
-        ctrlComunicacion.sendMessage(String.valueOf(idCompu), "TM-"+tiempoSolicitado);
+        ctrlComunicacion.EnviarTiempo(String.valueOf(idCompu), "TM-"+tiempoSolicitado);
         System.out.println(String.valueOf(idCompu)+" "+ "TM-"+tiempoSolicitado);
         agregarObservadorCompu(idCompu);        
     }

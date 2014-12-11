@@ -16,14 +16,14 @@ import java.util.ArrayList;
  *
  * @author Abner
  */
-public class GestorBDProducto extends GestorBD {
+public class DAOProducto extends DAOBD {
     
      public boolean agregarProducto(Producto producto) throws SQLException{
          boolean seagregoProduc=false;
                  
          if(!this.existeProduc(producto.getId())){
         int clvtipoproduc=this.obtenerTipoProducto(producto.getTipoProducto());
-         String consulta="INSERT INTO productos (Nombre_Produc,Id_Produc,"+
+        String consulta="INSERT INTO productos (Nombre_Produc,Id_Produc,"+
                         "PrecioCom_Produc,PrecioVen_Produc,Clv_TipoProduc) VALUES"
                         + " ('"+producto.getNombreProduc()+"','"+producto.getId()+
                         "','"+producto.getPrecioCompra()+"','"+producto.getPrecioVenta()+

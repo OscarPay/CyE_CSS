@@ -6,7 +6,7 @@
 
 package Controlador;
 
-import Controlador.GestorBD.GestorBDProducto;
+import Controlador.GestorBD.DAOProducto;
 import Modelo.Producto;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,11 +18,11 @@ import javax.swing.table.DefaultTableModel;
  * @author Oscar
  */
 public class CtrlProducto {
-    GestorBDProducto gestorProduc;
+    DAOProducto gestorProduc;
     
     public boolean agregarProducto(String id, String nombreProduc,Double precioCom
             ,Double precioVen,String tipoproduc) throws SQLException{
-            gestorProduc=new GestorBDProducto();
+            gestorProduc=new DAOProducto();
             gestorProduc.establecerConexion();
             Producto produc=new Producto(id,nombreProduc,tipoproduc,precioCom,precioVen);
        
@@ -31,7 +31,7 @@ public class CtrlProducto {
     
     public boolean editarProducto(String id, String nombreProduc,Double precioCom
             ,Double precioVen,String tipoproduc) throws SQLException{
-        gestorProduc=new GestorBDProducto();
+        gestorProduc=new DAOProducto();
         gestorProduc.establecerConexion();
         
        Producto produc=new Producto(id,nombreProduc,tipoproduc,precioCom,precioVen);
@@ -42,7 +42,7 @@ public class CtrlProducto {
     }
     
     public Producto buscarProducto(String idproduc) throws SQLException{
-        gestorProduc=new GestorBDProducto();
+        gestorProduc=new DAOProducto();
         gestorProduc.establecerConexion();
         Producto producBD=null;
        
@@ -55,7 +55,7 @@ public class CtrlProducto {
     }
     
     public void eliminarProducto(Producto produc){
-        gestorProduc=new GestorBDProducto();
+        gestorProduc=new DAOProducto();
         gestorProduc.establecerConexion();
         
          try {
@@ -68,7 +68,7 @@ public class CtrlProducto {
     }
     
     public ArrayList<Producto> buscarProductos(){
-        gestorProduc=new GestorBDProducto();
+        gestorProduc=new DAOProducto();
         gestorProduc.establecerConexion();
         
         try {

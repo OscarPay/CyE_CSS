@@ -12,6 +12,7 @@ import Modelo.CalculadoraPrecios;
 import Modelo.RegistroXbox;
 import Modelo.RentaXbox;
 import Modelo.Temporizador;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -82,7 +83,7 @@ public class AdminRegistrosXbox {
         String horaSalida = AdminTiempo.obtenerHoraActual();
         String precioTotal = registroXbox.getCalculadoraPrecio().getPrecioTotal();
         String tiempoTranscurrido = registroXbox.getTemporizador().getTiempoTranscurrido();
-        String fecha = AdminTiempo.obtenerFecha();
+        Date fecha = new Date(AdminTiempo.obtenerFecha().getTime());
         RentaXbox rentaXbox = new RentaXbox(id, numControles, horaEntrada,
                 horaSalida, tiempoTranscurrido, precioTotal, fecha);
         return rentaXbox;

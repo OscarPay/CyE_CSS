@@ -5,7 +5,7 @@
  */
 package Controlador;
 
-import Controlador.GestorBD.GestorBDUsuario;
+import Controlador.GestorBD.DAOUsuario;
 import Modelo.Usuario;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,13 +18,13 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CtrlUsuario {
 
-    GestorBDUsuario gestorUsr;
+    DAOUsuario gestorUsr;
 
     public boolean agregarUsuario(String nombreUsuario, String telefono,
             String correo, String clave, String tipoUsuario) throws SQLException {
         
         Usuario usr = new Usuario(nombreUsuario, telefono, correo, clave, tipoUsuario);
-        gestorUsr = new GestorBDUsuario();
+        gestorUsr = new DAOUsuario();
         gestorUsr.establecerConexion();
 
         return gestorUsr.agregarUsuario(usr);
@@ -34,7 +34,7 @@ public class CtrlUsuario {
     public boolean editarUsuario(String nombreUsuario, String telefono,
             String correo, String clave, String tipoUsuario) throws SQLException {
         
-        gestorUsr = new GestorBDUsuario();
+        gestorUsr = new DAOUsuario();
         gestorUsr.establecerConexion();
         Usuario usr = new Usuario(nombreUsuario, telefono, correo, clave, tipoUsuario);
         
@@ -43,7 +43,7 @@ public class CtrlUsuario {
     }
 
     public Usuario buscarUsuario(String correo) throws SQLException {
-        gestorUsr = new GestorBDUsuario();
+        gestorUsr = new DAOUsuario();
         gestorUsr.establecerConexion();
         Usuario usrBD = null;
 
@@ -55,7 +55,7 @@ public class CtrlUsuario {
     
 
     public ArrayList<Usuario> buscarUsuarios() {
-        gestorUsr = new GestorBDUsuario();
+        gestorUsr = new DAOUsuario();
         gestorUsr.establecerConexion();
 
         try {

@@ -12,6 +12,7 @@ import Modelo.CalculadoraPrecios;
 import Modelo.RegistroCompu;
 import Modelo.RentaComputadora;
 import Modelo.Temporizador;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -82,7 +83,7 @@ public class AdminRegistrosCompu {
         String horaSalida = AdminTiempo.obtenerHoraActual();
         String precioTotal = registroCompu.getCalculadoraPrecio().getPrecioTotal();
         String tiempoTranscurrido = registroCompu.getTemporizador().getTiempoTranscurrido();
-        String fecha = AdminTiempo.obtenerFecha();
+        Date fecha = new Date(AdminTiempo.obtenerFecha().getTime());
         RentaComputadora rentaCompu = new RentaComputadora(id, precioTotal,
                 horaEntrada, horaSalida, tiempoTranscurrido, fecha);
         return rentaCompu;

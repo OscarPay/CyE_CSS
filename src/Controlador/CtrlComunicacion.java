@@ -19,22 +19,30 @@ public class CtrlComunicacion {
     private Servidor server = new Servidor();
 
     private CtrlComunicacion() {
-       this.initializeServer();
+       this.iniciarServidor();
     }
 
     public static CtrlComunicacion getINSTANCE() {
         return INSTANCE;
     }       
     
-    public void initializeServer(){
+    public void iniciarServidor(){
         server.start();
     }
     
-    public void sendMessage(String Id, String message){
-        server.sendMessageToConexion(Id, message);
+    public void EnviarTiempo(String Id, String mensaje){
+        server.sendMessageToConexion(Id, "TM-"+mensaje);
     }
     
-    public ArrayList<ComunicationHandler> getConectionsAvailables(){
+    public void AumentarTiempo(String id, String mensaje){
+        server.sendMessageToConexion(id, "AT-"+mensaje);       
+    }
+    
+    public void DetenerTiempo(String id){
+        server.sendMessageToConexion(id, "EF-True");
+    }
+    
+    public ArrayList<ComunicationHandler> getConexionesDisponibles(){
         return server.getConections();
     }
     
