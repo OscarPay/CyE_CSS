@@ -31,22 +31,17 @@ public class ComunicationHandler extends Thread {
         this.cliente = cliente;
         this.active = true;
 
-        System.out.println("Nuevo arrivo de cliente num" + this.numCliente);
         initializeBuffers();
 
         SendToBuffer("ID");
-
     }
 
     public void initializeBuffers() {
         try {
-            //Se declara un BufferedReader que manejara
-            //Las entradas del cliente
             in = new DataInputStream(cliente.getInputStream());
 
-            //El printWriter se encargara de enviar mensajes al cliente
             out = new DataOutputStream(cliente.getOutputStream());
-            //out = new PrintWriter(cliente.getOutputStream(), true);
+
         } catch (IOException e) {
             System.out.println("Error en la comunicacion con el cliente");
             this.active = false;
@@ -54,8 +49,6 @@ public class ComunicationHandler extends Thread {
     }
 
     public void run() {
-        //SendToBuffer("ID");
-
         while (active) {
             readBuffer();
             processInfo();
@@ -64,13 +57,9 @@ public class ComunicationHandler extends Thread {
     }
 
     public void processInfo() {
-        System.out.println("Se recibio el siguiente mensaje del cliente: " + this.IdConexion + ", " + this.message);
-
         if (message == null) {
             return;
         }
-
-        System.out.println(message);
 
         String infoId = message.substring(0, 2);
         String infoString = message.substring(3);
@@ -78,17 +67,14 @@ public class ComunicationHandler extends Thread {
         switch (infoId) {
             case "ID"://ID del cliente
                 this.IdConexion = infoString;
-
-                System.out.println(infoString);
                 break;
             case "ET"://End Time, cuando el cliente notifica que se ah acabado el tiempo
                 if (infoString.equals("true")) {
                     System.out.println("El tiempo ha llegado correctamente");
-                    //Aqui se verificara con la computadora que corresponde
                 }
                 break;
             case "EF"://Se confirma la detencion del tiempo forzada
-
+                System.out.println("El tiempo se ah detenido en el cliente");
                 break;
             case "TM"://Se confirma la recepcion del tiempo por parte del cliente
                 if (infoString.equals("TimeSet")) {
@@ -96,9 +82,8 @@ public class ComunicationHandler extends Thread {
                 }
                 break;
             case "AT":
-                //SendToBuffer("SYN");
+                System.out.println("Se ah aumentado el tiempo exitosamente");
                 break;
-            case "ED"://Fin de la conexion  
             default:
                 closeConection();
                 break;
@@ -108,9 +93,7 @@ public class ComunicationHandler extends Thread {
 
     public void readBuffer() {
         try {
-
             this.message = in.readUTF();
-
         } catch (IOException ex) {
             closeConection();
             System.out.println("Error leyendo los mensajes");
