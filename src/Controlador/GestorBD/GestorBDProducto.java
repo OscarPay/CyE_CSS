@@ -7,7 +7,6 @@
 package Controlador.GestorBD;
 
 import Modelo.Producto;
-import Modelo.Usuario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;

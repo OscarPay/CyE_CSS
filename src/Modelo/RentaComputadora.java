@@ -13,15 +13,21 @@ public class RentaComputadora {
 
     private int idCompu = 0;
     private String precio = "";
-    private String tiempoEntrada = "";
-    private String tiempoSalida = "";
+    private String horaEntrada = "";
+    private String horaSalida = "";
+    private String tiempoTranscurrido = "";
+    private String fecha = "";
+    
+    public static final String COMPUTADORA = "Computadora";
 
-    public RentaComputadora(int idCompu, String precio, String tiempoEntrada, 
-                             String tiempoSalida) {
+    public RentaComputadora(int idCompu, String precio, String horaEntrada,
+            String horaSalida, String tiempoTranscurrido, String fecha) {
         this.idCompu = idCompu;
         this.precio = precio;
-        this.tiempoEntrada = tiempoEntrada;
-        this.tiempoSalida = tiempoSalida;
+        this.horaEntrada = horaEntrada;
+        this.horaSalida = horaSalida;
+        this.tiempoTranscurrido = tiempoTranscurrido;
+        this.fecha = fecha;
     }
 
     public int getIdComp() {
@@ -32,23 +38,32 @@ public class RentaComputadora {
         return precio;
     }
 
-    public String getTiempoEntrada() {
-        return tiempoEntrada;
+    public String getHoraEntrada() {
+        return horaEntrada;
     }
 
-    public String getTiempoSalida() {
-        return tiempoSalida;
-    }
-    
+    public String getHoraSalida() {
+        return horaSalida;
+    }   
+
+    public String getTiempoTranscurrido() {
+        return tiempoTranscurrido;
+    }    
+
+    public String getFecha() {
+        return fecha;
+    }    
+
     @Override
-    public String toString(){
+    public String toString() {
         System.out.println("Computadora");
-        String datos = "id: "+idCompu+"\n"+
-                       "precio: "+precio+"\n"+
-                        "tiempo entrada: "+tiempoEntrada+"\n"+
-                        "tiempo salida: "+tiempoSalida;
+        String datos = "id: " + idCompu + "\n"
+                + "precio: " + precio + "\n"
+                + "hora entrada: " + horaEntrada + "\n"
+                + "hora salida: " + horaSalida + "\n"
+                + "tiempo Transcurrido: " + tiempoTranscurrido + "\n"
+                + "fecha: " + fecha;
         return datos;
     }
-    
-    
+
 }
