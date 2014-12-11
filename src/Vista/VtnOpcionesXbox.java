@@ -11,25 +11,28 @@ import Controlador.CtrlMenuPrincipal;
  *
  * @author Oscar
  */
-public class VtnOpcionesCompu extends javax.swing.JFrame {
-    
+public class VtnOpcionesXbox extends javax.swing.JFrame {
+
     private CtrlMenuPrincipal ctrlMenuPrincipal;
-    private int idCompu;
+    private int idXbox;
     
     /**
-     * Creates new form vtnOpcionesXbox
-     * @param idCompu
+     * Creates new form VtnOpcionesXbox
+     * @param idXbox
      */
-    public VtnOpcionesCompu(int idCompu) {
+    public VtnOpcionesXbox(int idXbox) {
         this.ctrlMenuPrincipal = new CtrlMenuPrincipal();
-        this.idCompu = idCompu;
+        this.idXbox = idXbox;
         initComponents();
     }
     
-    public VtnOpcionesCompu(){
+    /**
+     * Creates new form VtnOpcionesXbox
+     */
+    public VtnOpcionesXbox() {
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,14 +43,22 @@ public class VtnOpcionesCompu extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        cbTiempoXbox = new javax.swing.JComboBox();
+        cbNumControles = new javax.swing.JComboBox();
         btnAceptar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        cbTiempoPC = new javax.swing.JComboBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("PC");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Cuanto tiempo? ");
+        jLabel1.setText("cuanto tiempo?");
+
+        jLabel2.setText("controles");
+
+        cbTiempoXbox.setEditable(true);
+        cbTiempoXbox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00:00:00", "15 minutos", "30 minutos", "45 minutos", "1 hora", "2 horas" }));
+
+        cbNumControles.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4" }));
 
         btnAceptar.setText("Aceptar");
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -63,36 +74,41 @@ public class VtnOpcionesCompu extends javax.swing.JFrame {
             }
         });
 
-        cbTiempoPC.setEditable(true);
-        cbTiempoPC.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00:00:00", "15 minutos", "30 minutos", "45 minutos", "1 hora", "2 horas" }));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(btnAceptar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnCancelar)
-                .addContainerGap(32, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(70, 70, 70))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(cbTiempoPC, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(cbTiempoXbox, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbNumControles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(26, 26, 26))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(btnAceptar)
+                .addGap(18, 18, 18)
+                .addComponent(btnCancelar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbTiempoPC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbTiempoXbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbNumControles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAceptar)
@@ -104,18 +120,17 @@ public class VtnOpcionesCompu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        String tiempoSolicitado = cbTiempoPC.getSelectedItem().toString();
-        ctrlMenuPrincipal.iniciarUsoCompu(idCompu, tiempoSolicitado);
-        ctrlMenuPrincipal.activarBotonComputadora(idCompu, false);
-        ctrlMenuPrincipal.actualizarPopUpMenuPc(idCompu);
+        String tiempoSolicitado = cbTiempoXbox.getSelectedItem().toString();
+        int numControles = Integer.parseInt(cbNumControles.getSelectedItem().toString());
+        ctrlMenuPrincipal.iniciarUsoXbox(idXbox, numControles, tiempoSolicitado);
+        ctrlMenuPrincipal.activarBotonXbox(idXbox, false);
+        ctrlMenuPrincipal.actualizarPopUpMenuXbox(idXbox);
         this.dispose();
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
-
-    
 
     /**
      * @param args the command line arguments
@@ -134,20 +149,20 @@ public class VtnOpcionesCompu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VtnOpcionesCompu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VtnOpcionesXbox.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VtnOpcionesCompu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VtnOpcionesXbox.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VtnOpcionesCompu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VtnOpcionesXbox.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VtnOpcionesCompu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VtnOpcionesXbox.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VtnOpcionesCompu().setVisible(true);
+                new VtnOpcionesXbox().setVisible(true);
             }
         });
     }
@@ -155,13 +170,9 @@ public class VtnOpcionesCompu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JComboBox cbTiempoPC;
+    private javax.swing.JComboBox cbNumControles;
+    private javax.swing.JComboBox cbTiempoXbox;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
-
-    
-   
-    
-    
-    
 }
