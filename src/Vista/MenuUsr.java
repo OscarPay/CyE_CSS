@@ -8,8 +8,6 @@ package Vista;
 import Controlador.CtrlUsuario;
 import Modelo.Usuario;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -51,7 +49,7 @@ public class MenuUsr extends javax.swing.JFrame {
         passClave = new javax.swing.JPasswordField();
         btnListaUsr = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Menu de Usuarios");
 
         jLabel2.setText("Telefono:");
@@ -256,7 +254,7 @@ public class MenuUsr extends javax.swing.JFrame {
             String tipoUsuario = cbbTipoUsr.getSelectedItem().toString();
       
         try {
-            if(ctrlUsr.editarUsuario(nombreUsuario,correo,telefono,clave,tipoUsuario)){
+            if(ctrlUsr.editarUsuario(nombreUsuario,correo,telefono,clave,tipoUsuario)){                
                 JOptionPane.showMessageDialog(this, "Usuario Editado exitosamente!");
             }else{
                 JOptionPane.showMessageDialog(this, "Error, el Usuario No existe");
@@ -305,9 +303,9 @@ public class MenuUsr extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnEditar;
-    private javax.swing.JButton btnListaUsr;
+    public static javax.swing.JButton btnBuscar;
+    public static javax.swing.JButton btnEditar;
+    public static javax.swing.JButton btnListaUsr;
     private javax.swing.JComboBox cbbTipoUsr;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

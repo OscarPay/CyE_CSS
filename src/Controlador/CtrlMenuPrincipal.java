@@ -12,6 +12,7 @@ import Modelo.RegistroCompu;
 import Modelo.RegistroXbox;
 import Modelo.RentaComputadora;
 import Modelo.RentaXbox;
+import Vista.InicioSesion;
 import Vista.MenuPrincipal;
 import Vista.VtnOpcionesCompu;
 import Vista.VtnOpcionesXbox;
@@ -325,6 +326,11 @@ public class CtrlMenuPrincipal implements Observador {
     
     public void detenerTemporizadorXbox(int idXbox){
         adminRegistrosXbox.detenerTemporizador(idXbox);
+    }
+
+    public void mostrarInicioSesion(MenuPrincipal menu) {
+        new InicioSesion().setVisible(true);
+        menu.dispose();
     }
 
 }

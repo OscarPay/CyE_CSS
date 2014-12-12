@@ -81,7 +81,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mOpcionesXbox2 = new javax.swing.JMenu();
         miAgregarTiempoXbox2 = new javax.swing.JMenuItem();
         miDetenerTiempoXbox2 = new javax.swing.JMenuItem();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tpPestañas = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         lblPrecioXbox2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -126,6 +126,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         comboAñoSalida = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         miTiempoSolPC1.setText("Tiempo Solicitado: ");
         pmPC1.add(miTiempoSolPC1);
@@ -482,7 +485,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(lblPrecioXbox1))
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addContainerGap(182, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -527,7 +530,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        jTabbedPane1.addTab("Panel Control", jPanel1);
+        tpPestañas.addTab("Panel Control", jPanel1);
 
         btnTablaProductos.setText("Tabla Productos");
         btnTablaProductos.addActionListener(new java.awt.event.ActionListener() {
@@ -561,10 +564,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnTablaProductos)
                     .addComponent(btnTablaUsuarios))
-                .addContainerGap(289, Short.MAX_VALUE))
+                .addContainerGap(275, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Tablas", jPanel2);
+        tpPestañas.addTab("Tablas", jPanel2);
 
         comboAñoEntrada.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -642,10 +645,24 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(comboDiaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboMesSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboAñoSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(274, Short.MAX_VALUE))
+                .addContainerGap(260, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Reportes", jPanel3);
+        tpPestañas.addTab("Reportes", jPanel3);
+
+        jMenu1.setText("Sesion");
+
+        jMenuItem1.setText("CerrarSesion");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrarSesionActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -653,14 +670,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addComponent(tpPestañas)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addComponent(tpPestañas)
                 .addContainerGap())
         );
 
@@ -757,6 +774,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ctrlReportes.generarReporte();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void cerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSesionActionPerformed
+        ctrlMenuPrincipal.mostrarInicioSesion(this);        
+    }//GEN-LAST:event_cerrarSesionActionPerformed
+
     
 
     /**
@@ -826,10 +847,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTabbedPane jTabbedPane1;
     public static javax.swing.JLabel lblPrecioCompu1;
     public static javax.swing.JLabel lblPrecioCompu2;
     public static javax.swing.JLabel lblPrecioCompu3;
@@ -880,6 +903,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu pmPC4;
     private javax.swing.JPopupMenu pmXbox1;
     private javax.swing.JPopupMenu pmXbox2;
+    public static javax.swing.JTabbedPane tpPestañas;
     // End of variables declaration//GEN-END:variables
 
 }
