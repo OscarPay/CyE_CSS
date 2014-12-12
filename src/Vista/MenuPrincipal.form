@@ -80,11 +80,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Agregar Tiempo"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="miAgregarTiempoPC2ActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="miDetenerTiempoPC2">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Detener Tiempo"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="miDetenerTiempoPC2ActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -121,11 +127,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Agregar Tiempo"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="miAgregarTiempoPC3ActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="miDetenerTiempoPC3">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Detener Tiempo"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="miDetenerTiempoPC3ActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -162,11 +174,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Agregar Tiempo"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="miAgregarTiempoPC4ActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="miDetenerTiempoPC4">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Detener Tiempo"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="miDetenerTiempoPC4ActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -211,11 +229,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Agregar Tiempo"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="miAgregarTiempoXbox1ActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="miDetenerTiempoXbox1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Detener Tiempo"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="miDetenerTiempoXbox1ActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -260,11 +284,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Agregar Tiempo"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="miAgregarTiempoXbox2ActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="miDetenerTiempoXbox2">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Detener Tiempo"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="miDetenerTiempoXbox2ActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

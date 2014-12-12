@@ -32,8 +32,6 @@ public class CtrlMenuPrincipal implements Observador {
         adminRegistrosXbox = AdminRegistrosXbox.getINSTANCE();
         ctrlComunicacion = CtrlComunicacion.getINSTANCE();
     }
-    
-    
 
     public void crearVentanaOpcionesCompu(int idCompu) {
         VtnOpcionesCompu vtnOpsCompu = new VtnOpcionesCompu(idCompu);
@@ -61,11 +59,11 @@ public class CtrlMenuPrincipal implements Observador {
                 .getObservado().agregar(this);
     }
 
-    public void iniciarUsoCompu(int idCompu, String tiempoSolicitado) {        
-        adminRegistrosCompus.agregarRegistroCompu(idCompu, tiempoSolicitado);        
-        ctrlComunicacion.EnviarTiempo(String.valueOf(idCompu), "TM-"+tiempoSolicitado);
-        System.out.println(String.valueOf(idCompu)+" "+ "TM-"+tiempoSolicitado);
-        agregarObservadorCompu(idCompu);        
+    public void iniciarUsoCompu(int idCompu, String tiempoSolicitado) {
+        adminRegistrosCompus.agregarRegistroCompu(idCompu, tiempoSolicitado);
+        ctrlComunicacion.EnviarTiempo(String.valueOf(idCompu), "TM-" + tiempoSolicitado);
+        System.out.println(String.valueOf(idCompu) + " " + "TM-" + tiempoSolicitado);
+        agregarObservadorCompu(idCompu);
     }
 
     public void iniciarUsoXbox(int idXbox, int numControles, String tiempoSolicitado) {
@@ -267,7 +265,7 @@ public class CtrlMenuPrincipal implements Observador {
                 break;
         }
     }
-    
+
     public void actualizarPopUpMenuXbox(int idXbox) {
         RegistroXbox regXbox = adminRegistrosXbox.buscarRegistroXboxPorId(idXbox);
         String tiempoSolicitado = regXbox.getTiempoSolicitado();
@@ -277,21 +275,26 @@ public class CtrlMenuPrincipal implements Observador {
             case 1:
                 MenuPrincipal.miTiempoSolXbox1.setText("Tiempo Solicitado: " + tiempoSolicitado);
                 MenuPrincipal.miHoraEntradaXbox1.setText("Hora Entrada: " + horaEntrada);
-                MenuPrincipal.miNumContrXbox1.setText("Controles: "+ numControles);
+                MenuPrincipal.miNumContrXbox1.setText("Controles: " + numControles);
                 break;
             case 2:
                 MenuPrincipal.miTiempoSolXbox2.setText("Tiempo Solicitado: " + tiempoSolicitado);
                 MenuPrincipal.miHoraEntradaXbox2.setText("Hora Entrada: " + horaEntrada);
-                MenuPrincipal.miNumContrXbox2.setText("Controles: "+ numControles);
-                break;            
+                MenuPrincipal.miNumContrXbox2.setText("Controles: " + numControles);
+                break;
         }
     }
 
-    public void agregarTiempo(int id, String tiempoAgregado) { 
-        adminRegistrosCompus.agregarTiempo(id, tiempoAgregado);        
+    public void agregarTiempoPC(int id, String tiempoAgregado) {
+        adminRegistrosCompus.agregarTiempo(id, tiempoAgregado);
         actualizarPopUpMenuPc(id);
     }
     
+    public void agregarTiempoXbox(int id, String tiempoAgregado) {
+        adminRegistrosXbox.agregarTiempo(id, tiempoAgregado);
+        actualizarPopUpMenuXbox(id);
+    }
+
     public String adaptadorFomatoHora(String tiempoSolicitado) {
         String tiempoSolicitadoAdaptado;
         switch (tiempoSolicitado) {
@@ -316,8 +319,12 @@ public class CtrlMenuPrincipal implements Observador {
         return tiempoSolicitadoAdaptado;
     }
 
-    public void detenerTemporizador(int idCompu) {        
+    public void detenerTemporizadorPC(int idCompu) {
         adminRegistrosCompus.detenerTemporizador(idCompu);
+    }
+    
+    public void detenerTemporizadorXbox(int idXbox){
+        adminRegistrosXbox.detenerTemporizador(idXbox);
     }
 
 }

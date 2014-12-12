@@ -88,6 +88,15 @@ public class AdminRegistrosXbox {
                 horaSalida, tiempoTranscurrido, precioTotal, fecha);
         return rentaXbox;
     }
+
+    public void agregarTiempo(int id, String tiempoAgregado) {
+        buscarRegistroXboxPorId(id).setTiempoSolicitado(tiempoAgregado);
+        buscarRegistroXboxPorId(id).getTemporizador().agregarTiempoSolicitado(tiempoAgregado);
+    }
+    
+    public void detenerTemporizador(int idCompu) {
+        buscarRegistroXboxPorId(idCompu).getTemporizador().setActivo(false);        
+    }
       
     
 }

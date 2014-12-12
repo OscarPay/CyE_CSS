@@ -147,9 +147,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mOpcionesPC2.setText("Opciones");
 
         miAgregarTiempoPC2.setText("Agregar Tiempo");
+        miAgregarTiempoPC2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miAgregarTiempoPC2ActionPerformed(evt);
+            }
+        });
         mOpcionesPC2.add(miAgregarTiempoPC2);
 
         miDetenerTiempoPC2.setText("Detener Tiempo");
+        miDetenerTiempoPC2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miDetenerTiempoPC2ActionPerformed(evt);
+            }
+        });
         mOpcionesPC2.add(miDetenerTiempoPC2);
 
         pmPC2.add(mOpcionesPC2);
@@ -163,9 +173,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mOpcionesPC3.setText("Opciones");
 
         miAgregarTiempoPC3.setText("Agregar Tiempo");
+        miAgregarTiempoPC3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miAgregarTiempoPC3ActionPerformed(evt);
+            }
+        });
         mOpcionesPC3.add(miAgregarTiempoPC3);
 
         miDetenerTiempoPC3.setText("Detener Tiempo");
+        miDetenerTiempoPC3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miDetenerTiempoPC3ActionPerformed(evt);
+            }
+        });
         mOpcionesPC3.add(miDetenerTiempoPC3);
 
         pmPC3.add(mOpcionesPC3);
@@ -179,9 +199,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mOpcionesPC4.setText("Opciones");
 
         miAgregarTiempoPC4.setText("Agregar Tiempo");
+        miAgregarTiempoPC4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miAgregarTiempoPC4ActionPerformed(evt);
+            }
+        });
         mOpcionesPC4.add(miAgregarTiempoPC4);
 
         miDetenerTiempoPC4.setText("Detener Tiempo");
+        miDetenerTiempoPC4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miDetenerTiempoPC4ActionPerformed(evt);
+            }
+        });
         mOpcionesPC4.add(miDetenerTiempoPC4);
 
         pmPC4.add(mOpcionesPC4);
@@ -198,9 +228,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mOpcionesXbox1.setText("Opciones");
 
         miAgregarTiempoXbox1.setText("Agregar Tiempo");
+        miAgregarTiempoXbox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miAgregarTiempoXbox1ActionPerformed(evt);
+            }
+        });
         mOpcionesXbox1.add(miAgregarTiempoXbox1);
 
         miDetenerTiempoXbox1.setText("Detener Tiempo");
+        miDetenerTiempoXbox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miDetenerTiempoXbox1ActionPerformed(evt);
+            }
+        });
         mOpcionesXbox1.add(miDetenerTiempoXbox1);
 
         pmXbox1.add(mOpcionesXbox1);
@@ -217,9 +257,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mOpcionesXbox2.setText("Opciones");
 
         miAgregarTiempoXbox2.setText("Agregar Tiempo");
+        miAgregarTiempoXbox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miAgregarTiempoXbox2ActionPerformed(evt);
+            }
+        });
         mOpcionesXbox2.add(miAgregarTiempoXbox2);
 
         miDetenerTiempoXbox2.setText("Detener Tiempo");
+        miDetenerTiempoXbox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miDetenerTiempoXbox2ActionPerformed(evt);
+            }
+        });
         mOpcionesXbox2.add(miDetenerTiempoXbox2);
 
         pmXbox2.add(mOpcionesXbox2);
@@ -538,7 +588,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnComputadora4ActionPerformed
 
     private void btnXbox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXbox1ActionPerformed
-        ctrlMenuPrincipal.crearVentanaOpcionesXbox(1);
+        ctrlMenuPrincipal.crearVentanaOpcionesXbox(1);        
     }//GEN-LAST:event_btnXbox1ActionPerformed
 
     private void btnXbox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXbox2ActionPerformed
@@ -547,11 +597,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void miAgregarTiempoPC1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAgregarTiempoPC1ActionPerformed
        String tiempoAgregado = JOptionPane.showInputDialog(this, "Cuanto desea agregar?"); 
-       ctrlMenuPrincipal.agregarTiempo(1, tiempoAgregado);
+       ctrlMenuPrincipal.agregarTiempoPC(1, tiempoAgregado);
     }//GEN-LAST:event_miAgregarTiempoPC1ActionPerformed
 
     private void miDetenerTiempoPC1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miDetenerTiempoPC1ActionPerformed
-        ctrlMenuPrincipal.detenerTemporizador(1);
+        ctrlMenuPrincipal.detenerTemporizadorPC(1);
     }//GEN-LAST:event_miDetenerTiempoPC1ActionPerformed
 
     private void btnTablaProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTablaProductosActionPerformed
@@ -561,6 +611,51 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void btnTablaUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTablaUsuariosActionPerformed
         new ListaUsr().setVisible(true);
     }//GEN-LAST:event_btnTablaUsuariosActionPerformed
+
+    private void miAgregarTiempoPC2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAgregarTiempoPC2ActionPerformed
+        String tiempoAgregado = JOptionPane.showInputDialog(this, "Cuanto desea agregar?"); 
+       ctrlMenuPrincipal.agregarTiempoPC(2, tiempoAgregado);
+    }//GEN-LAST:event_miAgregarTiempoPC2ActionPerformed
+
+    private void miDetenerTiempoPC2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miDetenerTiempoPC2ActionPerformed
+        ctrlMenuPrincipal.detenerTemporizadorPC(2);
+    }//GEN-LAST:event_miDetenerTiempoPC2ActionPerformed
+
+    private void miAgregarTiempoPC3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAgregarTiempoPC3ActionPerformed
+        String tiempoAgregado = JOptionPane.showInputDialog(this, "Cuanto desea agregar?"); 
+       ctrlMenuPrincipal.agregarTiempoPC(3, tiempoAgregado);
+    }//GEN-LAST:event_miAgregarTiempoPC3ActionPerformed
+
+    private void miDetenerTiempoPC3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miDetenerTiempoPC3ActionPerformed
+        ctrlMenuPrincipal.detenerTemporizadorPC(3);
+    }//GEN-LAST:event_miDetenerTiempoPC3ActionPerformed
+
+    private void miAgregarTiempoPC4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAgregarTiempoPC4ActionPerformed
+        String tiempoAgregado = JOptionPane.showInputDialog(this, "Cuanto desea agregar?"); 
+       ctrlMenuPrincipal.agregarTiempoPC(4, tiempoAgregado);
+    }//GEN-LAST:event_miAgregarTiempoPC4ActionPerformed
+
+    private void miDetenerTiempoPC4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miDetenerTiempoPC4ActionPerformed
+        ctrlMenuPrincipal.detenerTemporizadorPC(4);
+    }//GEN-LAST:event_miDetenerTiempoPC4ActionPerformed
+
+    private void miAgregarTiempoXbox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAgregarTiempoXbox1ActionPerformed
+        String tiempoAgregado = JOptionPane.showInputDialog(this, "Cuanto desea agregar?"); 
+       ctrlMenuPrincipal.agregarTiempoXbox(1, tiempoAgregado);
+    }//GEN-LAST:event_miAgregarTiempoXbox1ActionPerformed
+
+    private void miDetenerTiempoXbox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miDetenerTiempoXbox1ActionPerformed
+        ctrlMenuPrincipal.detenerTemporizadorXbox(1);
+    }//GEN-LAST:event_miDetenerTiempoXbox1ActionPerformed
+
+    private void miAgregarTiempoXbox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAgregarTiempoXbox2ActionPerformed
+        String tiempoAgregado = JOptionPane.showInputDialog(this, "Cuanto desea agregar?"); 
+       ctrlMenuPrincipal.agregarTiempoXbox(2, tiempoAgregado);
+    }//GEN-LAST:event_miAgregarTiempoXbox2ActionPerformed
+
+    private void miDetenerTiempoXbox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miDetenerTiempoXbox2ActionPerformed
+        ctrlMenuPrincipal.detenerTemporizadorXbox(2);
+    }//GEN-LAST:event_miDetenerTiempoXbox2ActionPerformed
 
     /**
      * @param args the command line arguments
