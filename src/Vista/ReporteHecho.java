@@ -31,7 +31,6 @@ public class ReporteHecho extends javax.swing.JFrame {
     public ReporteHecho() {
         initComponents();
         reportes = new CtrlReportes();
-        GenerarElReporte();
         
     }
     
@@ -39,7 +38,7 @@ public class ReporteHecho extends javax.swing.JFrame {
         this.fechaInicio = fecha;
     }
     
-    public void serfechaFinal(Date fecha){
+    public void setfechaFinal(Date fecha){
         this.fechaFinal = fecha;
     }
     

@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Vista.MenuPrincipal;
+import Vista.ReporteHecho;
 import java.sql.Date;
 import javax.swing.DefaultComboBoxModel;
 import static javax.swing.text.html.HTML.Tag.HEAD;
@@ -33,6 +34,7 @@ public class CtrlReportes {
     DAORentaXbox rentasxbox;
     DAORentaCompu computadoras;
     GeneradorReportes reportes;
+    ReporteHecho ventana;
     
     public CtrlReportes(){
         notas = new DAONotaVentaDia();
@@ -166,6 +168,12 @@ public class CtrlReportes {
         
         java.sql.Date fechaAntes = new java.sql.Date(diaentrada,mesEntrada,AñoEntrada);
         java.sql.Date fechaDespues = new java.sql.Date(diaSalida,mesSalida,AñoSalida);
+        
+        ventana = new ReporteHecho();
+        ventana.setfechaInicio(fechaAntes);
+        ventana.setfechaFinal(fechaDespues);
+        
+        ventana.GenerarElReporte();
     }
     
 }
