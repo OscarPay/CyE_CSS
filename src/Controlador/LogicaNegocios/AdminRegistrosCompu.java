@@ -88,5 +88,14 @@ public class AdminRegistrosCompu {
                 horaEntrada, horaSalida, tiempoTranscurrido, fecha);
         return rentaCompu;
     }
+
+    public void detenerTemporizador(int idCompu) {
+        buscarRegistroCompuPorId(idCompu).getTemporizador().setActivo(false);        
+    }
+
+    public void agregarTiempo(int id, String tiempoAgregado) {
+        buscarRegistroCompuPorId(id).setTiempoSolicitado(tiempoAgregado);
+        buscarRegistroCompuPorId(id).getTemporizador().agregarTiempoSolicitado(tiempoAgregado);
+    }
     
 }

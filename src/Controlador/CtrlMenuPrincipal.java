@@ -287,8 +287,9 @@ public class CtrlMenuPrincipal implements Observador {
         }
     }
 
-    public void agregarTiempo(int id, String tiempoAgregado) {        
-        adminRegistrosCompus.buscarRegistroCompuPorId(id).setTiempoSolicitado(tiempoAgregado);
+    public void agregarTiempo(int id, String tiempoAgregado) { 
+        adminRegistrosCompus.agregarTiempo(id, tiempoAgregado);        
+        actualizarPopUpMenuPc(id);
     }
     
     public String adaptadorFomatoHora(String tiempoSolicitado) {
@@ -313,6 +314,10 @@ public class CtrlMenuPrincipal implements Observador {
                 tiempoSolicitadoAdaptado = tiempoSolicitado;
         }
         return tiempoSolicitadoAdaptado;
+    }
+
+    public void detenerTemporizador(int idCompu) {        
+        adminRegistrosCompus.detenerTemporizador(idCompu);
     }
 
 }

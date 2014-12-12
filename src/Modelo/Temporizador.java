@@ -34,6 +34,14 @@ public final class Temporizador extends Thread {
         return tiempoTranscurrido;
     }
 
+    public void agregarTiempoSolicitado(String tiempoSolicitado) {
+        this.tiempoSolicitado = tiempoSolicitado;
+    }  
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }    
+
     public boolean isActivo() {
         return activo;
     }

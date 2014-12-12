@@ -6,6 +6,7 @@
 package Vista;
 
 import Controlador.CtrlMenuPrincipal;
+import javax.swing.JOptionPane;
 import org.jvnet.substance.SubstanceLookAndFeel;
 
 /**
@@ -108,6 +109,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         lblPrecioCompu4 = new javax.swing.JLabel();
         lblPrecioCompu1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        btnTablaProductos = new javax.swing.JButton();
+        btnTablaUsuarios = new javax.swing.JButton();
 
         miTiempoSolPC1.setText("Tiempo Solicitado: ");
         pmPC1.add(miTiempoSolPC1);
@@ -126,6 +129,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mOpcionesPC1.add(miAgregarTiempoPC1);
 
         miDetenerTiempoPC1.setText("Detener Tiempo");
+        miDetenerTiempoPC1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miDetenerTiempoPC1ActionPerformed(evt);
+            }
+        });
         mOpcionesPC1.add(miDetenerTiempoPC1);
 
         pmPC1.add(mOpcionesPC1);
@@ -163,11 +171,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         pmPC3.add(mOpcionesPC3);
 
         miTiempoSolPC4.setText("Tiempo Solicitado: ");
-        miTiempoSolPC4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                miTiempoSolPC4ActionPerformed(evt);
-            }
-        });
         pmPC4.add(miTiempoSolPC4);
 
         miHoraEntradaPC4.setText("Hora Entrada:");
@@ -461,18 +464,42 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Panel Control", jPanel1);
 
+        btnTablaProductos.setText("Tabla Productos");
+        btnTablaProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTablaProductosActionPerformed(evt);
+            }
+        });
+
+        btnTablaUsuarios.setText("Tabla Usuarios");
+        btnTablaUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTablaUsuariosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 483, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(107, 107, 107)
+                .addComponent(btnTablaProductos)
+                .addGap(61, 61, 61)
+                .addComponent(btnTablaUsuarios)
+                .addContainerGap(103, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 366, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnTablaProductos)
+                    .addComponent(btnTablaUsuarios))
+                .addContainerGap(289, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("tab2", jPanel2);
+        jTabbedPane1.addTab("Tablas", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -519,13 +546,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnXbox2ActionPerformed
 
     private void miAgregarTiempoPC1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAgregarTiempoPC1ActionPerformed
-//       String tiempoAgregado = JOptionPane.showInputDialog(this, "Cuanto desea agregar?"); 
-//       ctrlMenuPrincipal.agregarTiempo(1, tiempoAgregado);
+       String tiempoAgregado = JOptionPane.showInputDialog(this, "Cuanto desea agregar?"); 
+       ctrlMenuPrincipal.agregarTiempo(1, tiempoAgregado);
     }//GEN-LAST:event_miAgregarTiempoPC1ActionPerformed
 
-    private void miTiempoSolPC4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miTiempoSolPC4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_miTiempoSolPC4ActionPerformed
+    private void miDetenerTiempoPC1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miDetenerTiempoPC1ActionPerformed
+        ctrlMenuPrincipal.detenerTemporizador(1);
+    }//GEN-LAST:event_miDetenerTiempoPC1ActionPerformed
+
+    private void btnTablaProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTablaProductosActionPerformed
+        new ListaProductos().setVisible(true);
+    }//GEN-LAST:event_btnTablaProductosActionPerformed
+
+    private void btnTablaUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTablaUsuariosActionPerformed
+        new ListaUsr().setVisible(true);
+    }//GEN-LAST:event_btnTablaUsuariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -570,6 +605,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public static javax.swing.JButton btnComputadora2;
     public static javax.swing.JButton btnComputadora3;
     public static javax.swing.JButton btnComputadora4;
+    private javax.swing.JButton btnTablaProductos;
+    private javax.swing.JButton btnTablaUsuarios;
     public static javax.swing.JButton btnXbox1;
     public static javax.swing.JButton btnXbox2;
     private javax.swing.JLabel jLabel1;
