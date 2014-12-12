@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Controlador.LogicaNegocios;
 
 import Controlador.CtrlMenuPrincipal;
@@ -17,31 +16,31 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Oscar
  */
 public class AdminRegistrosCompu {
-    
+
     private static final AdminRegistrosCompu INSTANCE = new AdminRegistrosCompu();
     private static final String COMPUTADORA = "Computadora";
     private final ArrayList<RegistroCompu> registrosCompu = new ArrayList<>();
     private final CtrlRenta ctrlRenta = new CtrlRenta();
-    private final CtrlMenuPrincipal ctrlMenuPrincipal = new CtrlMenuPrincipal(); 
-    
-    
-    private AdminRegistrosCompu(){    
+    private final CtrlMenuPrincipal ctrlMenuPrincipal = new CtrlMenuPrincipal();
+
+    private AdminRegistrosCompu() {
     }
 
     public static AdminRegistrosCompu getINSTANCE() {
         return INSTANCE;
-    }    
-    
-    public void agregarRegistroCompu(int idCompu, String tiempoSolicitado){ 
+    }
+
+    public void agregarRegistroCompu(int idCompu, String tiempoSolicitado) {
         RegistroCompu registroCompu = crearRegistroCompu(idCompu, tiempoSolicitado);
         registrosCompu.add(registroCompu);
-    }    
+    }
 
     private RegistroCompu crearRegistroCompu(int idCompu, String tiempoSolicitado) {
         Temporizador temp = AdminTiempo.nuevoTemporizador(idCompu, tiempoSolicitado, COMPUTADORA);
@@ -54,29 +53,30 @@ public class AdminRegistrosCompu {
     public void eliminarRegistroCompu(int idCompu) {
         registrosCompu.remove(idCompu);
     }
-    
-    public RegistroCompu buscarRegistroCompuPorId(int idCompu){  
+
+    public RegistroCompu buscarRegistroCompuPorId(int idCompu) {
         RegistroCompu rentaCompu = null;
-        
-        for(RegistroCompu renta:registrosCompu){
-            if(renta.getIdCompu()==idCompu){
+
+        for (RegistroCompu renta : registrosCompu) {
+            if (renta.getIdCompu() == idCompu) {
                 rentaCompu = renta;
             }
         }
         return rentaCompu;
     }
-    
-    public void crearRentaCompu(int id){        
-       RentaComputadora rentaCompu = obtenerDatosRenta(id);
+
+    public void guardarRentaCompu(int id) {
         try {
+            RentaComputadora rentaCompu = crearRentaCompu(id);
             ctrlRenta.agregarRentaCompu(rentaCompu);
             ctrlMenuPrincipal.activarBotonComputadora(id, true);
         } catch (SQLException ex) {
-            Logger.getLogger(AdminRegistrosCompu.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error "+ex.getMessage());
         }
+
     }
 
-    private RentaComputadora obtenerDatosRenta(int id) {
+    private RentaComputadora crearRentaCompu(int id) {
         AdminRegistrosCompu admin = AdminRegistrosCompu.getINSTANCE();
         RegistroCompu registroCompu = admin.buscarRegistroCompuPorId(id);
         String horaEntrada = registroCompu.getHoraEntrada();
@@ -90,12 +90,12 @@ public class AdminRegistrosCompu {
     }
 
     public void detenerTemporizador(int idCompu) {
-        buscarRegistroCompuPorId(idCompu).getTemporizador().setActivo(false);        
+        buscarRegistroCompuPorId(idCompu).getTemporizador().setActivo(false);
     }
 
     public void agregarTiempo(int id, String tiempoAgregado) {
         buscarRegistroCompuPorId(id).setTiempoSolicitado(tiempoAgregado);
         buscarRegistroCompuPorId(id).getTemporizador().agregarTiempoSolicitado(tiempoAgregado);
     }
-    
+
 }

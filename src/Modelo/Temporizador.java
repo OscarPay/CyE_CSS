@@ -86,6 +86,7 @@ public final class Temporizador extends Thread {
     private void verificarTiempo() {
         if (tiempoTranscurrido.equals(tiempoSolicitado)) {
             desactivar();
+            
             JOptionPane.showMessageDialog(null, "Se termino el tiempo de: " + tipoMaquina + " " + idMaquina);
         }
     }

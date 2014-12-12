@@ -65,9 +65,9 @@ public class AdminRegistrosXbox {
         return registroXbox;
     }    
     
-    public void crearRentaXbox(int id){
-       RentaXbox rentaXbox = obtenerDatosRenta(id);
+    public void guardarRentaXbox(int id){       
         try {
+            RentaXbox rentaXbox = crearRentaXbox(id);
             ctrlXbox.agregarRentaXbox(rentaXbox);
             ctrlMenuPrincipal.activarBotonXbox(id, true);
         } catch (SQLException ex) {
@@ -75,7 +75,7 @@ public class AdminRegistrosXbox {
         }
     }
 
-    private RentaXbox obtenerDatosRenta(int id) {
+    private RentaXbox crearRentaXbox(int id) {
         AdminRegistrosXbox admin = AdminRegistrosXbox.getINSTANCE();
         RegistroXbox registroXbox = admin.buscarRegistroXboxPorId(id);
         int numControles = registroXbox.getNumComtroles();

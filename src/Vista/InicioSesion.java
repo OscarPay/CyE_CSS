@@ -141,8 +141,7 @@ public class InicioSesion extends javax.swing.JFrame {
         String usuario = tfUsuario.getText();
         String correo = tfCorreo.getText();
         
-        ArrayList<Usuario> listaUsuarios = ctrlUsuario.buscarUsuarios();
-        System.out.println(listaUsuarios.get(0).getNombreUsuario());
+        ArrayList<Usuario> listaUsuarios = ctrlUsuario.buscarUsuarios();        
         
         for (Usuario user : listaUsuarios) {
             if(user.getNombreUsuario().equals(usuario)){
@@ -151,19 +150,7 @@ public class InicioSesion extends javax.swing.JFrame {
                     this.dispose();
                 }
             }
-        }
-        
-
-        //Validar el inicio de sesión
-//        if (controladorSesion.iniciarSesion(usuario, password)) {
-//            ctrlMenu.mostrarVentana();
-//            if (adminUsers.getRol("Cte")) {
-//                ctrlMenu.bloquearBotones();
-//            }
-//            this.dispose();
-//        } else {
-//            JOptionPane.showMessageDialog(null, "Error al iniciar sesión");
-//        }
+        }      
 
         tfUsuario.setText("");
         tfCorreo.setText("");

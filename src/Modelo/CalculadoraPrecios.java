@@ -72,10 +72,10 @@ public class CalculadoraPrecios extends Thread {
     private void notificarAdmin() {
         switch (maquina) {
             case RentaComputadora.COMPUTADORA:
-                AdminRegistrosCompu.getINSTANCE().crearRentaCompu(idMaquina);
+                AdminRegistrosCompu.getINSTANCE().guardarRentaCompu(idMaquina);
                 break;
             case RentaXbox.XBOX:
-                AdminRegistrosXbox.getINSTANCE().crearRentaXbox(idMaquina);
+                AdminRegistrosXbox.getINSTANCE().guardarRentaXbox(idMaquina);
                 break;
         }
 

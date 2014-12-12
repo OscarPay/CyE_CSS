@@ -33,8 +33,7 @@ public class AdminTiempo {
     }
     
     public static Date obtenerFecha(){
-        Date fecha = new Date();
-        //DateFormat formatoFecha = new SimpleDateFormat("dd/MMMM/yyyy");
+        Date fecha = new Date();        
         return fecha;
     }
     
