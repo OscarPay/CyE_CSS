@@ -10,6 +10,7 @@ import Controlador.GestorBD.DAOProducto;
 import Modelo.Producto;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,22 +22,22 @@ public class CtrlProducto {
     DAOProducto gestorProduc;
     
     public boolean agregarProducto(String id, String nombreProduc,Double precioCom
-            ,Double precioVen,String tipoproduc) throws SQLException{
+            ,Double precioVen,String tipoproduc,Double cantidad) throws SQLException{
             gestorProduc=new DAOProducto();
             gestorProduc.establecerConexion();
-            Producto produc=new Producto(id,nombreProduc,tipoproduc,precioCom,precioVen);
+            Producto produc=new Producto(id,nombreProduc,tipoproduc,precioCom,precioVen,cantidad);
        
-            return gestorProduc.agregarProducto(produc);
+            return gestorProduc.agregarElemento(produc);
     }
     
     public boolean editarProducto(String id, String nombreProduc,Double precioCom
-            ,Double precioVen,String tipoproduc) throws SQLException{
+            ,Double precioVen,String tipoproduc,Double cantidad) throws SQLException{
         gestorProduc=new DAOProducto();
         gestorProduc.establecerConexion();
         
-       Producto produc=new Producto(id,nombreProduc,tipoproduc,precioCom,precioVen);
+       Producto produc=new Producto(id,nombreProduc,tipoproduc,precioCom,precioVen,cantidad);
              
-       return gestorProduc.modificarProducto(produc,id);
+       return gestorProduc.modificarElemento(produc,id);
             
         
     }
@@ -47,7 +48,7 @@ public class CtrlProducto {
         Producto producBD=null;
        
         
-          producBD= gestorProduc.buscarProducto(idproduc);
+          producBD= gestorProduc.buscarElemento(idproduc);
         
         return producBD;
          
@@ -60,7 +61,7 @@ public class CtrlProducto {
         
          try {
         
-             gestorProduc.eliminarProducto(produc);
+             gestorProduc.eliminarElemento(produc);
              
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -73,7 +74,7 @@ public class CtrlProducto {
         
         try {
         
-            return   gestorProduc.consultarProductos(null);
+            return   gestorProduc.consultarElementos(null);
         
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -108,10 +109,25 @@ public class CtrlProducto {
             String tipoProduc=producTemp.getTipoProducto();
             String precioVen=Double.toString(producTemp.getPrecioVenta());
             String precioCom=Double.toString(producTemp.getPrecioCompra());
-            String[] datosProduc={idProduc,nombreProduc,tipoProduc,precioVen,precioCom};
+            String cantidad=Double.toString(producTemp.getCantidad());
+            String[] datosProduc={idProduc,nombreProduc,tipoProduc,precioVen,precioCom,cantidad};
             modelo = (DefaultTableModel) tableProduc.getModel();
             modelo.addRow(datosProduc);
         }
         
     }
+     
+      public HashMap<String,String> obtenerProductoasString(String id) throws SQLException{
+        
+        HashMap<String,String> atributosProduc = new HashMap<String,String>();
+        Producto producBuscado=this.buscarProducto(id);
+          System.out.println("obtenerproductos assitri");
+        atributosProduc.put("id",producBuscado.getId());
+        atributosProduc.put("nombreProduc",producBuscado.getNombreProduc());
+        atributosProduc.put("precioVenta", producBuscado.getPrecioVenta().toString());
+        
+        return atributosProduc;
+        
+    }
+
 }

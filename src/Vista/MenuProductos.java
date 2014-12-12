@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Vista;
 
 import Controlador.CtrlProducto;
@@ -16,7 +15,9 @@ import javax.swing.JOptionPane;
  * @author x
  */
 public class MenuProductos extends javax.swing.JFrame {
-CtrlProducto ctrlProduc=new CtrlProducto();
+
+    CtrlProducto ctrlProduc = new CtrlProducto();
+
     /**
      * Creates new form MenuProductos
      */
@@ -47,6 +48,8 @@ CtrlProducto ctrlProduc=new CtrlProducto();
         btnEditar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         btnProductos = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        txtExistencia = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,12 +75,7 @@ CtrlProducto ctrlProduc=new CtrlProducto();
             }
         });
 
-        cbbTipoProduc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Dulceria", "Papeleria" }));
-        cbbTipoProduc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbbTipoProducActionPerformed(evt);
-            }
-        });
+        cbbTipoProduc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Dulceria", "Papeleria", "Servicio Papeleria" }));
 
         btnAgregar.setText("Agregar");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -107,39 +105,41 @@ CtrlProducto ctrlProduc=new CtrlProducto();
             }
         });
 
+        jLabel6.setText("Existencia:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2)))
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(cbbTipoProduc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(3, 3, 3)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtPrecioCom)
-                                        .addComponent(txtPrecioVen))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 241, Short.MAX_VALUE))
+                        .addComponent(jLabel1)
+                        .addGap(47, 47, 47)
+                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, Short.MAX_VALUE)))
+                        .addComponent(jLabel2)
+                        .addGap(73, 73, 73)
+                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cbbTipoProduc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtExistencia)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel4))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtPrecioCom, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                                .addComponent(txtPrecioVen)))))
+                .addGap(65, 65, 65)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnProductos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -150,41 +150,52 @@ CtrlProducto ctrlProduc=new CtrlProducto();
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(116, 116, 116)
+                        .addComponent(btnAgregar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(94, 94, 94)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtPrecioCom, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3))
-                                .addGap(1, 1, 1))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(42, 42, 42)
                                 .addComponent(btnBuscar)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnAgregar)
-                                .addGap(18, 18, 18)))
-                        .addComponent(btnEditar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnProductos))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(64, 64, 64)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel2)
+                                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(28, 28, 28)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(32, 32, 32)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtPrecioCom, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(txtPrecioVen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addGap(14, 14, 14)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(cbbTipoProduc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(55, Short.MAX_VALUE))
+                            .addComponent(jLabel6)
+                            .addComponent(txtExistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(btnProductos)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(cbbTipoProduc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         pack();
@@ -200,21 +211,24 @@ CtrlProducto ctrlProduc=new CtrlProducto();
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
-        String id=txtID.getText();
-        Producto producBuscado=null;
-       try{
-        producBuscado=this.ctrlProduc.buscarProducto(id);
-        txtID.setText(producBuscado.getId());
-        txtNombre.setText(producBuscado.getNombreProduc());
-        txtPrecioCom.setText(producBuscado.getPrecioCompra().toString());
-        txtPrecioVen.setText(producBuscado.getPrecioVenta().toString());
-        cbbTipoProduc.setSelectedItem(producBuscado.getTipoProducto());
-       }catch(NullPointerException ex) {
-           JOptionPane.showMessageDialog(this,"El Producto No existe.");
-       }catch (SQLException ex) {
-           JOptionPane.showMessageDialog(this, "Error en la Base de Datos");
-       }
-       
+        String id = txtID.getText();
+        Producto producBuscado = null;
+        try {
+            producBuscado = this.ctrlProduc.buscarProducto(id);
+            txtID.setText(producBuscado.getId());
+            txtNombre.setText(producBuscado.getNombreProduc());
+            txtPrecioCom.setText(producBuscado.getPrecioCompra().toString());
+            txtPrecioVen.setText(producBuscado.getPrecioVenta().toString());
+            txtExistencia.setText(producBuscado.getCantidad().toString());
+            cbbTipoProduc.setSelectedItem(producBuscado.getTipoProducto());
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(this, "El Producto No existe.");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error en la Base de Datos");
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Valores de campo invalido");
+        }
+
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void cbbTipoProducActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbTipoProducActionPerformed
@@ -222,54 +236,60 @@ CtrlProducto ctrlProduc=new CtrlProducto();
     }//GEN-LAST:event_cbbTipoProducActionPerformed
 
     private void btnProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductosActionPerformed
-         ListaProductos listaproduc=new ListaProductos();
+        ListaProductos listaproduc = new ListaProductos();
         listaproduc.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnProductosActionPerformed
 
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
-    String idProduc=txtID.getText();
-    String nombreProduc=txtNombre.getText();
-    Double precioVen=Double.parseDouble(txtPrecioVen.getText());
-    Double precioCom=Double.parseDouble(txtPrecioCom.getText());
-    String tipoProduc=cbbTipoProduc.getSelectedItem().toString();
-     
-    try {
-        if(ctrlProduc.agregarProducto(idProduc,nombreProduc,precioCom,precioVen,tipoProduc)){
-            JOptionPane.showMessageDialog(this, "Producto agregado exitosamente!");
-        }else{
-            JOptionPane.showMessageDialog(this, "Error,el Producto ya existe!");
-        }
-    } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error en la Base de Datos!");
-
-    }
-    }//GEN-LAST:event_btnAgregarActionPerformed
-
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
-    String idProduc=txtID.getText();
-    String nombreProduc=txtNombre.getText();
-    Double precioVen=Double.parseDouble(txtPrecioVen.getText());
-    Double precioCom=Double.parseDouble(txtPrecioCom.getText());
-    String tipoProduc=cbbTipoProduc.getSelectedItem().toString();
-    
-    try {
-        if(ctrlProduc.editarProducto(idProduc,nombreProduc,precioCom,precioVen,tipoProduc)){
-            JOptionPane.showMessageDialog(this, "Producto Editado Exitosamente!");
 
-        }else{
-            JOptionPane.showMessageDialog(this, "EL Producto no existe!");
-            
-        }  
-    } catch (SQLException ex) {
+        try {
+            String idProduc = txtID.getText();
+            String nombreProduc = txtNombre.getText();
+            Double precioVen = Double.parseDouble(txtPrecioVen.getText());
+            Double precioCom = Double.parseDouble(txtPrecioCom.getText());
+            Double existencia = Double.parseDouble(txtExistencia.getText());
+            String tipoProduc = cbbTipoProduc.getSelectedItem().toString();
+            if (ctrlProduc.editarProducto(idProduc, nombreProduc, precioCom, precioVen, tipoProduc, existencia)) {
+                JOptionPane.showMessageDialog(this, "Producto Editado Exitosamente!");
+
+            } else {
+                JOptionPane.showMessageDialog(this, "EL Producto no existe!");
+
+            }
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, "Error en la Base de Datos");
 
-    }
-    
-        
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Valores de campo invalido");
+        }
+
+
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        // TODO add your handling code here:
+
+        try {
+            String idProduc = txtID.getText();
+            String nombreProduc = txtNombre.getText();
+            Double precioVen = Double.parseDouble(txtPrecioVen.getText());
+            Double precioCom = Double.parseDouble(txtPrecioCom.getText());
+            Double existencia = Double.parseDouble(txtExistencia.getText());
+            String tipoProduc = cbbTipoProduc.getSelectedItem().toString();
+            if (ctrlProduc.agregarProducto(idProduc, nombreProduc, precioCom, precioVen, tipoProduc, existencia)) {
+                JOptionPane.showMessageDialog(this, "Producto agregado exitosamente!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Error,el Producto ya existe!");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error en la Base de Datos!");
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Valores de campo invalido");
+        }
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -317,34 +337,39 @@ CtrlProducto ctrlProduc=new CtrlProducto();
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JTextField txtExistencia;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPrecioCom;
     private javax.swing.JTextField txtPrecioVen;
     // End of variables declaration//GEN-END:variables
 
-private void reiniciarVista(){
-    txtID.setText("");
-    txtNombre.setText("");
-    txtPrecioCom.setText("");
-    txtPrecioVen.setText("");
-}
+    private void reiniciarVista() {
+        txtID.setText("");
+        txtNombre.setText("");
+        txtPrecioCom.setText("");
+        txtPrecioVen.setText("");
+        txtExistencia.setText("");
+    }
 
-private Producto obtenerProducVista(){
-    
-    String idProduc=txtID.getText();
-    String nombreProduc=txtNombre.getText();
-    Double precioVen=Double.parseDouble(txtPrecioVen.getText());
-    Double precioCom=Double.parseDouble(txtPrecioCom.getText());
-    String tipoProduc=cbbTipoProduc.getSelectedItem().toString();
-    
-    Producto producVista=new Producto(idProduc,
-                                    nombreProduc,
-                                    tipoProduc,
-                                    precioCom,
-                                    precioVen);
+    private Producto obtenerProducVista() {
 
-    return producVista;
-}
+        String idProduc = txtID.getText();
+        String nombreProduc = txtNombre.getText();
+        Double precioVen = Double.parseDouble(txtPrecioVen.getText());
+        Double precioCom = Double.parseDouble(txtPrecioCom.getText());
+        String tipoProduc = cbbTipoProduc.getSelectedItem().toString();
+        Double existencia = Double.parseDouble(txtExistencia.getText());
+
+        Producto producVista = new Producto(idProduc,
+                nombreProduc,
+                tipoProduc,
+                precioCom,
+                precioVen,
+                existencia);
+
+        return producVista;
+    }
 
 }

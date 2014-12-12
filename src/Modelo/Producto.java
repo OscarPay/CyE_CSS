@@ -15,16 +15,18 @@ public class Producto {
     private String nombreProduc = "";
     private String tipoProducto = "";
     private Double precioCompra = 0.00;
-    private Double precioVenta = 0.00;    
+    private Double precioVenta = 0.00;   
+    private Double cantidad=0.00;
     
     public Producto(String id, String nombreProduc, String tipoProducto, 
-                     Double precioCompra, Double precioVenta) {
+                     Double precioCompra, Double precioVenta,Double Cantidad) {
         
         this.id = id;
         this.nombreProduc = nombreProduc;
         this.tipoProducto = tipoProducto;
         this.precioCompra = precioCompra;
-        this.precioVenta = precioVenta;       
+        this.precioVenta = precioVenta;
+        this.cantidad=Cantidad;
         
     } 
 
@@ -66,6 +68,14 @@ public class Producto {
 
     public void setPrecioVenta(Double precioVenta) {
         this.precioVenta = precioVenta;
+    }
+
+    public Double getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Double cantidad) {
+        this.cantidad = cantidad;
     }
     
     

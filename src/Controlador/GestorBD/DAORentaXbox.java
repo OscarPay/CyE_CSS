@@ -17,23 +17,22 @@ import java.util.ArrayList;
  *
  * @author Oscar
  */
-public class DAORentaXbox extends DAOBD{
+public class DAORentaXbox extends DAOBD<RentaXbox> {
+      private final String NO_MAQUINA = "no_maquina";
+    private final String NO_CONTROLES = "no_controles";
+    private final String TIPO_MAQUINA = "tipo_maquina";
+    private final String HORA_ENTRADA = "hora_entrada";
+    private final String HORA_SALIDA = "hora_salida";
+    private final String TIEMPO_TRANSCURRIDO = "tiempo_transcurrido";
+    private final String PRECIO = "precio";
+    private final String FECHA = "fecha";
     
+
     public boolean agregarRenta(RentaXbox renta) throws SQLException {
         boolean seAgregoRenta = false;
 
         if (true) {
-            String consulta = "INSERT INTO rentas (no_maquina,no_controles,"
-                    + "tipo_maquina,hora_entrada,hora_salida,tiempo_transcurrido,"
-                    + "precio,fecha) VALUES"
-                    + " ('" + renta.getIdXbox() + "','"
-                    + renta.getNumControles() + "','" //num controles
-                    + RentaXbox.XBOX + "','" //tipo maquina
-                    + renta.getHoraEntrada() + "','"
-                    + renta.getHoraSalida() + "','"
-                    + renta.getTiempoTranscurrido() + "','"
-                    + renta.getPrecio() + "','"
-                    + renta.getFecha() + "')";
+            String consulta = this.armarConsultaInserta(renta);
 
             Statement sentencia;
             sentencia = this.conexion.createStatement();
@@ -44,38 +43,104 @@ public class DAORentaXbox extends DAOBD{
             seAgregoRenta = true;
         }
         return seAgregoRenta;
-    }    
-    
-    
+    }
+
     public ArrayList<RentaXbox> obtenerValoresPorFechas(Date fechaInicio,
-                                                        Date fechaFinal) throws SQLException{
+            Date fechaFinal) throws SQLException {
         ArrayList<RentaXbox> rentas = new ArrayList();
-        
-        String consulta = "SELECT * FROM rentas WHERE ( fecha BETWEEN '"+ 
-                fechaInicio + "'  AND '"+ fechaFinal + "') AND "+
-                "tipo_maquina = 'Xbox'";
-        
+
+        String consulta = "SELECT * FROM rentas WHERE ( fecha BETWEEN '"
+                + fechaInicio + "'  AND '" + fechaFinal + "') AND "
+                + "tipo_maquina = 'Xbox'";
+
         Statement sentencia;
         sentencia = this.conexion.createStatement();
         ResultSet result = sentencia.executeQuery(consulta);
-        
-        while(result.next()){
-            int id = result.getInt("no_maquina");
-            int noControles = result.getInt("no_controles");
-            String horaEntrada = result.getString("hora_entrada");
-            String horaSalida = result.getString("hora_salida");
-            String tiempoTranscurrido = result.getString("tiempo_transcurrido");
-            String precio = result.getString("precio");
-            Date fecha =result.getDate("fecha");
-            
-            RentaXbox renta = new RentaXbox(id,noControles,horaEntrada,
-                                            horaSalida,tiempoTranscurrido,precio,fecha);
+
+        while (result.next()) {
+            int id = result.getInt(this.NO_MAQUINA);
+            int noControles = result.getInt(this.NO_CONTROLES);
+            String horaEntrada = result.getString(this.HORA_ENTRADA);
+            String horaSalida = result.getString(this.HORA_SALIDA);
+            String tiempoTranscurrido = result.getString(this.TIEMPO_TRANSCURRIDO);
+            String precio = result.getString(this.PRECIO);
+            Date fecha = result.getDate(this.FECHA);
+
+            RentaXbox renta = new RentaXbox(id, noControles, horaEntrada,
+                    horaSalida, tiempoTranscurrido, precio, fecha);
 
             rentas.add(renta);
         }
-        
+
         sentencia.close();
-        
+
         return rentas;
+    }
+
+    @Override
+    public boolean agregarElemento(RentaXbox elemento) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean modificarElemento(RentaXbox elemento, String condicion) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void eliminarElemento(RentaXbox elemento) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public RentaXbox buscarElemento(String condicion) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ArrayList<RentaXbox> consultarElementos(String condicion) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean existeElemento(String condicion) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    protected String armarConsultaInserta(RentaXbox elemento) throws SQLException {
+        String consulta = "INSERT INTO rentas (no_maquina,no_controles,"
+                + "tipo_maquina,hora_entrada,hora_salida,tiempo_transcurrido,"
+                + "precio,fecha) VALUES"
+                + " ('" + elemento.getIdXbox() + "','"
+                + elemento.getNumControles() + "','" //num controles
+                + RentaXbox.XBOX + "','" //tipo maquina
+                + elemento.getHoraEntrada() + "','"
+                + elemento.getHoraSalida() + "','"
+                + elemento.getTiempoTranscurrido() + "','"
+                + elemento.getPrecio() + "','"
+                + elemento.getFecha() + "')";
+
+        return consulta;
+    }
+
+    @Override
+    protected String armarConsultaUpdate(RentaXbox elemento, String correousr) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    protected String armarConsultaDelete(RentaXbox elemento) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    protected String armarConsultaSelect(String condicion) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    protected String armarConsultaSelects(String condicion) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
