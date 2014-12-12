@@ -141,20 +141,33 @@ public class InicioSesion extends javax.swing.JFrame {
         String usuario = tfUsuario.getText();
         String correo = tfCorreo.getText();
         
-        ArrayList<Usuario> listaUsuarios = ctrlUsuario.buscarUsuarios();        
-        
-        for (Usuario user : listaUsuarios) {
-            if(user.getNombreUsuario().equals(usuario)){
-                if(user.getCorreo().equals(correo)){
-                    MenuPrincipal.getINSTANCE().setVisible(true);
-                    this.dispose();
-                }
-            }
+        if(existeUsuario(usuario, correo)){
+            MenuPrincipal.getINSTANCE().setVisible(true);
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(this, "Usurio o correo incorrectos");
         }      
 
+        limpiarCampos();
+    }//GEN-LAST:event_iniciar_btnActionPerformed
+
+    private boolean existeUsuario(String usuario, String correo) {
+        ArrayList<Usuario> listaUsuarios = ctrlUsuario.buscarUsuarios();
+        boolean existe = false;
+        for (Usuario usr : listaUsuarios) {
+            if(usr.getNombreUsuario().equals(usuario)){
+                if(usr.getCorreo().equals(correo)){
+                    return true;
+                }
+            }
+        }
+        return existe;
+    }
+
+    private void limpiarCampos() {
         tfUsuario.setText("");
         tfCorreo.setText("");
-    }//GEN-LAST:event_iniciar_btnActionPerformed
+    }
 
     private void tfCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCorreoActionPerformed
         // TODO add your handling code here:
