@@ -105,12 +105,11 @@ public class DAONotaVentaDia extends DAOBD<NotaVentaDia> {
     }
 
     public ArrayList<NotaVentaDia> obtenerValoresPorFechas(Date fechaInicio,
-            Date fechaFinal, String tipoProduc) throws SQLException {
+            Date fechaFinal) throws SQLException {
         ArrayList<NotaVentaDia> ventas = new ArrayList();
 
         String consulta = "SELECT * FROM Ventas JOIN WHERE ( Fecha BETWEEN '"
-                + fechaInicio + "'  AND '" + fechaFinal + "')  "
-                + "tipo_produc = '" + tipoProduc + "'";
+                + fechaInicio + "'  AND '" + fechaFinal + "')  ";
         /*
          SELECT scc.ventas.* FROM scc.ventas JOIN productos where scc.ventas.id_Produc=scc.productos.id_produc
          AND (fecha BETWEEN '' AND '') AND tipo_produc='';

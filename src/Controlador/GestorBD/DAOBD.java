@@ -6,6 +6,7 @@
 
 package Controlador.GestorBD;
 
+import Modelo.Configuration;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -19,11 +20,11 @@ import java.util.ArrayList;
  * @author Abner
  */
 public abstract class DAOBD <T> {
-        String host="localhost";
-        String puerto="666";
-        String usuario="root";
-        String contrasena="renba";
-        String nombreBD="scc";
+        String host= Configuration.getIp();
+        String puerto= Configuration.getPort();
+        String usuario= Configuration.getUsuario();
+        String contrasena=Configuration.getContraseña();
+        String nombreBD= Configuration.getNombreDB();
         Connection conexion=null;
         
     public void establecerConexion() {
