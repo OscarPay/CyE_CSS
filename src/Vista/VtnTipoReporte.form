@@ -102,7 +102,7 @@
                   <Component id="comboMesSalida" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="ComboAñoSalida" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="13" max="32767" attributes="0"/>
+              <EmptySpace pref="15" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

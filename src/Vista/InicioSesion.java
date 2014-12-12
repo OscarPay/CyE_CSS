@@ -5,9 +5,13 @@
  */
 package Vista;
 
+import Controlador.CtrlInicioSesion;
 import Controlador.CtrlUsuario;
 import Modelo.Usuario;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,13 +20,14 @@ import javax.swing.JOptionPane;
  */
 public class InicioSesion extends javax.swing.JFrame {
 
-    CtrlUsuario ctrlUsuario;
+    
+    CtrlInicioSesion ctrlInicioSesion;
     
     /**
      * Creates new form InicioSesion
      */
-    public InicioSesion() {
-        ctrlUsuario = new CtrlUsuario();
+    public InicioSesion() {         
+        ctrlInicioSesion = new CtrlInicioSesion();
         initComponents();
     }
 
@@ -132,29 +137,27 @@ public class InicioSesion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void registrar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrar_btnActionPerformed
-        MenuUsr menuUsr = new MenuUsr();
-        menuUsr.setVisible(true);
+        ctrlInicioSesion.mostrarVentanaRegistrarse();
     }//GEN-LAST:event_registrar_btnActionPerformed
 
     private void iniciar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciar_btnActionPerformed
-        // TODO add your handling code here:
         String usuario = tfUsuario.getText();
         String correo = tfCorreo.getText();
         
-        ArrayList<Usuario> listaUsuarios = ctrlUsuario.buscarUsuarios();        
-        
-        for (Usuario user : listaUsuarios) {
-            if(user.getNombreUsuario().equals(usuario)){
-                if(user.getCorreo().equals(correo)){
-                    MenuPrincipal.getINSTANCE().setVisible(true);
-                    this.dispose();
-                }
+        if(ctrlInicioSesion.existeUsuario(usuario, correo)){
+            try {
+                ctrlInicioSesion.verificarTipoUsuario(correo);
+                ctrlInicioSesion.mostrarMenuPrincipal(this);
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Error " + ex.getMessage()); 
             }
-        }      
-
-        tfUsuario.setText("");
-        tfCorreo.setText("");
+        }else{
+            JOptionPane.showMessageDialog(this, "Usurio o correo incorrectos");            
+        }
+        ctrlInicioSesion.limpiarCampos();
     }//GEN-LAST:event_iniciar_btnActionPerformed
+
+    
 
     private void tfCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCorreoActionPerformed
         // TODO add your handling code here:
@@ -201,7 +204,9 @@ public class InicioSesion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JButton registrar_btn;
-    private javax.swing.JTextField tfCorreo;
-    private javax.swing.JTextField tfUsuario;
+    public static javax.swing.JTextField tfCorreo;
+    public static javax.swing.JTextField tfUsuario;
     // End of variables declaration//GEN-END:variables
+
+    
 }
