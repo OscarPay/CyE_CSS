@@ -5,7 +5,6 @@
  */
 package Controlador;
 
-<<<<<<< HEAD
 import Controlador.GestorBD.DAONotaVentaDia;
 import Controlador.GestorBD.DAORentaCompu;
 import Controlador.GestorBD.DAORentaXbox;
@@ -14,16 +13,15 @@ import Modelo.GananciaPorServicio;
 import Modelo.NotaVentaDia;
 import Modelo.RentaComputadora;
 import Modelo.RentaXbox;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-=======
 import Vista.MenuPrincipal;
 import java.sql.Date;
 import javax.swing.DefaultComboBoxModel;
->>>>>>> origin/master
+import static javax.swing.text.html.HTML.Tag.HEAD;
+
 
 /**
  *
@@ -65,7 +63,6 @@ public class CtrlReportes {
         return 0;
     }
     
-<<<<<<< HEAD
     public int obtenerGananciarXboxs(Date fechaEntrada, Date fechaSalida){
         try {
             ArrayList<RentaXbox> xbox = rentasxbox.obtenerValoresPorFechas(fechaEntrada, fechaSalida);
@@ -109,8 +106,6 @@ public class CtrlReportes {
     }
     
     
-    
-=======
     public void inicializaComboMeses() {
         DefaultComboBoxModel modeloCombo1 = new DefaultComboBoxModel();
         DefaultComboBoxModel modeloCombo2 = new DefaultComboBoxModel();
@@ -173,5 +168,4 @@ public class CtrlReportes {
         java.sql.Date fechaDespues = new java.sql.Date(diaSalida,mesSalida,AñoSalida);
     }
     
->>>>>>> origin/master
 }

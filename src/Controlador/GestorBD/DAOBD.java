@@ -17,7 +17,7 @@ import java.util.ArrayList;
  *
  * @author Abner
  */
-<<<<<<< HEAD
+
 public abstract class DAOBD <T> {
         String host= Configuration.getIp();
         String puerto= Configuration.getPort();
@@ -26,17 +26,6 @@ public abstract class DAOBD <T> {
         String nombreBD= Configuration.getNombreDB();
         Connection conexion=null;
         
-=======
-public abstract class DAOBD<T> {
-
-    String host = "localhost";
-    String puerto = "666";
-    String usuario = "root";
-    String contrasena = "thestrokes";
-    String nombreBD = "scc";
-    Connection conexion = null;
-
->>>>>>> origin/master
     public void establecerConexion() {
 
         try {
