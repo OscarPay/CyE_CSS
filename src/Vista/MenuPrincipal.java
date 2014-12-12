@@ -116,6 +116,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         btnTablaProductos = new javax.swing.JButton();
         btnTablaUsuarios = new javax.swing.JButton();
+        btnVenta = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         comboAñoEntrada = new javax.swing.JComboBox();
         comboMesEntrada = new javax.swing.JComboBox();
@@ -546,28 +547,42 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnVenta.setText("Venta");
+        btnVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVentaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(107, 107, 107)
-                .addComponent(btnTablaProductos)
-                .addGap(61, 61, 61)
-                .addComponent(btnTablaUsuarios)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(99, 99, 99)
+                        .addComponent(btnTablaProductos)
+                        .addGap(69, 69, 69)
+                        .addComponent(btnTablaUsuarios))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(187, 187, 187)
+                        .addComponent(btnVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(103, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
+                .addContainerGap(118, Short.MAX_VALUE)
+                .addComponent(btnVenta)
+                .addGap(78, 78, 78)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnTablaProductos)
                     .addComponent(btnTablaUsuarios))
-                .addContainerGap(275, Short.MAX_VALUE))
+                .addGap(110, 110, 110))
         );
 
-        tpPestañas.addTab("Tablas", jPanel2);
+        tpPestañas.addTab("Venta", jPanel2);
 
         comboAñoEntrada.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -778,6 +793,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ctrlMenuPrincipal.mostrarInicioSesion(this);        
     }//GEN-LAST:event_cerrarSesionActionPerformed
 
+    private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
+        new PuntoVenta().setVisible(true);
+    }//GEN-LAST:event_btnVentaActionPerformed
+
     
 
     /**
@@ -825,6 +844,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public static javax.swing.JButton btnComputadora4;
     private javax.swing.JButton btnTablaProductos;
     private javax.swing.JButton btnTablaUsuarios;
+    private javax.swing.JButton btnVenta;
     public static javax.swing.JButton btnXbox1;
     public static javax.swing.JButton btnXbox2;
     public static javax.swing.JComboBox comboAñoEntrada;
